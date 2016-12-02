@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="large-6 large-centered column">
+    <h4 class="text-center">View Certificate of Origin</h4>
+    <div class="row column">
+      <dl class="inline">
+      <div class="large-6 columns">
+        <dt>Shipper:</dt>
+        <dd><%= @co.shipper %></dd>
+      </div>
+      <div class="large-6 columns">
+       <dt>Consignee:</dt>
+       <dd><%= @co.consignee %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Farm</dt>
+        <dd><%= @co.farm %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Country:</dt>
+        <dd><%= @co.country %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Departure Port:</dt>
+        <dd><%= @co.departure_port %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Discharge Port:</dt>
+        <dd><%= @co.discharge_port %></dd>
+      </div>
+      <div class="large-12 columns">
+        <dt>Observations:</dt>
+        <dd><%= @co.observations %></dd>
+      </div>
+      <hr />
+      <div class="large-4 columns">
+        <dt>Units:</dt>
+        <dd><%= @co.units %></dd>
+      </div>
+      <div class="large-8 columns">
+        <dt>Description:</dt>
+        <dd><%= @co.description %></dd>
+      </div>
+      <div class="large-4 columns">
+        <dt>Volume:</dt>
+        <dd><%= @co.volume %></dd>
+      </div>
+      <div class="large-4 columns">
+        <dt>Weight:</dt>
+        <dd><%= @co.gross_weight %></dd>
+      </div>
+      <div class="large-4 columns">
+        <dt>Invoices:</dt>
+        <dd><%= @co.invoices %></dd>
+      </div>
+      </dl>
+      <div class="large-12 columns actions">
+        <%= link_to("View All Certificate of Origins", certificates_path) %> |
+        <%= link_to("Edit Certificate", edit_certificate_path(@co.id)) %> |
+        <%= link_to "View PDF", certificate_path(@co, :format => 'pdf'), :target => "_blank"  %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<h4 class="text-center">Registered Users</h4>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Admin</th>
+      <th>Sign-ins</th>
+      <th>Last Sign-in</th>
+      <th>Last Sign-in IP</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.id, user_path(user.id) %></td>
+      <td><%= user.email %></td>
+      <td><%= user.admin? %></td>
+      <td><%= user.sign_in_count %></td>
+      <td><%= user.last_sign_in_at %></td>
+      <td><%= user.last_sign_in_ip %></td>
+      <td><%= link_to "Edit", edit_user_path(user.id) %> | <%= link_to "Delete", user_path(user.id), method: :delete, data: { confirm: "Are you sure?" } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to "New User", new_user_path %>

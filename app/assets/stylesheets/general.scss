@@ -1,0 +1,13 @@
+dl.inline dd {
+  display: inline;
+  margin: 10;
+}
+dl.inline dd:after{
+  display: block;
+  content: '';
+}
+dl.inline dt{
+  display: inline-block;
+  min-width: 100px;
+  background-color: rgba(220, 220, 220, 0.3);
+}

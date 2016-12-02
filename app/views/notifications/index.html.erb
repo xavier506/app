@@ -1,0 +1,22 @@
+<h4 class="text-center">Notifications</h4>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @notifications.each do |notify| %>
+    <tr>
+      <td><%= link_to notify.id, notification_path(notify.id) %></td>
+      <td><%= notify.name %></td>
+      <td><%= notify.description %></td>
+      <td><%= link_to "Edit", edit_notification_path(notify.id) %> | <%= link_to "Delete", notification_path(notify.id),method: :delete, data: { confirm: "Are you sure?" } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to "New Notification", new_notification_path %>

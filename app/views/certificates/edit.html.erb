@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="large-6 large-centered column">
+    <div class="row column">
+      <h4 class="text-center">Edit Certificate of Origin</h4>
+      <%= form_for @co, url: {action: "update"} do |f| %>
+      <div class="row">
+        <div class="large-6 columns">
+          <%= f.label :shipper %>
+          <%= f.text_area(:shipper) %>
+        </div>
+        <div class="large-6 columns">
+          <%= f.label :consignee %>
+          <%= f.text_area(:consignee) %>
+        </div>
+        <div class="large-6 columns">
+          <%= f.label :farm %>
+          <%= f.text_field :farm %>
+        </div>
+        <div class="large-6 columns">
+          <%= f.label :country %>
+          <%= f.text_field :country %>
+        </div>
+        <div class="large-4 columns">
+          <%= f.label :mode %>
+          <%= f.select(:mode, options_for_select([['Ocean', 'ocean'], ['Land', 'land'], ['Air', 'air'], ['Export', 'export'], ['Import', 'import'], ['Other', 'other']])) %>
+        </div>
+        <div class="large-4 columns">
+          <%= f.label :order %>
+          <%= f.collection_select(:order_id, Order.all, :id, :id) %>
+        </div>
+        <div class="large-4 columns">
+          <%= f.label :notification %>
+          <%= f.collection_select(:notification_id, Notification.all, :id, :name) %>
+          <%= link_to "New Notification", new_notification_path %>
+        </div>
+        <div class="large-6 columns">
+          <%= f.label :departure_port %>
+          <%= f.text_field :departure_port %>
+        </div>
+        <div class="large-6 columns">
+          <%= f.label :discharge_port %>
+          <%= f.text_field :discharge_port %>
+        </div>
+        <div class="large-12 columns">
+          <%= f.label :observations %>
+          <%= f.text_area(:observations) %>
+        </div>
+        <hr/>
+        <div class="large-6 columns">
+          <%= f.label :description %>
+          <%= f.text_field :description %>
+        </div>
+        <div class="large-6 columns">
+          <%= f.label :invoices %>
+          <%= f.text_field :invoices %>
+        </div>
+        <div class="large-4 columns">
+          <%= f.label :units %>
+          <%= f.text_field :units %>
+        </div>
+        <div class="large-4 columns">
+          <%= f.label :volume %>
+          <%= f.text_field :volume %>
+        </div>
+        <div class="large-4 columns">
+          <%= f.label :weight %>
+          <%= f.text_field :gross_weight %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Save Certificate", class: 'button expanded' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

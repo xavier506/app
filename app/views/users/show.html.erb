@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="large-6 large-centered column">
+    <h4 class="text-center">View User #<%= @user.id %></h4>
+    <div class="row column">
+      <dl class="inline">
+      <div class="large-12 columns">
+        <dt>Email</dt>
+        <dd><%= @user.email %></dd>
+      </div>
+      <div class="large-6 columns">
+       <dt>User is Admin:</dt>
+       <dd><%= @user.admin? %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Sign-in Count</dt>
+        <dd><%= @user.sign_in_count %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Last Sign-in</dt>
+        <dd><%= @user.last_sign_in_at %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Last Sign-in IP</dt>
+        <dd><%= @user.last_sign_in_ip %></dd>
+      </div>
+      <div class="large-12 columns">
+        <dt>Date Registered</dt>
+        <dd><%= @user.created_at %></dd>
+      </div>
+      </dl>
+      <div class="large-12 columns actions">
+        <%= link_to("Edit User", edit_user_path(@user.id)) %>
+      </div>
+    </div>
+  </div>
+</div>

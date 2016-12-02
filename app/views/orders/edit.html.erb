@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="large-8 large-centered column">
+    <div class="row column">
+      <h4 class="text-center">Edit Order # <%= @order.id %></h4>
+      <%= form_for @order, url: {action: "update"} do |f| %>
+      <div class="row">
+      <div class="large-6 columns">
+        <%= f.label :order_date %>
+        <%= f.date_field :order_date, :value => Time.now.strftime('%Y-%m-%d') %>
+      </div>
+        <div class="large-6 columns">
+          <%= f.label :client_id %>
+          <%= f.collection_select(:client_id, Client.all, :id, :company) %>
+          <%= link_to "Create New Client", new_client_path %>
+        </div>
+        <div class="large-6 columns">
+          <%= f.label :mode %>
+          <%= f.select(:mode, options_for_select(['Ocean','Land','Air','Export','Import','Other'])) %>
+        </div>
+        <div class="large-6 columns">
+          <%= f.label :status %>
+          <%= f.select(:status, options_for_select(['Open','Closed','Void'])) %>
+        </div>
+        <div class="large-12 columns">
+          <%= f.label :notes %>
+          <%= f.text_area :notes %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Save Order", class: 'button expanded' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

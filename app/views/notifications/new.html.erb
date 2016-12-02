@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="large-6 large-centered column">
+    <div class="row column">
+      <h4 class="text-center">Create New Notification</h4>
+      <%= form_for @notify, url: {action: "create"} do |f| %>
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :name %>
+          <%= f.text_field(:name) %>
+        </div>
+        <div class="large-12 columns">
+          <%= f.label :description %>
+          <%= f.text_area(:description) %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Create New Notification", class: 'button expanded' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

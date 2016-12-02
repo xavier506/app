@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="large-6 large-centered column">
+    <div class="row column">
+    <h4> Create a New User </h4>
+      <%= form_for @user, url: {action: "create"} do |f| %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "off", placeholder: "user's password" %>
+        <%= f.label(:admin, "User is an Administrator") %>
+        <%= f.check_box(:admin) %>
+        <%= f.submit "Create New User", class: 'button expanded'%>
+      <% end %>
+    </div>
+  </div>
+</div>

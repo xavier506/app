@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="large-6 large-centered column">
+    <div class="row column">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="log-in-form">
+      <h4 class="text-center">Log in with your email account</h4>
+        <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, placeholder: "somebody@example.com" %>
+        </div>
+        <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "off", placeholder: "your password" %>
+        </div>
+      <% if devise_mapping.rememberable? -%>
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      <% end -%>
+      <div class="actions">
+        <%= f.submit "Log in" , class: 'button expanded' %>
+      </div>
+      <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
