@@ -23,10 +23,10 @@
       <td nowrap>
         <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, user_path(user.id), :title => t('users.show.hover_title') %>
         <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_user_path(user.id), :title => t('users.edit.hover_title') %>
-        <%= link_to  '<i class="delete fi-x"></i>'.html_safe, user_path(user.id), method: :delete, data: { confirm: "Are you sure?" }, :title => t('users.destroy.hover_title') %>
+        <%= link_to  '<i class="delete fi-trash"></i>'.html_safe, user_path(user.id), method: :delete, data: { confirm: "Are you sure?" }, :title => t('users.destroy.hover_title') %>
       </td>
     </tr>
   <% end %>
   </tbody>
 </table>
-<%= link_to "New User", new_user_path, :class => "button float-right" %>
+<%= link_to "New User <i class='fi-plus'></i>".html_safe, new_user_path, :class => "button float-right" %>

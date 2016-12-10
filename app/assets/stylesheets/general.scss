@@ -1,3 +1,8 @@
+
+main {
+  padding-top: 20px;
+}
+
 dl.inline dd {
   display: inline;
   margin: 10;
@@ -28,12 +33,12 @@ i:hover {
 
 i.show {
     color: #779bb5;
-    /*color: rgba(10,60,150, 0.8);*/
+    /*color: rgba(10,60,150, 0.8);
     display: inline-block;
     -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
     -moz-transform: matrix(-1, 0, 0, 1, 0, 0);
     -o-transform: matrix(-1, 0, 0, 1, 0, 0);
-    transform: matrix(-1, 0, 0, 1, 0, 0);
+    transform: matrix(-1, 0, 0, 1, 0, 0);*/
 }
 
 i.edit {

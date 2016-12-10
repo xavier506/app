@@ -1,4 +1,11 @@
-<h3>View Certificate of Origin</h3>
+<h3>View Certificate of Origin
+  <span class="float-right">
+    <%= link_to("View All COs <i class='fi-magnifying-glass'></i>".html_safe, certificates_path, :class => "tiny button") %>
+    <%= link_to("Edit This CO <i class='fi-page-edit'></i>".html_safe, edit_certificate_path(@co.id), :class => "tiny button") %>
+    <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, certificate_path(@co, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
+  </span>
+</h3>
+<hr/>
 <dl class="inline">
   <div class="large-6 columns">
     <dt>Shipper:</dt>
@@ -54,8 +61,3 @@
     <dd><%= @co.invoices %></dd>
   </div>
 </dl>
-<div class="large-12 columns actions">
-  <%= link_to("View All Certificate of Origins", certificates_path) %> |
-  <%= link_to("Edit Certificate", edit_certificate_path(@co.id)) %> |
-  <%= link_to "View PDF", certificate_path(@co, :format => 'pdf'), :target => "_blank"  %>
-</div>

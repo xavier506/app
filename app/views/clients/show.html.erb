@@ -1,4 +1,9 @@
-<h3>View Client</h3>
+<h3>View Client
+  <span class="float-right">
+    <%= link_to("View All Clients <i class='fi-magnifying-glass'></i>".html_safe, clients_path, :class => 'tiny button') %>
+    <%= link_to("Edit Client <i class='fi-page-edit'></i>".html_safe, edit_client_path(@client.id), :class => 'tiny button') %>
+  </span>
+</h3>
 <div class="row column">
   <dl class="inline">
   <div class="large-6 columns">
@@ -34,7 +39,4 @@
     <dd><%= @client.zip %></dd>
   </div>
   </dl>
-  <div class="large-12 columns actions">
-    <%= link_to("View All Clients", clients_path) %> | <%= link_to("Edit Client", edit_client_path(@client.id)) %>
-  </div>
 </div>
