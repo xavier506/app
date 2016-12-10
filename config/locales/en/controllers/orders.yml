@@ -1,0 +1,22 @@
+en:
+  orders:
+    new:
+      title: Creating New Orders
+      link: Create New Order
+      success: 'Order was successfully created.'
+      hover_title: Create New Order
+      button: Create Order
+    show:
+      title: Showing Order
+      link: Order
+      hover_title: Show Order
+    edit:
+      title: Editing Order
+      link: Edit Order
+      success: 'Order was successfully updated.'
+      hover_title: Edit Order
+      button: Update Order
+    destroy:
+      link: Destroy Order
+      success: 'Order was successfully destroyed.'
+      hover_title: Destroy Order

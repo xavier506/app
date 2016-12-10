@@ -1,4 +1,4 @@
-<h4 class="text-center">Orders</h4>
+<h3>Orders</h3>
 <table>
   <thead>
     <tr>
@@ -18,9 +18,13 @@
       <td><%= order.client.company %></td>
       <td><%= order.mode %></td>
       <td><%= order.status %></td>
-      <td><%= link_to "View", order_path(order.id) %> | <%= link_to "Edit", edit_order_path(order.id) %> | <%= link_to "Delete", order_path(order.id),method: :delete, data: { confirm: "Are you sure?" } %></td>
+      <td>
+        <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, order_path(order.id), :title => t('orders.show.hover_title') %>
+        <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_order_path(order.id), :title => t('orders.edit.hover_title') %>
+        <%= link_to '<i class="delete fi-x"></i>'.html_safe, order_path(order.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('orders.destroy.hover_title') %>
+      </td>
     </tr>
   <% end %>
   </tbody>
 </table>
-<%= link_to "New Order", new_order_path %>
+<%= link_to "New Order", new_order_path, :class => "button float-right" %>

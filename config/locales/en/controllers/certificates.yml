@@ -1,0 +1,22 @@
+en:
+  certificates:
+    new:
+      title: Creating New Certificates
+      link: Create New Certificate
+      success: 'Certificate was successfully created.'
+      hover_title: Create New Certificate
+      button: Create Certificate
+    show:
+      title: Showing Certificate
+      link: Certificate
+      hover_title: Show Certificate
+    edit:
+      title: Editing Certificate
+      link: Edit Certificate
+      success: 'Certificate was successfully updated.'
+      hover_title: Edit Certificate
+      button: Update Certificate
+    destroy:
+      link: Destroy Certificate
+      success: 'Certificate was successfully destroyed.'
+      hover_title: Destroy Certificate

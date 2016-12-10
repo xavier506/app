@@ -1,4 +1,4 @@
-<h4 class="text-center">Notifications</h4>
+<h3>Notifications</h3>
 <table>
   <thead>
     <tr>
@@ -14,9 +14,13 @@
       <td><%= link_to notify.id, notification_path(notify.id) %></td>
       <td><%= notify.name %></td>
       <td><%= notify.description %></td>
-      <td><%= link_to "Edit", edit_notification_path(notify.id) %> | <%= link_to "Delete", notification_path(notify.id),method: :delete, data: { confirm: "Are you sure?" } %></td>
+      <td nowrap>
+        <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, notification_path(notify.id), :title => t('notifications.show.hover_title') %>
+        <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_notification_path(notify.id), :title => t('notifications.edit.hover_title') %>
+        <%= link_to '<i class="delete fi-x"></i>'.html_safe, notification_path(notify.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('notifications.destroy.hover_title') %>
+      </td>
     </tr>
   <% end %>
   </tbody>
 </table>
-<%= link_to "New Notification", new_notification_path %>
+<%= link_to "New Notification", new_notification_path, :class => "button float-right" %>

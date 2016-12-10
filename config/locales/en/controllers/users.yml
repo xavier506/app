@@ -1,0 +1,22 @@
+en:
+  users:
+    new:
+      title: Creating New Users
+      link: Create New User
+      success: 'User was successfully created.'
+      hover_title: Create New User
+      button: Create User
+    show:
+      title: Showing User
+      link: User
+      hover_title: Show User
+    edit:
+      title: Editing User
+      link: Edit User
+      success: 'User was successfully updated.'
+      hover_title: Edit User
+      button: Update User
+    destroy:
+      link: Destroy User
+      success: 'User was successfully destroyed.'
+      hover_title: Destroy User

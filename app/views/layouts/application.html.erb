@@ -13,8 +13,8 @@
 </head>
 
 <body>
-  <header>
-    <div class="top-bar" id="main-menu">
+  <div class="top-bar" id="main-menu">
+    <div class="row">
       <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
           <li class="menu-text">PCA Logistica</li>
@@ -23,9 +23,6 @@
             <%= link_to "Orders", orders_path  %>
             <ul class="submenu menu vertical" data-submenu>
               <li><%= link_to "New Order", new_order_path %></li>
-<!--               <li><%= link_to "Bill of Lading", new_order_path  %></li>
-              <li><%= link_to "Phytosanitary", new_order_path  %></li>
-              <li><%= link_to "Certificate of Origin", new_order_path  %></li> -->
             </ul>
           </li>
           <li class="has-submenu">
@@ -58,10 +55,13 @@
         </ul>
       </div>
     </div>
-  </header>
-  <main role="main">
-    <%= yield %>
-  </main>
+  </div>
+
+  <div class="row columns">
+    <main role="main">
+      <%= yield %>
+    </main>
+  </div>
   <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
   <script src="https://cdn.jsdelivr.net/foundation/6.2.4-rc2/foundation.min.js"></script>
   <script>

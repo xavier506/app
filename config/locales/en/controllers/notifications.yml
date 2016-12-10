@@ -1,0 +1,22 @@
+en:
+  notifications:
+    new:
+      title: Creating New notifications
+      link: Create New notification
+      success: 'notification was successfully created.'
+      hover_title: Create New notification
+      button: Create notification
+    show:
+      title: Showing notification
+      link: notification
+      hover_title: Show notification
+    edit:
+      title: Editing notification
+      link: Edit notification
+      success: 'notification was successfully updated.'
+      hover_title: Edit notification
+      button: Update notification
+    destroy:
+      link: Destroy notification
+      success: 'notification was successfully destroyed.'
+      hover_title: Destroy notification

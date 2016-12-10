@@ -1,44 +1,40 @@
-<div class="row">
-  <div class="large-6 large-centered column">
-    <h4 class="text-center">View Client</h4>
-    <div class="row column">
-      <dl class="inline">
-      <div class="large-6 columns">
-        <dt>Company</dt>
-        <dd><%= @client.company %></dd>
-      </div>
-      <div class="large-6 columns">
-       <dt>Contact Name:</dt>
-       <dd><%= @client.contact_name %></dd>
-      </div>
-      <div class="large-6 columns">
-        <dt>Email</dt>
-        <dd><%= @client.email %></dd>
-      </div>
-      <div class="large-6 columns">
-        <dt>Telephone</dt>
-        <dd><%= @client.telephone %></dd>
-      </div>
-      <div class="large-6 columns">
-        <dt>Address</dt>
-        <dd><%= @client.address %></dd>
-      </div>
-      <div class="large-6 columns">
-        <dt>City</dt>
-        <dd><%= @client.city %></dd>
-      </div>
-      <div class="large-6 columns">
-        <dt>Country</dt>
-        <dd><%= @client.country %></dd>
-      </div>
-      <div class="large-6 columns">
-        <dt>ZIP</dt>
-        <dd><%= @client.zip %></dd>
-      </div>
-      </dl>
-      <div class="large-12 columns actions">
-        <%= link_to("View All Clients", clients_path) %> | <%= link_to("Edit Client", edit_client_path(@client.id)) %>
-      </div>
-    </div>
+<h3>View Client</h3>
+<div class="row column">
+  <dl class="inline">
+  <div class="large-6 columns">
+    <dt>Company</dt>
+    <dd><%= @client.company %></dd>
+  </div>
+  <div class="large-6 columns">
+   <dt>Contact Name:</dt>
+   <dd><%= @client.contact_name %></dd>
+  </div>
+  <div class="large-6 columns">
+    <dt>Email</dt>
+    <dd><%= @client.email %></dd>
+  </div>
+  <div class="large-6 columns">
+    <dt>Telephone</dt>
+    <dd><%= @client.telephone %></dd>
+  </div>
+  <div class="large-6 columns">
+    <dt>Address</dt>
+    <dd><%= @client.address %></dd>
+  </div>
+  <div class="large-6 columns">
+    <dt>City</dt>
+    <dd><%= @client.city %></dd>
+  </div>
+  <div class="large-6 columns">
+    <dt>Country</dt>
+    <dd><%= @client.country %></dd>
+  </div>
+  <div class="large-6 columns">
+    <dt>ZIP</dt>
+    <dd><%= @client.zip %></dd>
+  </div>
+  </dl>
+  <div class="large-12 columns actions">
+    <%= link_to("View All Clients", clients_path) %> | <%= link_to("Edit Client", edit_client_path(@client.id)) %>
   </div>
 </div>

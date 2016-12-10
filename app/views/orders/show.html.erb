@@ -1,93 +1,94 @@
-<div class="row">
-  <div class="large-6 large-centered column">
-    <h4 class="text-center">Viewing Order # <%= @order.id %></h4>
-    <div class="row column">
-      <dl class="inline">
-      <div class="large-6 columns">
-        <dt>Client:</dt>
-        <dd><%= @order.client.company %></dd>
-      </div>
-      <div class="large-6 columns">
-       <dt>Order Date:</dt>
-       <dd><%= @order.order_date %></dd>
-      </div>
-      <div class="large-6 columns">
-        <dt>Mode:</dt>
-        <dd><%= @order.mode %></dd>
-      </div>
-      <div class="large-6 columns">
-        <dt>Status:</dt>
-        <dd><%= @order.status %></dd>
-      </div>
-      <div class="large-12 columns">
-        <dt>Notes:</dt>
-        <dd><%= @order.notes %></dd>
-      </div>
-      </dl>
-      <div class="large-12 columns actions">
-        <%= link_to("View All Orders", orders_path) %> | <%= link_to("Edit Order", edit_order_path(@order.id)) %>
-      </div>
-    </div>
+<h3>Viewing Order # <%= @order.id %></h3>
+<div class="row column">
+  <dl class="inline">
+  <div class="large-6 columns">
+    <dt>Client:</dt>
+    <dd><%= @order.client.company %></dd>
+  </div>
+  <div class="large-6 columns">
+   <dt>Order Date:</dt>
+   <dd><%= @order.order_date %></dd>
+  </div>
+  <div class="large-6 columns">
+    <dt>Mode:</dt>
+    <dd><%= @order.mode %></dd>
+  </div>
+  <div class="large-6 columns">
+    <dt>Status:</dt>
+    <dd><%= @order.status %></dd>
+  </div>
+  <div class="large-12 columns">
+    <dt>Notes:</dt>
+    <dd><%= @order.notes %></dd>
+  </div>
+  </dl>
+  <div class="large-12 columns actions">
+    <span class="float-right">
+      <%= link_to("View All Orders", orders_path) %> |
+      <%= link_to("Edit Order", edit_order_path(@order.id)) %>
+    </span>
   </div>
 </div>
 <br/>
-<div class="row">
-  <div class="large-6 large-centered column">
-    <h5>Associated Certificate of Origins</h5>
-    <table>
-      <thead>
-        <th>ID #</th>
-        <th>Mode</th>
-        <th>Departure</th>
-        <th>Discharge</th>
-        <th>Actions</th>
-      </thead>
-      <tbody>
-      <% @order.certificates.each do |co| %>
-        <tr>
-          <td><%= link_to co.id, order_path(co.id) %></td>
-          <td><%= co.mode %></td>
-          <td><%= co.departure_port %></td>
-          <td><%= co.discharge_port %></td>
-          <td><%= link_to "View", certificate_path(co.id) %> | <%= link_to "Edit", edit_certificate_path(co.id) %> | <%= link_to "Delete", certificate_path(co.id),method: :delete, data: { confirm: "Are you sure?" } %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-    <%= link_to("New CO", new_certificate_path) %>
-  </div>
+<div class="row column">
+  <h4>Associated Certificate of Origins</h4>
+  <table>
+    <thead>
+      <th>ID #</th>
+      <th>Shipper</th>
+      <th>Mode</th>
+      <th>Departure</th>
+      <th>Discharge</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+    <% @order.certificates.each do |co| %>
+      <tr>
+        <td><%= link_to co.id, order_path(co.id) %></td>
+        <td><%= co.shipper %></td>
+        <td><%= co.mode %></td>
+        <td><%= co.departure_port %></td>
+        <td><%= co.discharge_port %></td>
+        <td>
+          <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, certificate_path(co.id), :title => t('certificates.show.hover_title') %>
+          <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_certificate_path(co.id), :title => t('certificates.edit.hover_title') %>
+          <%= link_to '<i class="delete fi-x"></i>'.html_safe, certificate_path(co.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('certificates.destroy.hover_title') %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= link_to("<i class='fi-plus'></i> New CO".html_safe, new_certificate_path, :class => "button float-right" ) %>
 </div>
-<div class="row">
-  <div class="large-6 large-centered column">
-    <h5>Associated Phytosanitaries</h5>
-    <table>
-      <thead>
-        <th>ID #</th>
-        <th>Actions</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
+<div class="row column">
+  <h4>Associated Phytosanitaries</h4>
+  <table>
+    <thead>
+      <th>ID #</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-<div class="row">
-  <div class="large-6 large-centered column">
-    <h5>Associated Bill of Ladings</h5>
-    <table>
-      <thead>
-        <th>ID #</th>
-        <th>Actions</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
+<div class="row column">
+  <h4>Associated Bill of Ladings</h4>
+  <table>
+    <thead>
+      <th>ID #</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

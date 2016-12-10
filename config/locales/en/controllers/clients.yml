@@ -1,0 +1,22 @@
+en:
+  clients:
+    new:
+      title: Creating New Clients
+      link: Create New Client
+      success: 'Client was successfully created.'
+      hover_title: Create New Client
+      button: Create Client
+    show:
+      title: Showing Client
+      link: Client
+      hover_title: Show Client
+    edit:
+      title: Editing Client
+      link: Edit Client
+      success: 'Client was successfully updated.'
+      hover_title: Edit Client
+      button: Update Client
+    destroy:
+      link: Destroy Client
+      success: 'Client was successfully destroyed.'
+      hover_title: Destroy Client
