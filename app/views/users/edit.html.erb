@@ -1,6 +1,7 @@
 <h3>Edit User</h3>
 <div class="row">
 <%= form_for @user, url: {action: "update"} do |f| %>
+  <%= f.error_messages %>
   <%= f.label :email %>
   <%= f.text_field :email %>
   <%= f.label :password %>

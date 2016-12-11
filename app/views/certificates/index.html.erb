@@ -1,5 +1,5 @@
 <h3>Certificates of Origin</h3>
-<table>
+<table class="hover">
   <thead>
     <tr>
       <th>ID</th>
@@ -25,7 +25,7 @@
       <td nowrap>
         <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, certificate_path(co.id), :title => t('certificates.show.hover_title') %>
         <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_certificate_path(co.id), :title => t('certificates.edit.hover_title') %>
-        <%= link_to '<i class="delete fi-trash"></i>'.html_safe, certificate_path(co.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('certificates.destroy.hover_title') %></td>
+        <%= link_to '<i class="delete fi-x"></i>'.html_safe, certificate_path(co.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('certificates.destroy.hover_title') %></td>
     </tr>
   <% end %>
   </tbody>

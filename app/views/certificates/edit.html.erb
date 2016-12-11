@@ -1,5 +1,6 @@
-  <h3>Edit Certificate of Origin</h3>
+<h3>Edit Certificate of Origin</h3>
   <%= form_for @co, url: {action: "update"} do |f| %>
+  <%= f.error_messages %>
   <div class="row">
     <div class="large-6 columns">
       <%= f.label :shipper %>
@@ -64,7 +65,7 @@
       <%= f.text_field :gross_weight %>
     </div>
     <div class="actions">
-    <%= f.submit "Save Certificate <i class='save'></i>".html_safe, class: 'button expanded' %>
+    <%= f.submit 'Save Certificate', class: 'button expanded' %>
     </div>
   </div>
-  <% end %>
+<% end %>

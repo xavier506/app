@@ -1,5 +1,5 @@
 <h3>Notifications</h3>
-<table>
+<table class="hover">
   <thead>
     <tr>
       <th>ID</th>
@@ -17,7 +17,7 @@
       <td nowrap>
         <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, notification_path(notify.id), :title => t('notifications.show.hover_title') %>
         <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_notification_path(notify.id), :title => t('notifications.edit.hover_title') %>
-        <%= link_to '<i class="delete fi-trash"></i>'.html_safe, notification_path(notify.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('notifications.destroy.hover_title') %>
+        <%= link_to '<i class="delete fi-x"></i>'.html_safe, notification_path(notify.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('notifications.destroy.hover_title') %>
       </td>
     </tr>
   <% end %>

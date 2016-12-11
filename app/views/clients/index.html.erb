@@ -1,5 +1,5 @@
 <h3>Registered Clients</h3>
-<table>
+<table class="hover">
   <thead>
     <tr>
       <th>ID</th>
@@ -21,7 +21,7 @@
       <td nowrap>
         <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, client_path(client.id), :title => t('clients.show.hover_title') %>
         <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_client_path(client.id), :title => t('clients.edit.hover_title') %>
-        <%= link_to '<i class="delete fi-trash"></i>'.html_safe, client_path(client.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('clients.destroy.hover_title') %>
+        <%= link_to '<i class="delete fi-x"></i>'.html_safe, client_path(client.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('clients.destroy.hover_title') %>
       </td>
     </tr>
   <% end %>
