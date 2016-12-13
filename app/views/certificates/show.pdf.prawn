@@ -4,74 +4,74 @@ bg_image = "#{Rails.root}/app/assets/images/pdf/blank_co.png"
 
 indent 30 do
   # Shipper
-  pdf.text @co.shipper.upcase, :size => 7
+  pdf.bounding_box([0, pdf.cursor - 0], :width => 250, :height => 50) do
+    pdf.text @co.shipper.upcase, :size => 7
+  end
 
   #Consignee
-  pdf.move_down(45)
-  pdf.text @co.consignee.upcase, :size => 7
+  pdf.bounding_box([0, pdf.cursor - 19], :width => 250, :height => 50) do
+    pdf.text @co.consignee.upcase, :size => 7
+  end
 
   #Mode
-  pdf.move_down(35)
-  pdf.text @co.mode.upcase, :size => 7
+  pdf.bounding_box([0, pdf.cursor - 17], :width => 250, :height => 10) do
+    pdf.text @co.mode.upcase, :size => 7
+  end
 
   #Departure Port
-  pdf.move_down(11)
-  pdf.text @co.departure_port.upcase, :size => 7
+  pdf.bounding_box([0, pdf.cursor - 10], :width => 250, :height => 10) do
+    pdf.text @co.departure_port.upcase, :size => 7
+  end
 
   #Country
-  pdf.move_down(11)
-  pdf.text @co.country.upcase, :size => 7
+  pdf.bounding_box([0, pdf.cursor - 8], :width => 118, :height => 10) do
+    pdf.text @co.country.upcase, :size => 7
+  end
 
   #Discharge Port
-  indent 130 do
-    pdf.move_up(10)
+  pdf.bounding_box([130, pdf.cursor + 11], :width => 118, :height => 10) do
     pdf.text @co.discharge_port.upcase, :size => 7
   end
 
   #Observations
-  indent 265 do
-    pdf.move_up(20)
+  pdf.bounding_box([264, pdf.cursor + 27], :width => 220, :height => 24) do
     pdf.text @co.observations.upcase, :size => 7
   end
 
   #Item No.
-  pdf.move_down(60)
-  pdf.text '1', :size => 8
-  pdf.text '***'
+  pdf.bounding_box([0, pdf.cursor - 45], :width => 15, :height => 140) do
+    pdf.text '1', :size => 7, :align => :center
+    pdf.text '***', :size => 7, :align => :center
+  end
 
   #Units
-  indent 28 do
-    pdf.move_up(23)
-    pdf.text @co.units.to_s, :size => 7
-    pdf.text '************'
+  pdf.bounding_box([24, pdf.cursor + 140], :width => 60, :height => 140) do
+    pdf.text @co.units.to_s, :size => 7, :align => :center
+    pdf.text '*********', :size => 7, :align => :center
   end
 
   #Description
-  indent 100 do
-    pdf.move_up(23)
-    pdf.text @co.description.upcase, :size => 7
-    pdf.text @co.farm.upcase, :size => 7
-    pdf.text '***********************************'
+  pdf.bounding_box([95, pdf.cursor + 140], :width => 186, :height => 140) do
+    pdf.text @co.description.upcase, :size => 7, :align => :center
+    pdf.text @co.farm.upcase, :size => 7, :align => :center
+    pdf.text '****************************************', :size => 7, :align => :center
   end
 
   #Volume
-  indent 292 do
-    pdf.move_up(23)
-    pdf.text @co.volume.to_s.upcase, :size => 7
-    pdf.text '*********'
+  pdf.bounding_box([292, pdf.cursor + 140], :width => 65, :height => 140) do
+    pdf.text @co.volume.to_s.upcase, :size => 7, :align => :center
+    pdf.text '*********', :size => 7, :align => :center
   end
 
   #Weight
-  indent 365 do
-    pdf.move_up(23)
-    pdf.text @co.gross_weight.to_s.upcase, :size => 7
-    pdf.text '*********'
+  pdf.bounding_box([365, pdf.cursor + 140], :width => 50, :height => 140) do
+    pdf.text @co.gross_weight.to_s.upcase, :size => 7, :align => :center
+    pdf.text '*********', :size => 7, :align => :center
   end
 
   #Invoice
-  indent 420 do
-    pdf.move_up(23)
-    pdf.text @co.invoices.upcase, :size => 7
-    pdf.text '**********'
+  pdf.bounding_box([420, pdf.cursor + 140], :width => 65, :height => 140) do
+    pdf.text @co.invoices.upcase, :size => 7, :align => :center
+    pdf.text '*********', :size => 7, :align => :center
   end
 end
