@@ -46,15 +46,15 @@
   </div>
   <div class="large-2 columns">
     <dt>Units:</dt>
-    <dd><%= @co.units %></dd>
+    <dd><%= @co.units %> <%= @co.unit_type %></dd>
   </div>
   <div class="large-3 columns">
     <dt>Volume:</dt>
-    <dd><%= @co.volume %></dd>
+    <dd><%= @co.volume %> <%= @co.volume_units %></dd>
   </div>
   <div class="large-3 columns">
     <dt>Weight:</dt>
-    <dd><%= @co.gross_weight %></dd>
+    <dd><%= @co.gross_weight %> <%= @co.weight_units %></dd>
   </div>
   <div class="large-4 columns">
     <dt>Invoices:</dt>

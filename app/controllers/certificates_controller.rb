@@ -43,6 +43,6 @@ class CertificatesController < ApplicationController
   private
 
   def certificate_params
-    params.require(:certificate).permit(:shipper, :consignee, :farm, :country, :mode, :order_id, :notification_id, :discharge_port, :departure_port, :observations, :units, :volume, :gross_weight, :invoices, :description)
+    params.require(:certificate).permit(:shipper, :consignee, :farm, :country, :mode, :order_id, :notification_id, :discharge_port, :departure_port, :observations, :units, :unit_type, :volume, :volume_units, :gross_weight, :weight_units, :invoices, :description)
   end
 end

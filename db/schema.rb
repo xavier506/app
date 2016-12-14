@@ -24,9 +24,12 @@ ActiveRecord::Schema.define(version: 20161122231012) do
     t.string   "departure_port"
     t.text     "observations"
     t.integer  "units"
+    t.string   "unit_type"
     t.text     "description"
     t.decimal  "volume"
+    t.string   "volume_units"
     t.decimal  "gross_weight"
+    t.string   "weight_units"
     t.text     "invoices"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

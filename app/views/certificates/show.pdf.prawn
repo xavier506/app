@@ -45,8 +45,9 @@ indent 30 do
   end
 
   #Units
+  units_text = @co.units.to_s + " " + @co.unit_type.to_s
   pdf.bounding_box([24, pdf.cursor + 140], :width => 60, :height => 140) do
-    pdf.text @co.units.to_s, :size => 7, :align => :center
+    pdf.text units_text, :size => 7, :align => :center
     pdf.text '*********', :size => 7, :align => :center
   end
 
@@ -58,14 +59,16 @@ indent 30 do
   end
 
   #Volume
+  volume_text = @co.volume.to_s.upcase + " " + @co.volume_units.to_s.upcase
   pdf.bounding_box([292, pdf.cursor + 140], :width => 65, :height => 140) do
-    pdf.text @co.volume.to_s.upcase, :size => 7, :align => :center
+    pdf.text volume_text, :size => 7, :align => :center
     pdf.text '*********', :size => 7, :align => :center
   end
 
   #Weight
+  weight_text = @co.gross_weight.to_s.upcase + " " + @co.weight_units.to_s.upcase
   pdf.bounding_box([365, pdf.cursor + 140], :width => 50, :height => 140) do
-    pdf.text @co.gross_weight.to_s.upcase, :size => 7, :align => :center
+    pdf.text weight_text, :size => 7, :align => :center
     pdf.text '*********', :size => 7, :align => :center
   end
 
