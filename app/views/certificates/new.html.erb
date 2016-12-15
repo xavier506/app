@@ -4,11 +4,11 @@
   <div class="row">
   <div class="large-6 columns">
     <%= f.label :shipper %>
-    <%= f.text_area(:shipper) %>
+    <%= f.text_area(:shipper, required: '') %>
   </div>
   <div class="large-6 columns">
     <%= f.label :consignee %>
-    <%= f.text_area(:consignee) %>
+    <%= f.text_area(:consignee, required: '') %>
   </div>
   <div class="large-6 columns">
     <%= f.label :farm %>
@@ -33,11 +33,11 @@
   </div>
   <div class="large-6 columns">
     <%= f.label :departure_port %>
-    <%= f.text_field :departure_port %>
+    <%= f.text_field :departure_port, required: '' %>
   </div>
   <div class="large-6 columns">
     <%= f.label :discharge_port %>
-    <%= f.text_field :discharge_port %>
+    <%= f.text_field :discharge_port, required: '' %>
   </div>
   <div class="large-12 columns">
     <%= f.label :observations %>
@@ -46,15 +46,15 @@
   <hr/>
   <div class="large-6 columns">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, required: '' %>
   </div>
   <div class="large-6 columns">
     <%= f.label :invoices %>
-    <%= f.text_area :invoices %>
+    <%= f.text_area :invoices, required: '' %>
   </div>
   <div class="large-2 columns">
     <%= f.label :units %>
-    <%= f.text_field :units %>
+    <%= f.number_field :units, required: '' %>
   </div>
   <div class="large-2 columns">
     <%= f.label :unit_type %>
@@ -62,7 +62,7 @@
   </div>
   <div class="large-2 columns">
     <%= f.label :volume %>
-    <%= f.text_field :volume %>
+    <%= f.number_field :volume, required: '' %>
   </div>
   <div class="large-2 columns">
     <%= f.label :volume_units %>
@@ -70,7 +70,7 @@
   </div>
   <div class="large-2 columns">
     <%= f.label :weight %>
-    <%= f.text_field :gross_weight %>
+    <%= f.number_field :gross_weight, required: '' %>
   </div>
   <div class="large-2 columns">
     <%= f.label :weight_units %>
