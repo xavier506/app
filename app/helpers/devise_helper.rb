@@ -10,12 +10,11 @@ module DeviseHelper
     html = <<-HTML
     <div class="row">
       <div class="small-6 small-centered columns">
-        <div class="alert-box alert">
+        <div class="alert callout">
           <b>#{sentence}</b>
           <ul>
           #{messages}
           </ul>
-          <a href="#" class="close">⊗</a>
         </div>
       </div>
     </div>

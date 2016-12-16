@@ -1,4 +1,4 @@
 class Notification < ApplicationRecord
-  validates :name, :presence => true
+  validates :name, presence: true
   has_many :certificates
 end
