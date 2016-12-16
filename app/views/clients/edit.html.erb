@@ -1,6 +1,5 @@
 <h3>Edit Client</h3>
-<%= form_for @client, url: {action: "update"} do |f| %>
-  <%= f.error_messages %>
+<%= form_for @client, validate: true, url: {action: "update"} do |f| %>
   <div class="row">
     <div class="large-6 columns">
       <%= f.label :company %>

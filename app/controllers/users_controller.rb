@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user
     else
+      flash[:error] = "Client could not be saved!"
       render 'show'
     end
   end

@@ -27,8 +27,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use dynamic forms for error messages
-gem "dynamic_form"
+# Use client_side_validations for error messages
+gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations', branch: 'rails5'
 
 #Use Prawn for PDF file generation
 gem 'prawn'

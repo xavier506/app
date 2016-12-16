@@ -1,6 +1,5 @@
 <h3>Edit Notification</h3>
-<%= form_for @notify, url: {action: "update"} do |f| %>
-<%= f.error_messages %>
+<%= form_for @notify, validate: true, url: {action: "update"} do |f| %>
   <div class="row">
     <div class="large-12 columns">
       <%= f.label :name %>

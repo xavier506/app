@@ -1,15 +1,19 @@
 <h3>Create New Order</h3>
-<%= form_for @order, url: {action: "create"} do |f| %>
-  <%= f.error_messages %>
+<%= form_for @order, validate: true, url: {action: "create"} do |f| %>
   <div class="row">
     <div class="large-6 columns">
       <%= f.label :order_date %>
       <%= f.date_field :order_date, :value => Time.now.strftime('%Y-%m-%d') %>
     </div>
     <div class="large-6 columns">
-      <%= f.label :client_id %>
-      <%= f.collection_select(:client_id, Client.all, :id, :company) %>
-      <%= link_to "Create New Client", new_client_path %>
+      <div class="input-group">
+        <%= f.label :client_id %>
+        <%= f.collection_select(:client_id, Client.all, :id, :company, {}, {:class=>'input-group-field'}) %>
+
+        <div class="input-group-button" style="padding-top: 25px;">
+          <%= link_to "New Client", new_client_path, class: 'button' %>
+        </div>
+      </div>
     </div>
     <div class="large-6 columns">
       <%= f.label :mode %>
