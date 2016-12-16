@@ -26,9 +26,13 @@
       <%= f.collection_select(:order_id, Order.all, :id, :order_for_select) %>
     </div>
     <div class="large-4 columns">
-      <%= f.label :notification %>
-      <%= f.collection_select(:notification_id, Notification.all, :id, :name) %>
-      <%= link_to "New Notification", new_notification_path %>
+      <div class="input-group">
+        <%= f.label :notification %>
+        <%= f.collection_select(:notification_id, Notification.all, :id, :name, {}, {:class=>'input-group-field'}) %>
+        <div class="input-group-button" style="padding-top: 25px;">
+          <%= link_to "New Notify", new_notification_path, class: 'button' %>
+        </div>
+      </div>
     </div>
     <div class="large-6 columns">
       <%= f.label :departure_port %>
