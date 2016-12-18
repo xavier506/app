@@ -6,10 +6,8 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/normalize/3.0.3/normalize.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4-rc2/foundation.min.css">
+  <%= javascript_include_tag :modernizr %>
   <%= stylesheet_link_tag    "application" %>
-  <script src="https://cdn.jsdelivr.net/modernizr/3.3.1/modernizr.min.js"></script>
 </head>
 
 <body>
@@ -63,9 +61,5 @@
     </main>
   </div>
   <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-  <script src="https://cdn.jsdelivr.net/foundation/6.2.4-rc2/foundation.min.js"></script>
-  <script>
-    $(document).foundation();
-  </script>
 </body>
 </html>
