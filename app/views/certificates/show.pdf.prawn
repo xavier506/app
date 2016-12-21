@@ -25,7 +25,7 @@ indent 30 do
 
   #Country
   pdf.bounding_box([0, pdf.cursor - 8], :width => 118, :height => 10) do
-    pdf.text @co.country.upcase, :size => 7
+    pdf.text @co.country_name.to_s.upcase, :size => 7
   end
 
   #Discharge Port
@@ -45,7 +45,7 @@ indent 30 do
   end
 
   #Units
-  units_text = @co.units.to_s + " " + @co.unit_type.to_s
+  units_text = @co.units.to_s.upcase + " " + @co.unit_type.to_s.upcase
   pdf.bounding_box([24, pdf.cursor + 140], :width => 60, :height => 140) do
     pdf.text units_text, :size => 7, :align => :center
     pdf.text '*********', :size => 7, :align => :center

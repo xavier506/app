@@ -1,34 +1,6 @@
 <h3>Create New Order</h3>
-<%= form_for @order, validate: true, url: {action: "create"} do |f| %>
-  <div class="row">
-    <div class="large-6 columns">
-      <%= f.label :order_date %>
-      <%= f.date_field :order_date, :value => Time.now.strftime('%Y-%m-%d') %>
-    </div>
-    <div class="large-6 columns">
-      <div class="input-group">
-        <%= f.label :client_id %>
-        <%= f.collection_select(:client_id, Client.all, :id, :company, {}, {:class=>'input-group-field'}) %>
-
-        <div class="input-group-button" style="padding-top: 25px;">
-          <%= link_to "New Client", new_client_path, class: 'button' %>
-        </div>
-      </div>
-    </div>
-    <div class="large-6 columns">
-      <%= f.label :mode %>
-      <%= f.select(:mode, options_for_select(['Ocean / Maritimo','Land','Air','Export','Import','Other'])) %>
-    </div>
-    <div class="large-6 columns">
-      <%= f.label :status %>
-      <%= f.select(:status, options_for_select(['Open','Closed','Void'])) %>
-    </div>
-    <div class="large-12 columns">
-      <%= f.label :notes %>
-      <%= f.text_area :notes %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Create Order", class: 'button expanded' %>
-    </div>
-  </div>
-<% end %>
+<div class="form-container">
+  <%= simple_form_for @order, url: {action: "create"} do |f| %>
+    <%= render 'form' %>
+  <% end %>
+</div>

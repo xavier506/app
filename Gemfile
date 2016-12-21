@@ -19,8 +19,21 @@ gem 'coffee-rails', '~> 4.2'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+# Use zurb foundation front-end framework
 gem 'modernizr-rails'
 gem 'foundation-rails'
+
+# Libraries for forms
+gem 'simple_form'
+gem 'countries'
+gem 'country_select'
+# Use client_side_validations for error messages
+gem 'client_side_validations',
+  github: 'DavyJonesLocker/client_side_validations',
+  branch: 'rails5'
+gem 'client_side_validations-simple_form',
+  github: 'DavyJonesLocker/client_side_validations-simple_form',
+  branch: 'rails5'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
@@ -30,9 +43,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-# Use client_side_validations for error messages
-gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations', branch: 'rails5'
 
 #Use Prawn for PDF file generation
 gem 'prawn'

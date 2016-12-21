@@ -1,0 +1,38 @@
+<%= simple_form_for @client, validate: true do |f| %>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.input :company %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.input :contact_name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.input :email %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.input :telephone %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.input :address %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.input :city %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.input :country, priority: [ "Costa Rica" ] %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.input :zip %>
+    </div>
+  </div>
+  <div class="actions row">
+    <%= f.button :submit, class: 'expanded' %>
+  </div>
+<% end %>
+

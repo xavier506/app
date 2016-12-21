@@ -1,16 +1,7 @@
 <h3>Create New Notification</h3>
-<%= form_for @notify, validate: true, url: {action: "create"} do |f| %>
-  <div class="row">
-    <div class="large-12 columns">
-      <%= f.label :name %>
-      <%= f.text_field(:name) %>
-    </div>
-    <div class="large-12 columns">
-      <%= f.label :description %>
-      <%= f.text_area(:description) %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Create New Notification", class: 'button expanded' %>
-    </div>
-  </div>
-<% end %>
+<div class="form-container">
+  <%= simple_form_for @notify, url: {action: "create"} do |f| %>
+    <%= render 'form' %>
+  <% end %>
+</div>
+

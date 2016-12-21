@@ -1,12 +1,6 @@
 <h3>Create a New User </h3>
-<div class="row column">
-  <%= form_for @user, validate: true, url: {action: "create"} do |f| %>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off", placeholder: "user's password" %>
-    <%= f.label(:admin, "User is an Administrator") %>
-    <%= f.check_box(:admin) %>
-    <%= f.submit "Create New User", class: 'button expanded'%>
+<div class="form-container">
+  <%= simple_form_for @user, url: {action: "create"} do |f| %>
+    <%= render 'form' %>
   <% end %>
 </div>

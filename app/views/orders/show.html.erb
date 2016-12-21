@@ -4,26 +4,26 @@
     <%= link_to("Edit This Order <i class='fi-page-edit tiny'></i>".html_safe, edit_order_path(@order.id), :class => 'tiny button') %>
   </span>
 </h3>
-<div class="row column">
+<div class="details row column">
   <dl class="inline">
   <div class="large-6 columns">
-    <dt>Client:</dt>
+    <dt>Client :</dt>
     <dd><%= @order.client.company %></dd>
   </div>
   <div class="large-6 columns">
-   <dt>Order Date:</dt>
+   <dt>Order Date :</dt>
    <dd><%= @order.order_date %></dd>
   </div>
   <div class="large-6 columns">
-    <dt>Mode:</dt>
+    <dt>Mode :</dt>
     <dd><%= @order.mode %></dd>
   </div>
   <div class="large-6 columns">
-    <dt>Status:</dt>
+    <dt>Status :</dt>
     <dd><%= @order.status %></dd>
   </div>
   <div class="large-12 columns">
-    <dt>Notes:</dt>
+    <dt>Notes :</dt>
     <dd><%= @order.notes %></dd>
   </div>
   </dl>

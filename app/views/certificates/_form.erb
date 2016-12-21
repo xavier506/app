@@ -1,0 +1,85 @@
+<%= simple_form_for @co, validate: true do |f| %>
+<div class="row">
+  <div class="large-6 columns">
+    <%= f.input :shipper %>
+  </div>
+  <div class="large-6 columns">
+    <%= f.input :consignee %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-6 columns">
+    <%= f.input :farm %>
+  </div>
+  <div class="large-6 columns">
+    <%= f.input :country, priority: [ "Costa Rica" ]%>
+  </div>
+</div>
+<div class="row">
+  <div class="large-4 columns">
+    <%= f.input :order_id do %>
+    <%= f.collection_select(:order_id, Order.all, :id, :order_for_select ) %>
+    <% end %>
+  </div>
+  <div class="large-4 columns">
+    <%= f.input :mode, collection: Order::MODES, include_blank: false %>
+  </div>
+  <div class="large-4 columns">
+  <%= f.input :notification_id  do %>
+    <div class="input-group">
+
+      <%= f.collection_select(:notification_id, Notification.all, :id, :name, {}, {:class=>'input-group-field'}) %>
+      <div class="input-group-button" >
+        <%= link_to "New Notify", new_notification_path, class: 'button' %>
+      </div>
+
+    </div>
+     <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-6 columns">
+    <%= f.input :departure_port %>
+  </div>
+  <div class="large-6 columns">
+    <%= f.input :discharge_port %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <%= f.input :observations %>
+  </div>
+</div>
+<div class="row">
+  <hr/>
+  <div class="large-6 columns">
+    <%= f.input :description %>
+  </div>
+  <div class="large-6 columns">
+    <%= f.input :invoices %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-2 columns">
+    <%= f.input :units %>
+  </div>
+  <div class="large-2 columns">
+    <%= f.input :unit_type, collection: Certificate::UNIT_TYPES, include_blank: false %>
+  </div>
+  <div class="large-2 columns">
+    <%= f.input :volume %>
+  </div>
+  <div class="large-2 columns">
+  <%= f.input :volume_units, collection: Certificate::VOLUME_UNITS, include_blank: false %>
+  </div>
+  <div class="large-2 columns">
+    <%= f.input :gross_weight %>
+  </div>
+  <div class="large-2 columns">
+    <%= f.input :weight_units, collection: Certificate::WEIGHT_UNITS, include_blank: false %>
+  </div>
+</div>
+<div class="actions row">
+  <%= f.button :submit, class: 'expanded' %>
+</div>
+<% end %>

@@ -1,12 +1,4 @@
 <h3>Edit User</h3>
-<div class="row">
-<%= form_for @user, validate: true, url: {action: "update"} do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password, autocomplete: "off", placeholder: "user's password" %>
-  <%= f.label(:admin, "User is an Administrator") %>
-  <%= f.check_box(:admin) %>
-  <%= f.submit "Save User", class: 'button expanded'%>
-<% end %>
+<div class="form-container">
+  <%= render 'form' %>
 </div>

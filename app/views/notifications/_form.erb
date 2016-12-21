@@ -1,0 +1,15 @@
+<%= simple_form_for @notify, validate: true do |f| %>
+<div class="row">
+  <div class="large-12 columns">
+    <%= f.input :name %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <%= f.input :description %>
+  </div>
+</div>
+<div class="actions row">
+  <%= f.button :submit, class: 'expanded' %>
+</div>
+<% end %>

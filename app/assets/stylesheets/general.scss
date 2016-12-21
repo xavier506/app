@@ -1,9 +1,25 @@
 body {
-  background: image-url("backgrounds/white_wall_hash.png") repeat;
+  background: image-url("backgrounds/handmadepaper.png") repeat;
+}
+
+.top-bar, .top-bar ul {
+  background:  image-url("backgrounds/subtle_surface.png") repeat;
+}
+
+.top-bar {
+  -moz-box-shadow: 0 1px rgba(211,211,211, 0.8);
+  -webkit-box-shadow: 0 1px rgba(211,211,211, 0.8);
+  box-shadow: 0 1px rgba(211,211,211, 0.8);
 }
 
 main {
   padding-top: 20px;
+}
+
+.details,.form-container {
+  background:  image-url("backgrounds/white_wall_hash.png") repeat;
+  border-radius: 4px;
+  padding: 5px;
 }
 
 dl.inline dd {
@@ -17,9 +33,18 @@ dl.inline dd:after{
 dl.inline dt{
   display: inline-block;
   min-width: 100px;
-  background-color: rgba(220, 220, 220, 0.3);
+  /*background-color: rgba(220, 220, 220, 0.3);*/
 }
 
+label {
+  font-weight: 700;
+}
+
+.required label:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}
 
 /* Actions Icons
 ------------------------------------------------------------------------- */

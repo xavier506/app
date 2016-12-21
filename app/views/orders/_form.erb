@@ -1,0 +1,36 @@
+<%= simple_form_for @order, validate: true do |f| %>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="input-group">
+      <%= f.input :client do %>
+        <%= f.collection_select(:client_id, Client.all, :id, :company, {}, {:class=>'input-group-field'}) %>
+      <% end %>
+
+      <div class="input-group-button" style="padding-top: 25px;">
+        <%= link_to "New Client", new_client_path, class: 'button' %>
+      </div>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <%= f.input :order_date do %>
+      <%= f.date_field :order_date, :value => Time.now.strftime('%Y-%m-%d') %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-6 columns">
+    <%= f.input :status, collection: Order::STATUSES, include_blank: false  %>
+  </div>
+  <div class="large-6 columns">
+    <%= f.input :mode, collection: Order::MODES, include_blank: false %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <%= f.input :notes %>
+  </div>
+</div>
+<div class="actions row column">
+    <%= f.button :submit, class: 'expanded' %>
+</div>
+<% end %>
