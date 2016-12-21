@@ -1,6 +1,6 @@
 <h3>Create New Certificate of Origin</h3>
 <div class="form-container">
-  <%= simple_form_for @co, :html => {'data-abide' => ' ' }, validate: true, url: {action: "create"} do |f| %>
+  <%= simple_form_for @certificate, :html => {'data-abide' => ' ' }, validate: true, url: {action: "create"} do |f| %>
     <%= render 'form' %>
   <% end %>
 </div>

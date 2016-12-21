@@ -1,4 +1,5 @@
 <h3>Orders</h3>
+<% if @orders %>
 <table class="hover">
   <thead>
     <tr>
@@ -27,4 +28,10 @@
   <% end %>
   </tbody>
 </table>
-<%= link_to "New Order <i class='fi-plus'></i>".html_safe, new_order_path, :class => "button float-right" %>
+<% else %>
+  There are no orders available right now.
+<% end %>
+<% if can? :create, Order %>
+  <%= link_to "New Order <i class='fi-plus'></i>".html_safe, new_order_path, :class => "button float-right" %>
+<% end %>
+

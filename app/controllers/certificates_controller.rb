@@ -1,43 +1,38 @@
 class CertificatesController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   def new
-    @co = Certificate.new
+
   end
 
   def index
-     @cos= Certificate.all
+
   end
 
   def show
-    @co = Certificate.find(params[:id])
+
   end
 
   def edit
-    @co = Certificate.find(params[:id])
+
   end
 
   def create
-    @co = Certificate.new(certificate_params)
-
-    @co.save
-    redirect_to @co.order
+    @certificate.save
+    redirect_to @certificate.order
   end
 
   def update
-    @co = Certificate.find(params[:id])
-
-    if @co.update(certificate_params)
-      redirect_to @co
+    if @certificate.update(certificate_params)
+      redirect_to @certificate
     else
       render 'edit'
     end
   end
 
   def destroy
-    @co = Certificate.find(params[:id])
-    @co.destroy
-
+    @certificate.destroy
     redirect_to certificates_path
   end
   private

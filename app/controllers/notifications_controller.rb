@@ -1,33 +1,26 @@
 class NotificationsController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   def new
-    @notify = Notification.new
   end
 
   def create
-    @notify = Notification.new(notify_params)
-
-    @notify.save
+    @notification.save
     redirect_to notifications_path
   end
 
   def index
-    @notifications = Notification.all
   end
 
   def show
-    @notify = Notification.find(params[:id])
   end
 
   def edit
-    @notify = Notification.find(params[:id])
   end
 
   def update
-    @notify = Notification.find(params[:id])
-
-    if @notify.update(notify_params)
+    if @notification.update(notify_params)
       redirect_to notifications_path
     else
       render 'edit'
@@ -35,15 +28,13 @@ class NotificationsController < ApplicationController
   end
 
   def destroy
-    @notify = Notification.find(params[:id])
-    @notify.destroy
-
+    @notification.destroy
     redirect_to notifications_path
   end
 
   private
 
-  def notify_params
+  def notification_params
     params.require(:notification).permit(:name, :description)
   end
 end

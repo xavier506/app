@@ -1,8 +1,8 @@
 <h3>View Certificate of Origin
   <span class="float-right">
     <%= link_to("View All COs <i class='fi-magnifying-glass'></i>".html_safe, certificates_path, :class => "tiny button") %>
-    <%= link_to("Edit This CO <i class='fi-page-edit'></i>".html_safe, edit_certificate_path(@co.id), :class => "tiny button") %>
-    <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, certificate_path(@co, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
+    <%= link_to("Edit This CO <i class='fi-page-edit'></i>".html_safe, edit_certificate_path(@certificate.id), :class => "tiny button") %>
+    <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, certificate_path(@certificate, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
   </span>
 </h3>
 
@@ -10,56 +10,56 @@
   <dl class="inline">
     <div class="large-6 columns">
       <dt>Shipper :</dt>
-      <dd><%= @co.shipper %></dd>
+      <dd><%= @certificate.shipper %></dd>
     </div>
     <div class="large-6 columns">
      <dt>Consignee :</dt>
-     <dd><%= @co.consignee %></dd>
+     <dd><%= @certificate.consignee %></dd>
    </div>
    <div class="large-6 columns">
     <dt>Farm :</dt>
-    <dd><%= @co.farm %></dd>
+    <dd><%= @certificate.farm %></dd>
     </div>
     <div class="large-6 columns">
       <dt>Country :</dt>
-      <dd><%= @co.country_name %></dd>
+      <dd><%= @certificate.country_name %></dd>
     </div>
     <div class="large-6 columns">
       <dt>Departure Port :</dt>
-      <dd><%= @co.departure_port %></dd>
+      <dd><%= @certificate.departure_port %></dd>
     </div>
     <div class="large-6 columns">
       <dt>Discharge Port :</dt>
-      <dd><%= @co.discharge_port %></dd>
+      <dd><%= @certificate.discharge_port %></dd>
     </div>
     <div class="large-6 columns">
       <dt>Mode :</dt>
-      <dd><%= @co.mode %></dd>
+      <dd><%= @certificate.mode %></dd>
     </div>
     <div class="large-6 columns">
       <dt>Observations :</dt>
-      <dd><%= @co.observations %></dd>
+      <dd><%= @certificate.observations %></dd>
     </div>
     <hr />
     <div class="large-12 columns">
       <dt>Description :</dt>
-      <dd><%= @co.description %></dd>
+      <dd><%= @certificate.description %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Units :</dt>
-      <dd><%= @co.units %> <%= @co.unit_type %></dd>
+      <dd><%= @certificate.units %> <%= @certificate.unit_type %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Volume :</dt>
-      <dd><%= @co.volume %> <%= @co.volume_units %></dd>
+      <dd><%= @certificate.volume %> <%= @certificate.volume_units %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Weight :</dt>
-      <dd><%= @co.gross_weight %> <%= @co.weight_units %></dd>
+      <dd><%= @certificate.gross_weight %> <%= @certificate.weight_units %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Invoices :</dt>
-      <dd><%= @co.invoices %></dd>
+      <dd><%= @certificate.invoices %></dd>
     </div>
   </dl>
 </div>

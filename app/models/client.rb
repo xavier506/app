@@ -1,5 +1,6 @@
 class Client < ApplicationRecord
   has_many :orders
+  belongs_to :user
 
   validates :company, :email, presence: true
   validates :email, uniqueness: true

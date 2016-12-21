@@ -1,6 +1,6 @@
 <h3>Create New Notification</h3>
 <div class="form-container">
-  <%= simple_form_for @notify, url: {action: "create"}, :html => {'data-abide' => ' ' }, validate: true do |f| %>
+  <%= simple_form_for @notification, url: {action: "create"}, :html => {'data-abide' => ' ' }, validate: true do |f| %>
     <%= render 'form' %>
   <% end %>
 </div>
