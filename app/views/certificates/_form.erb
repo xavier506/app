@@ -1,4 +1,4 @@
-<%= simple_form_for @co, validate: true do |f| %>
+<%= simple_form_for @co, :html => {'data-abide' => ' ' }, validate: true do |f| %>
 <div class="row">
   <div class="large-6 columns">
     <%= f.input :shipper %>

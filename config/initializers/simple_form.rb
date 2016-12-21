@@ -120,7 +120,7 @@ SimpleForm.setup do |config|
   config.browser_validations = true
 
   # Collection of methods to detect if a file type was given.
-  # config.file_methods = [ :mounted_as, :file?, :public_filename ]
+  # config.file_methods = [ :mounted_as, :formile?, :public_filename ]
 
   # Custom mappings for input types. This should be a hash containing a regexp
   # to match as key, and the input type that will be used when the field name

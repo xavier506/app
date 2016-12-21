@@ -8,7 +8,7 @@ class Certificate < ApplicationRecord
   VOLUME_UNITS = ['CBM','CBFT']
   WEIGHT_UNITS = ['KGS','TONS']
 
-  validates :order, :shipper, :consignee, presence: true
+  validates :order, :shipper, :farm, :notification_id, :discharge_port, :departure_port, :units, :volume, :gross_weight, :invoices, :description, :consignee, presence: true
   # validates_inclusion_of :certificate, :in => MODES
 
   def country_name

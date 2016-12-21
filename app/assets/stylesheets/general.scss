@@ -1,3 +1,5 @@
+/* General Styles
+------------------------------------------------------------------------- */
 body {
   background: image-url("backgrounds/handmadepaper.png") repeat;
 }
@@ -16,6 +18,8 @@ main {
   padding-top: 20px;
 }
 
+/* Show Pages
+------------------------------------------------------------------------- */
 .details,.form-container {
   background:  image-url("backgrounds/white_wall_hash.png") repeat;
   border-radius: 4px;
@@ -36,6 +40,8 @@ dl.inline dt{
   /*background-color: rgba(220, 220, 220, 0.3);*/
 }
 
+/* Forms
+------------------------------------------------------------------------- */
 label {
   font-weight: 700;
 }
@@ -44,6 +50,18 @@ label {
     color: #e32;
     content: ' *';
     display:inline;
+}
+
+small.error {
+    display: block;
+    font-size: 0.66667rem;
+    font-style: italic;
+    font-weight: normal;
+    margin-bottom: 0.88889rem;
+    margin-top: -16px;
+    padding: 0.33333rem 0.5rem 0.5rem;
+    background: #f04124;
+    color: #FFFFFF;
 }
 
 /* Actions Icons
