@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use devise for user authentication
 gem 'devise'
+# Use cancan for user authorizations
+gem 'cancancan'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
