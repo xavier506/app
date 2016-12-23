@@ -7,7 +7,9 @@
       <% end %>
 
       <div class="input-group-button" style="padding-top: 25px;">
-        <%= link_to "New Client", new_client_path, class: 'button' %>
+        <% if can? :create, Client %>
+          <%= link_to "New Client", new_client_path, class: 'button' %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -1,7 +1,11 @@
 <h3>View Client
   <span class="float-right">
-    <%= link_to("View All Clients <i class='fi-magnifying-glass'></i>".html_safe, clients_path, :class => 'tiny button') %>
-    <%= link_to("Edit Client <i class='fi-page-edit'></i>".html_safe, edit_client_path(@client.id), :class => 'tiny button') %>
+    <% if can? :read, Client %>
+      <%= link_to("View All Clients <i class='fi-magnifying-glass'></i>".html_safe, clients_path, :class => 'tiny button') %>
+    <% end %>
+    <% if can? :update, @client %>
+      <%= link_to("Edit Client <i class='fi-page-edit'></i>".html_safe, edit_client_path(@client.id), :class => 'tiny button') %>
+    <% end %>
   </span>
 </h3>
 <div class="details row column">

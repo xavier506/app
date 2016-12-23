@@ -23,11 +23,18 @@
       <td><%= co.mode%></td>
       <td><%= link_to co.order.id, order_path(co.order.id) %></td>
       <td nowrap>
-        <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, certificate_path(co.id), :title => t('certificates.show.hover_title') %>
-        <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_certificate_path(co.id), :title => t('certificates.edit.hover_title') %>
-        <%= link_to '<i class="delete fi-x"></i>'.html_safe, certificate_path(co.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('certificates.destroy.hover_title') %></td>
+        <% if can? :read, co %>
+          <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, certificate_path(co.id), :title => t('certificates.show.hover_title') %>
+        <% if can? :update, co %>
+          <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_certificate_path(co.id), :title => t('certificates.edit.hover_title') %>
+        <% if can? :destroy, co %>
+          <%= link_to '<i class="delete fi-x"></i>'.html_safe, certificate_path(co.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('certificates.destroy.hover_title') %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </tbody>
 </table>
-<%= link_to "New Certificate of Origin <i class='fi-plus'></i>".html_safe, new_certificate_path, :class => "button float-right" %>
+<% if can? :create, Certificate %>
+  <%= link_to "New Certificate of Origin <i class='fi-plus'></i>".html_safe, new_certificate_path, :class => "button float-right" %>
+<% end %>

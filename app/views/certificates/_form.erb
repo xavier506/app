@@ -30,7 +30,9 @@
 
       <%= f.collection_select(:notification_id, Notification.all, :id, :name, {}, {:class=>'input-group-field'}) %>
       <div class="input-group-button" >
-        <%= link_to "New Notify", new_notification_path, class: 'button' %>
+        <% if can? :create, Notification %>
+          <%= link_to "New Notify", new_notification_path, class: 'button' %>
+        <% end %>
       </div>
 
     </div>

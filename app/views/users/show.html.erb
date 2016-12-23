@@ -1,6 +1,8 @@
 <h3>View User #<%= @user.id %>
   <span class="float-right">
+  <% if can? :update, @user %>
     <%= link_to("Edit User <i class='fi-page-edit'></i>".html_safe, edit_user_path(@user.id), :class => 'tiny button') %>
+  <% end %>
   </span>
 </h3>
 <div class="details row column">

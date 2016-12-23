@@ -1,18 +1,22 @@
 <h3>View Notification
   <span class="float-right">
+  <% if can? :read, Notification %>
     <%= link_to("View All Notifications <i class='fi-magnifying-glass'></i>".html_safe, notifications_path, :class => 'tiny button') %>
-    <%= link_to("Edit Notification <i class='fi-page-edit'></i>".html_safe, edit_notification_path(@notify.id), :class => 'tiny button') %>
+  <% end %>
+  <% if can? :update, @notification %>
+    <%= link_to("Edit Notification <i class='fi-page-edit'></i>".html_safe, edit_notification_path(@notification.id), :class => 'tiny button') %>
+   <% end %>
   </span>
 </h3>
 <div class="details row column">
   <dl class="inline">
     <div class="large-6 columns">
       <dt>Name :</dt>
-      <dd><%= @notify.name %></dd>
+      <dd><%= @notification.name %></dd>
     </div>
     <div class="large-6 columns">
      <dt>Description :</dt>
-     <dd><%= @notify.description %></dd>
+     <dd><%= @notification.description %></dd>
     </div>
   </dl>
 </div>

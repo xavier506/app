@@ -19,12 +19,20 @@
       <td><%= client.email %></td>
       <td><%= client.telephone %></td>
       <td nowrap>
-        <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, client_path(client.id), :title => t('clients.show.hover_title') %>
-        <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_client_path(client.id), :title => t('clients.edit.hover_title') %>
-        <%= link_to '<i class="delete fi-x"></i>'.html_safe, client_path(client.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('clients.destroy.hover_title') %>
+        <% if can? :read, client %>
+          <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, client_path(client.id), :title => t('clients.show.hover_title') %>
+        <% end %>
+        <% if can? :update, client %>
+          <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_client_path(client.id), :title => t('clients.edit.hover_title') %>
+        <% end %>
+        <% if can? :destroy, client %>
+          <%= link_to '<i class="delete fi-x"></i>'.html_safe, client_path(client.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('clients.destroy.hover_title') %>
+        <% end %>
       </td>
     </tr>
   <% end %>
   </tbody>
 </table>
-<%= link_to "New Client <i class='fi-plus'></i>".html_safe, new_client_path, :class => "button float-right" %>
+<% if can? :create, Client %>
+  <%= link_to "New Client <i class='fi-plus'></i>".html_safe, new_client_path, :class => "button float-right" %>
+<% end %>
