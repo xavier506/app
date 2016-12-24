@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122231012) do
+ActiveRecord::Schema.define(version: 20161223172056) do
 
   create_table "certificates", force: :cascade do |t|
     t.text     "shipper"
@@ -71,6 +71,34 @@ ActiveRecord::Schema.define(version: 20161122231012) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
+  end
+
+  create_table "phytosanitaries", force: :cascade do |t|
+    t.integer  "number"
+    t.text     "exporter"
+    t.text     "consignee"
+    t.string   "organization"
+    t.string   "place_of_origin"
+    t.string   "point_of_entry"
+    t.string   "point_of_exit"
+    t.string   "mode"
+    t.text     "description"
+    t.text     "additional_declaration"
+    t.string   "place_of_issue"
+    t.date     "issue_date"
+    t.date     "treatment_date"
+    t.string   "treatment"
+    t.string   "active_ingredient"
+    t.string   "concentration"
+    t.string   "duration_temperature"
+    t.string   "responsible"
+    t.string   "inspector"
+    t.integer  "order_id"
+    t.integer  "notification_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["notification_id"], name: "index_phytosanitaries_on_notification_id"
+    t.index ["order_id"], name: "index_phytosanitaries_on_order_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,40 @@
+<h3>Phytosanitary Certificates</h3>
+<table class="hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Number</th>
+      <th>Exporter</th>
+      <th>Consignee</th>
+      <th>Organization</th>
+      <th>Point of Exit</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @phytosanitaries.each do |phyto| %>
+    <tr>
+      <td><%= link_to phyto.id, phytosanitary_path(phyto.id) %></td>
+      <td><%= phyto.number %></td>
+      <td><%= phyto.exporter %></td>
+      <td><%= phyto.consignee %></td>
+      <td><%= phyto.mode %></td>
+      <td><%= phyto.point_of_exit %></td>
+      <td nowrap>
+        <% if can? :read, phyto %>
+          <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, phytosanitary_path(phyto.id), :title => t('phytosanitaries.show.hover_title') %>
+        <% end %>
+        <% if can? :update, phyto %>
+          <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_phytosanitary_path(phyto.id), :title => t('phytosanitaries.edit.hover_title') %>
+        <% end %>
+        <% if can? :destroy, phyto %>
+          <%= link_to '<i class="delete fi-x"></i>'.html_safe, phytosanitary_path(phyto.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('phytosanitaries.destroy.hover_title') %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% if can? :create, Phytosanitary %>
+  <%= link_to "New Phytosanitary <i class='fi-plus'></i>".html_safe, new_phytosanitary_path, :class => "button float-right" %>
+<% end %>

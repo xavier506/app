@@ -1,6 +1,7 @@
 class Certificate < ApplicationRecord
   belongs_to :order
   has_one :notification
+  has_one :client, :through => :order
 
   #Options for field selection
   MODES = ['Ocean / Maritimo','Land','Air', 'Export', 'Import', 'Other']

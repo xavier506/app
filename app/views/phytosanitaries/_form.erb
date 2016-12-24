@@ -1,0 +1,99 @@
+<%= simple_form_for @phytosanitary, :html => {'data-abide' => ' ' }, validate: true do |f| %>
+<div class="row">
+  <div class="large-2 columns">
+    <%= f.input :number %>
+  </div>
+  <div class="large-5 columns">
+    <%= f.input :exporter %>
+  </div>
+  <div class="large-5 columns">
+    <%= f.input :consignee %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-3 columns">
+    <%= f.input :organization %>
+  </div>
+  <div class="large-3 columns">
+    <%= f.input :place_of_origin %>
+  </div>
+  <div class="large-3 columns">
+    <%= f.input :point_of_entry %>
+  </div>
+  <div class="large-3 columns">
+    <%= f.input :point_of_exit %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-4 columns">
+    <%= f.input :order_id do %>
+    <%= f.collection_select(:order_id, Order.all, :id, :order_for_select ) %>
+    <% end %>
+  </div>
+  <div class="large-4 columns">
+    <%= f.input :mode, collection: Order::MODES, include_blank: false %>
+  </div>
+  <div class="large-4 columns">
+  <%= f.input :notification_id  do %>
+    <div class="input-group">
+
+      <%= f.collection_select(:notification_id, Notification.all, :id, :name, {}, {:class=>'input-group-field'}) %>
+      <div class="input-group-button" >
+        <% if can? :create, Notification %>
+          <%= link_to "New Notify", new_notification_path, class: 'button' %>
+        <% end %>
+      </div>
+
+    </div>
+     <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <%= f.input :description %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <%= f.input :additional_declaration %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-3 columns">
+    <%= f.input :place_of_issue %>
+  </div>
+  <div class="large-3 columns">
+    <%= f.input :issue_date do %>
+      <%= f.date_field :issue_date, :value => Time.now.strftime('%Y-%m-%d') %>
+    <% end %>
+  </div>
+  <div class="large-3 columns">
+    <%= f.input :responsible %>
+  </div>
+  <div class="large-3 columns">
+    <%= f.input :inspector %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-2 columns">
+    <%= f.input :treatment_date do %>
+      <%= f.date_field :treatment_date, :value => Time.now.strftime('%Y-%m-%d') %>
+    <% end %>
+  </div>
+  <div class="large-3 columns">
+    <%= f.input :treatment %>
+  </div>
+  <div class="large-3 columns">
+    <%= f.input :active_ingredient %>
+  </div>
+  <div class="large-2 columns">
+  <%= f.input :concentration %>
+  </div>
+  <div class="large-2 columns">
+    <%= f.input :duration_temperature %>
+  </div>
+</div>
+<div class="actions row">
+  <%= f.button :submit, class: 'expanded' %>
+</div>
+<% end %>
