@@ -1,4 +1,7 @@
-<h3>View Client
+<h3>
+  <span class="float-left">
+    Viewing Client <small>#<%= @client.id %></small>
+  </span>
   <span class="float-right">
     <% if can? :read, Client %>
       <%= link_to("View All Clients <i class='fi-magnifying-glass'></i>".html_safe, clients_path, :class => 'tiny button') %>
