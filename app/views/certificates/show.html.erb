@@ -1,4 +1,7 @@
-<h3>View Certificate of Origin
+<h3>
+  <span class="float-left">
+    Certificate of Origin #<%= @certificate.id %> <small>on order #<%= link_to(@certificate.order.id, @certificate.order) %></small>
+  </span>
   <span class="float-right">
     <% if can? :read, Certificate %>
       <%= link_to("View All COs <i class='fi-magnifying-glass'></i>".html_safe, certificates_path, :class => "tiny button") %>
