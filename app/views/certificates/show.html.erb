@@ -1,17 +1,17 @@
 <h3>
   <span class="float-left">
     Certificate of Origin #<%= @certificate.id %>
-    <small>on order #<%= link_to(@certificate.order.id, @certificate.order) %></small>
+    <small>on <%= link_to("order # #{@certificate.order.id}", @certificate.order) %></small>
   </span>
   <span class="float-right">
     <% if can? :read, Certificate %>
-      <%= link_to("View All COs <i class='fi-magnifying-glass'></i>".html_safe, certificates_path, :class => "tiny button") %>
+      <%= link_to("View All COs <i class='fi-magnifying-glass'></i>".html_safe, order_certificates_path, :class => "tiny button") %>
     <% end %>
     <% if can? :update, @certificate %>
-      <%= link_to("Edit This CO <i class='fi-page-edit'></i>".html_safe, edit_certificate_path(@certificate.id), :class => "tiny button") %>
+      <%= link_to("Edit This CO <i class='fi-page-edit'></i>".html_safe, edit_order_certificate_path(@order, @certificate.id), :class => "tiny button") %>
     <% end %>
     <% if can? :read, @certificate %>
-      <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, certificate_path(@certificate, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
+      <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_certificate_path(@certificate, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
     <% end %>
   </span>
 </h3>

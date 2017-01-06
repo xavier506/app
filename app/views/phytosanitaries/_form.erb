@@ -1,4 +1,4 @@
-<%= simple_form_for @phytosanitary, :html => {'data-abide' => ' ' }, validate: true do |f| %>
+<%= simple_form_for [@order, @phytosanitary], :html => {'data-abide' => ' ' }, validate: true do |f| %>
 <div class="row">
   <div class="large-2 columns">
     <%= f.input :number %>

@@ -1,6 +1,7 @@
 class PhytosanitariesController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource
+  load_and_authorize_resource :order
+  load_and_authorize_resource :through => :order, shallow: true
 
   def new
   end
@@ -21,7 +22,7 @@ class PhytosanitariesController < ApplicationController
 
   def update
     if @phytosanitary.update(phytosanitary_params)
-      redirect_to @phytosanitary
+      redirect_to order_phytosanitary_path(@phytosanitary)
     else
       render 'edit'
     end

@@ -1,21 +1,18 @@
 class CertificatesController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource
+  load_and_authorize_resource :order
+  load_and_authorize_resource :through => :order, shallow: true
 
   def new
-
   end
 
   def index
-
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def create
@@ -25,7 +22,7 @@ class CertificatesController < ApplicationController
 
   def update
     if @certificate.update(certificate_params)
-      redirect_to @certificate
+      redirect_to order_certificate_path(@certificate)
     else
       render 'edit'
     end
