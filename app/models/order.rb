@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   has_one :user, :through => :client
   has_many :certificates, :dependent => :restrict_with_error
   has_many :phytosanitaries, :dependent => :restrict_with_error
-  # has_many :bill_of_lading
+  has_many :bill_of_ladings, :dependent => :restrict_with_error
 
   #Options for field selection
   MODES = ['Ocean / Maritimo','Land','Air', 'Export', 'Import', 'Other']

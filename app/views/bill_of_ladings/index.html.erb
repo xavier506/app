@@ -1,0 +1,42 @@
+<h3>Bill of Ladings</h3>
+<table class="hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Shipper</th>
+      <th>Consignee</th>
+      <th>Farm</th>
+      <th>Country</th>
+      <th>Mode</th>
+      <th>Order</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @bill_of_ladings.each do |bl| %>
+    <tr>
+      <td><%= link_to bl.id, order_certificate_path(bl.id) %></td>
+      <td><%= bl.shipper %></td>
+      <td><%= bl.consignee %></td>
+      <td><%= bl.farm %></td>
+      <td><%= bl.country %></td>
+      <td><%= bl.mode%></td>
+      <td><%= link_to bl.order.id, order_path(bl.order.id) %></td>
+      <td nowrap>
+        <% if can? :read, bl %>
+          <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, order_bill_of_lading_path(bl.id), :title => t('bill_of_ladings.show.hover_title') %>
+        <% end %>
+        <% if can? :update, bl %>
+          <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_order_bill_of_lading_path(bl.id), :title => t('bill_of_ladings.edit.hover_title') %>
+        <% end %>
+        <% if can? :destroy, bl %>
+          <%= link_to '<i class="delete fi-x"></i>'.html_safe, order_bill_of_lading_path(bl.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('bill_of_ladings.destroy.hover_title') %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% if can? :create, BillOfLading %>
+  <%= link_to "New Bill of Lading <i class='fi-plus'></i>".html_safe, new_order_bill_of_lading_path, :class => "button float-right" %>
+<% end %>

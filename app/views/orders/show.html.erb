@@ -37,6 +37,42 @@
 </div>
 <br/>
 <div class="row column">
+  <h4>Associated Bill of Ladings</h4>
+  <table class="hover">
+    <thead>
+      <th>#</th>
+      <th>Shipper</th>
+      <th>Exporter</th>
+      <th>Consignee</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+    <% @order.bill_of_ladings.each do |bl| %>
+      <tr>
+        <td><%= link_to bl.id, order_path(bl.id) %></td>
+        <td><%= bl.shipper_id %></td>
+        <td><%= bl.exporter %></td>
+        <td><%= bl.consignee %></td>
+        <td nowrap>
+          <% if can? :read, BillOfLading %>
+            <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, order_bill_of_lading_path(bl.id), :title => t('bill_of_ladings.show.hover_title') %>
+          <% end %>
+          <% if can? :update, BillOfLading %>
+            <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_order_bill_of_lading_path(@order,bl.id), :title => t('bill_of_ladings.edit.hover_title') %>
+          <% end %>
+          <% if can? :destroy, BillOfLading %>
+            <%= link_to '<i class="delete fi-x"></i>'.html_safe, order_bill_of_lading_path(@order, bl.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('bill_of_ladings.destroy.hover_title') %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <% if can? :create, BillOfLading %>
+    <%= link_to("New BL <i class='fi-plus'></i>".html_safe, new_order_bill_of_lading_path(@order.id), :class => "button float-right" ) %>
+  <% end %>
+</div>
+<div class="row column">
   <h4>Associated Certificate of Origins</h4>
   <table class="hover">
     <thead>
@@ -117,20 +153,4 @@
   <%# new_phyto_path = polymorphic_path([@order, @phytosanitary]) %>
   <%= link_to("New Phyto <i class='fi-plus'></i>".html_safe, new_order_phytosanitary_path(@order.id), :class => "button float-right" ) %>
 <% end %>
-</div>
-
-<div class="row column">
-  <h4>Associated Bill of Ladings</h4>
-  <table class="hover">
-    <thead>
-      <th>#</th>
-      <th>Actions</th>
-    </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
 </div>
