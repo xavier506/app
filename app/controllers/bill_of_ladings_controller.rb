@@ -22,7 +22,7 @@ class BillOfLadingsController < ApplicationController
 
   def update
     if @bill_of_lading.update(bill_of_lading_params)
-      redirect_to order_certificate_path(@bill_of_lading)
+      redirect_to order_bill_of_lading_path(@bill_of_lading)
     else
       render 'edit'
     end
