@@ -4,9 +4,39 @@
     <%= f.input :document_number %>
   </div>
   <div class="large-4 columns">
-    <%= f.input :exporter %>
+    <%= f.input :shipper_id %>
   </div>
   <div class="large-4 columns">
+    <%= f.input :order_id do %>
+    <%= f.collection_select(:order_id, Order.all, :id, :order_for_select ) %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-4 columns">
+    <%= f.input :container_number %>
+  </div>
+  <div class="large-4 columns">
+    <%= f.input :notification_id  do %>
+    <div class="input-group">
+      <%= f.collection_select(:notification_id, Notification.all, :id, :name, {}, {:class=>'input-group-field'}) %>
+      <div class="input-group-button" >
+        <% if can? :create, Notification %>
+        <%= link_to "New Notify", new_notification_path, class: 'button' %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="large-4 columns">
+    <%= f.input :also_notify %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-6 columns">
+    <%= f.input :exporter %>
+  </div>
+  <div class="large-6 columns">
     <%= f.input :export_references %>
   </div>
 </div>
@@ -29,7 +59,9 @@
     <%= f.input :place_of_delivery %>
   </div>
   <div class="large-3 columns">
-    <%= f.input :date_of_reciept %>
+    <%= f.input :date_of_reciept do %>
+    <%= f.date_field :date_of_reciept, :value => Time.now.strftime('%Y-%m-%d') %>
+    <% end %>
   </div>
 </div>
 <div class="row">
@@ -47,36 +79,31 @@
   </div>
 </div>
 <div class="row">
-  <div class="large-12 columns">
+  <div class="large-6 columns">
     <%= f.input :instructions %>
   </div>
-</div>
-<div class="row">
-  <div class="large-3 columns">
-    <%= f.input :container_number %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :units %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :unit_type %>
-  </div>
-  <div class="large-3 columns">
+  <div class="large-6 columns">
     <%= f.input :description %>
   </div>
 </div>
 <div class="row">
-  <div class="large-3 columns">
+  <div class="large-2 columns">
+    <%= f.input :units %>
+  </div>
+  <div class="large-2 columns">
+    <%= f.input :unit_type, collection: BillOfLading::UNIT_TYPES, include_blank: false %>
+  </div>
+  <div class="large-2 columns">
     <%= f.input :volume %>
   </div>
-  <div class="large-3 columns">
-    <%= f.input :volume_units %>
+  <div class="large-2 columns">
+    <%= f.input :volume_units, collection: BillOfLading::VOLUME_UNITS, include_blank: false %>
   </div>
-  <div class="large-3 columns">
+  <div class="large-2 columns">
     <%= f.input :gross_weight %>
   </div>
-  <div class="large-3 columns">
-    <%= f.input :weight_units %>
+  <div class="large-2 columns">
+    <%= f.input :weight_units, collection: BillOfLading::WEIGHT_UNITS, include_blank: false %>
   </div>
 </div>
 <div class="row">
@@ -115,7 +142,9 @@
     <%= f.input :place_of_issue %>
   </div>
   <div class="large-3 columns">
-    <%= f.input :issue_date %>
+    <%= f.input :issue_date do %>
+    <%= f.date_field :issue_date, :value => Time.now.strftime('%Y-%m-%d') %>
+    <% end %>
   </div>
   <div class="large-3 columns">
     <%= f.input :service_type %>
@@ -133,20 +162,6 @@
   </div>
   <div class="large-3 columns">
     <%= f.input :laden_on_board %>
-  </div>
-</div>
-<div class="row">
-  <div class="large-3 columns">
-    <%= f.input :shipper_id %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :notification %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :also_notify %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :order %>
   </div>
 </div>
 <div class="actions row">

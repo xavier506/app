@@ -30,7 +30,7 @@ class BillOfLadingsController < ApplicationController
 
   def destroy
     @bill_of_lading.destroy
-    redirect_to bill_of_ladings_path
+    redirect_to order_bill_of_ladings_path
   end
   private
 
@@ -74,9 +74,9 @@ class BillOfLadingsController < ApplicationController
       :service_type,
       :laden_on_board,
       :shipper_id,
-      :notification,
+      :notification_id,
       :also_notify,
-      :order
+      :order_id
     )
   end
 end
