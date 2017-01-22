@@ -8,7 +8,7 @@
       <%= link_to("View All BLs <i class='fi-magnifying-glass'></i>".html_safe, order_bill_of_lading_path, :class => "tiny button") %>
     <% end %>
     <% if can? :update, @bill_of_lading %>
-      <%= link_to("Edit This BL <i class='fi-page-edit'></i>".html_safe, edit_order_bill_of_lading_path(@order, @bill_of_lading.id), :class => "tiny button") %>
+      <%= link_to("Edit This BL <i class='fi-page-edit'></i>".html_safe, edit_order_bill_of_lading_path(@bill_of_lading.order, @bill_of_lading.id), :class => "tiny button") %>
     <% end %>
     <% if can? :read, @bill_of_lading %>
       <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_bill_of_lading_path(@bill_of_lading, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
@@ -18,58 +18,161 @@
 
 <div class="details row column">
   <dl class="inline">
-    <div class="large-6 columns">
-      <dt>Shipper :</dt>
-      <dd><%= @bill_of_lading.shipper %></dd>
+    <div class="large-4 columns">
+      <dt>Document Number :</dt>
+      <dd><%= @bill_of_lading.document_number %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Shipper ID :</dt>
+      <dd><%= @bill_of_lading.shipper_id %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Order ID :</dt>
+      <dd><%= @bill_of_lading.order_id %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Container Number :</dt>
+      <dd><%= @bill_of_lading.container_number %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Notify :</dt>
+      <dd><%= @bill_of_lading.notification_id %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Also Notify :</dt>
+      <dd><%= @bill_of_lading.also_notify %></dd>
     </div>
     <div class="large-6 columns">
-     <dt>Consignee :</dt>
-     <dd><%= @bill_of_lading.consignee %></dd>
-   </div>
-   <div class="large-6 columns">
-    <dt>Farm :</dt>
-    <dd><%= @bill_of_lading.farm %></dd>
+      <dt>Exporter :</dt>
+      <dd><%= @bill_of_lading.exporter %></dd>
     </div>
     <div class="large-6 columns">
-      <dt>Country :</dt>
-      <dd><%= @bill_of_lading.country_name %></dd>
+      <dt>Export References :</dt>
+      <dd><%= @bill_of_lading.export_references %></dd>
     </div>
     <div class="large-6 columns">
-      <dt>Departure Port :</dt>
-      <dd><%= @bill_of_lading.departure_port %></dd>
+      <dt>Consignee :</dt>
+      <dd><%= @bill_of_lading.consignee %></dd>
     </div>
     <div class="large-6 columns">
+      <dt>Forwarding Agent References :</dt>
+      <dd><%= @bill_of_lading.forwarding_agent_references %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Place of Origin :</dt>
+      <dd><%= @bill_of_lading.place_of_origin %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Place of Reciept :</dt>
+      <dd><%= @bill_of_lading.place_of_reciept %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Place of Delivery :</dt>
+      <dd><%= @bill_of_lading.place_of_delivery %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Date of Reciept :</dt>
+      <dd><%= @bill_of_lading.date_of_reciept %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Precarriage :</dt>
+      <dd><%= @bill_of_lading.precarriage %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Ocean Vessel :</dt>
+      <dd><%= @bill_of_lading.ocean_vessel %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Loading Port :</dt>
+      <dd><%= @bill_of_lading.loading_port %></dd>
+    </div>
+    <div class="large-3 columns">
       <dt>Discharge Port :</dt>
       <dd><%= @bill_of_lading.discharge_port %></dd>
     </div>
     <div class="large-6 columns">
-      <dt>Mode :</dt>
-      <dd><%= @bill_of_lading.mode %></dd>
+      <dt>Instructions :</dt>
+      <dd><%= @bill_of_lading.instructions %></dd>
     </div>
     <div class="large-6 columns">
-      <dt>Observations :</dt>
-      <dd><%= @bill_of_lading.observations %></dd>
-    </div>
-    <hr />
-    <div class="large-12 columns">
       <dt>Description :</dt>
       <dd><%= @bill_of_lading.description %></dd>
     </div>
-    <div class="large-3 columns">
+    <div class="large-4 columns">
       <dt>Units :</dt>
       <dd><%= @bill_of_lading.units %> <%= @bill_of_lading.unit_type %></dd>
     </div>
-    <div class="large-3 columns">
+    <div class="large-4 columns">
       <dt>Volume :</dt>
       <dd><%= @bill_of_lading.volume %> <%= @bill_of_lading.volume_units %></dd>
     </div>
-    <div class="large-3 columns">
+    <div class="large-4 columns">
       <dt>Weight :</dt>
       <dd><%= @bill_of_lading.gross_weight %> <%= @bill_of_lading.weight_units %></dd>
     </div>
     <div class="large-3 columns">
-      <dt>Invoices :</dt>
-      <dd><%= @bill_of_lading.invoices %></dd>
+      <dt>Freight :</dt>
+      <dd><%= @bill_of_lading.freight_charges %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Revenue Tons :</dt>
+      <dd><%= @bill_of_lading.revenue_tons %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Rate :</dt>
+      <dd><%= @bill_of_lading.rate %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Prepaid :</dt>
+      <dd><%= @bill_of_lading.prepaid %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Collect :</dt>
+      <dd><%= @bill_of_lading.collect %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>BL number :</dt>
+      <dd><%= @bill_of_lading.bl_number %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Original Number :</dt>
+      <dd><%= @bill_of_lading.original_number %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Prepaid At :</dt>
+      <dd><%= @bill_of_lading.prepaid_at %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Collect At :</dt>
+      <dd><%= @bill_of_lading.collect_at %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Place of Issue :</dt>
+      <dd><%= @bill_of_lading.place_of_issue %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Issue Date :</dt>
+      <dd><%= @bill_of_lading.issue_date %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Service Type :</dt>
+      <dd><%= @bill_of_lading.service_type %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Exchange Rate 1 :</dt>
+      <dd><%= @bill_of_lading.exchange_rate_1 %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Exchange Rate 2 :</dt>
+      <dd><%= @bill_of_lading.exchange_rate_2 %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Service Type :</dt>
+      <dd><%= @bill_of_lading.service_type %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Laden on Board :</dt>
+      <dd><%= @bill_of_lading.laden_on_board %></dd>
     </div>
   </dl>
 </div>
