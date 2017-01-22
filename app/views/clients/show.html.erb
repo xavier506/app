@@ -1,6 +1,9 @@
 <h3>
   <span class="float-left">
     Viewing Client <small>#<%= @client.id %></small>
+    <% if @client.user %>
+      <small>related to <%= link_to("user #{@client.user.email}", @client.user) %></small>
+    <% end %>
   </span>
   <span class="float-right">
     <% if can? :read, Client %>
