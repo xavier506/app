@@ -1,0 +1,22 @@
+en:
+  phytosanitaries:
+    new:
+      title: Creating Phytosanitary Certificate
+      link: Create New Phytosanitary Certificate
+      success: 'Phytosanitary certificate was successfully created.'
+      hover_title: Create New Phytosanitary Certificate
+      button: Create Phytosanitary Certificate
+    show:
+      title: Showing Phytosanitary Certificate
+      link: Phytosanitary Certificate
+      hover_title: Show Phytosanitary Certificate
+    edit:
+      title: Editing Phytosanitary Certificate
+      link: Edit Phytosanitary Certificate
+      success: 'Phytosanitary Certificate was successfully updated.'
+      hover_title: Edit Phytosanitary Certificate
+      button: Update Phytosanitary Certificate
+    destroy:
+      link: Destroy Phytosanitary Certificate
+      success: 'Phytosanitary Certificate was successfully destroyed.'
+      hover_title: Destroy Phytosanitary Certificate

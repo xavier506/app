@@ -4,6 +4,7 @@ class BillOfLading < ApplicationRecord
   has_one :client, :through => :order
 
   #Options for field selection
+  SHIPPERS = [[1,'Evergreen']]
   UNIT_TYPES = ['Piezas / Pieces','Cajas / Boxes','Trozas / Logs','Bundles']
   VOLUME_UNITS = ['CBM','CBFT']
   WEIGHT_UNITS = ['KGS','TONS']

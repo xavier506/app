@@ -1,0 +1,22 @@
+en:
+  bill_of_ladings:
+    new:
+      title: Creating New Bill of Lading
+      link: Create New Bill of Lading
+      success: 'Bill of Lading was successfully created.'
+      hover_title: Create New Bill of Lading
+      button: Create Bill of Lading
+    show:
+      title: Showing Bill of Lading
+      link: Bill of Lading
+      hover_title: Show Bill of Lading
+    edit:
+      title: Editing Bill of Lading
+      link: Edit Bill of Lading
+      success: 'Bill of Lading was successfully updated.'
+      hover_title: Edit Bill of Lading
+      button: Update Bill of Lading
+    destroy:
+      link: Destroy Bill of Lading
+      success: 'Bill of Lading was successfully destroyed.'
+      hover_title: Destroy Bill of Lading
