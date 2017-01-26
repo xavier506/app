@@ -1,0 +1,38 @@
+<h3>Registered Consignees</h3>
+<table class="hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Company</th>
+      <th>Contact Name</th>
+      <th>Email</th>
+      <th>Telephone</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @consignees.each do |consignee| %>
+    <tr>
+      <td><%= link_to consignee.id, consignee_path(consignee.id) %></td>
+      <td><%= consignee.company %></td>
+      <td><%= consignee.contact_name %></td>
+      <td><%= consignee.email %></td>
+      <td><%= consignee.telephone %></td>
+      <td nowrap>
+        <% if can? :read, consignee %>
+          <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, consignee_path(consignee.id), :title => t('consignees.show.hover_title') %>
+        <% end %>
+        <% if can? :update, consignee %>
+          <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_consignee_path(consignee.id), :title => t('consignees.edit.hover_title') %>
+        <% end %>
+        <% if can? :destroy, consignee %>
+          <%= link_to '<i class="delete fi-x"></i>'.html_safe, consignee_path(consignee.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('consignees.destroy.hover_title') %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% if can? :create, Consignee %>
+  <%= link_to "New Client <i class='fi-plus'></i>".html_safe, new_consignee_path, :class => "button float-right" %>
+<% end %>

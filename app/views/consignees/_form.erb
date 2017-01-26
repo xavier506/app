@@ -1,5 +1,5 @@
-<%= simple_form_for @notification, :html => {'data-abide' => ' ' }, validate: true do |f| %>
-<div class="row">
+<%= simple_form_for @consignee, :html => {'data-abide' => ' ' }, validate: true do |f| %>
+  <div class="row">
     <div class="large-4 columns">
       <%= f.input :company %>
     </div>
@@ -49,3 +49,4 @@
     <%= f.button :submit, class: 'expanded' %>
   </div>
 <% end %>
+

@@ -20,7 +20,7 @@ class NotificationsController < ApplicationController
   end
 
   def update
-    if @notification.update(notify_params)
+    if @notification.update(notification_params)
       redirect_to notifications_path
     else
       render 'edit'
@@ -35,6 +35,6 @@ class NotificationsController < ApplicationController
   private
 
   def notification_params
-    params.require(:notification).permit(:name, :description)
+    params.require(:notification).permit(:company, :contact_name, :email, :telephone, :address, :city, :state, :country, :zip, :user_id)
   end
 end

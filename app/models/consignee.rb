@@ -1,4 +1,4 @@
-class Notification < ApplicationRecord
+class Consignee < ApplicationRecord
   belongs_to :user
   has_many :orders, :dependent => :restrict_with_error
 
@@ -9,7 +9,7 @@ class Notification < ApplicationRecord
     c
   end
 
-  def notify_string
+  def consignee_string
     "#{company} #{address} #{city} #{state} #{country} #{zip}"
   end
 end

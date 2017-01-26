@@ -1,6 +1,6 @@
 <%= simple_form_for @order, :html => {'data-abide' => ' ' }, validate: true do |f| %>
 <div class="row">
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <div class="input-group">
       <%= f.input :client do %>
         <%= f.collection_select(:client_id, Client.all, :id, :company, {}, {:class=>'input-group-field'}) %>
@@ -13,17 +13,45 @@
       </div>
     </div>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
+  <%= f.input :consignee_id  do %>
+    <div class="input-group">
+
+      <%= f.collection_select(:consignee_id, Consignee.all, :id, :company, {}, {:class=>'input-group-field'}) %>
+      <div class="input-group-button" >
+        <% if can? :create, Consignee %>
+          <%= link_to "New Consignee", new_consignee_path, class: 'button' %>
+        <% end %>
+      </div>
+
+    </div>
+     <% end %>
+  </div>
+  <div class="large-4 columns">
+  <%= f.input :notification_id  do %>
+    <div class="input-group">
+
+      <%= f.collection_select(:notification_id, Notification.all, :id, :company, {}, {:class=>'input-group-field'}) %>
+      <div class="input-group-button" >
+        <% if can? :create, Notification %>
+          <%= link_to "New Notify", new_notification_path, class: 'button' %>
+        <% end %>
+      </div>
+
+    </div>
+     <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-4 columns">
     <%= f.input :order_date do %>
       <%= f.date_field :order_date, :value => Time.now.strftime('%Y-%m-%d') %>
     <% end %>
   </div>
-</div>
-<div class="row">
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <%= f.input :status, collection: Order::STATUSES, include_blank: false  %>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <%= f.input :mode, collection: Order::MODES, include_blank: false %>
   </div>
 </div>

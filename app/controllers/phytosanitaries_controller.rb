@@ -38,7 +38,7 @@ class PhytosanitariesController < ApplicationController
     params.require(:phytosanitary).permit(
       :number,
       :exporter,
-      :consignee,
+      :receiver,
       :organization,
       :place_of_origin,
       :point_of_entry,
@@ -56,7 +56,7 @@ class PhytosanitariesController < ApplicationController
       :responsible,
       :inspector,
       :order_id,
-      :notification_id,
+      :notify,
     )
   end
 end

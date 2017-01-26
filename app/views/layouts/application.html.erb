@@ -26,15 +26,21 @@
             </ul>
           </li>
           <li class="has-submenu">
-            <%= link_to "Clients", clients_path %>
+            <%= link_to "Clients / Shippers", clients_path %>
             <ul class="submenu menu vertical" data-submenu>
-              <li><%= link_to "New Client", new_client_path %></li>
+              <li><%= link_to "Register Shipper", new_client_path %></li>
             </ul>
           </li>
           <li class="has-submenu">
-            <%= link_to "Users", users_path  %>
+            <%= link_to "Consignees", consignees_path %>
             <ul class="submenu menu vertical" data-submenu>
-              <li><%= link_to "New User", new_user_path %></li>
+              <li><%= link_to "Register Consignee", new_consignee_path %></li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <%= link_to "Notify", notifications_path %>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><%= link_to "Register Notify", new_notification_path %></li>
             </ul>
           </li>
           <% end %>
@@ -42,6 +48,14 @@
       </div>
       <div class="top-bar-right">
         <ul class="dropdown menu" data-dropdown-menu>
+          <% if current_user && current_user.admin %>
+          <li class="has-submenu">
+            <%= link_to "Users", users_path  %>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><%= link_to "New User", new_user_path %></li>
+            </ul>
+          </li>
+          <% end %>
           <%- if current_user %>
           <li class="has-submenu">
             <%= link_to('My account', edit_user_registration_path) %>

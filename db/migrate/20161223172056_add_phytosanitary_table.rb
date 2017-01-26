@@ -3,7 +3,8 @@ class AddPhytosanitaryTable < ActiveRecord::Migration[5.0]
     create_table :phytosanitaries do |t|
       t.integer :number
       t.text :exporter
-      t.text :consignee
+      t.text :receiver
+      t.text :notify
       t.string :organization
       t.string :place_of_origin
       t.string :point_of_entry
@@ -21,7 +22,6 @@ class AddPhytosanitaryTable < ActiveRecord::Migration[5.0]
       t.string :responsible
       t.string :inspector
       t.references :order
-      t.references :notification
       t.timestamps
     end
   end

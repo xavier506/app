@@ -1,6 +1,6 @@
 <h3>
   <span class="float-left">
-    Viewing Client <small>#<%= @client.id %></small>
+    Viewing Client / Shipper <small>#<%= @client.id %></small>
     <% if @client.user %>
       <small>related to <%= link_to("user #{@client.user.email}", @client.user) %></small>
     <% end %>
@@ -16,35 +16,39 @@
 </h3>
 <div class="details row column">
   <dl class="inline">
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <dt>Company :</dt>
     <dd><%= @client.company %></dd>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
    <dt>Contact Name :</dt>
    <dd><%= @client.contact_name %></dd>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <dt>Email :</dt>
     <dd><%= @client.email %></dd>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <dt>Telephone :</dt>
     <dd><%= @client.telephone %></dd>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <dt>Address :</dt>
     <dd><%= @client.address %></dd>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <dt>City :</dt>
     <dd><%= @client.city %></dd>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
+    <dt>State / Province :</dt>
+    <dd><%= @client.state %></dd>
+  </div>
+  <div class="large-4 columns">
     <dt>Country :</dt>
     <dd><%= @client.country %></dd>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <dt>ZIP :</dt>
     <dd><%= @client.zip %></dd>
   </div>

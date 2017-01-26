@@ -10,7 +10,7 @@ indent 30 do
 
   #Consignee
   pdf.bounding_box([0, pdf.cursor - 19], :width => 250, :height => 50) do
-    pdf.text @certificate.consignee.upcase, :size => 7
+    pdf.text @certificate.receiver.upcase, :size => 7
   end
 
   #Mode

@@ -5,10 +5,9 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.text :notes
       t.string :status
       t.string :mode
-      t.string :co_ids
-      t.string :bl_ids
-      t.string :ps_ids
       t.references :client
+      t.references :consignee
+      t.references :notification
       t.timestamps
     end
   end

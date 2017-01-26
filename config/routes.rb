@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, :path_prefix => 'd' # routes for devise modules on User
   resources :users
   resources :clients
+  resources :consignees
   resources :notifications
   resources :orders do
     resources :certificates

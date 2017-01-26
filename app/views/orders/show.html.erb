@@ -13,19 +13,27 @@
 </h3>
 <div class="details row column">
   <dl class="inline">
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <dt>Client :</dt>
-    <dd><%= @order.client.company %></dd>
+    <dd><%= link_to @order.client.company, @order.client %></dd>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
+    <dt>Consignee :</dt>
+    <dd><%= link_to @order.consignee.company, @order.consignee %></dd>
+  </div>
+    <div class="large-4 columns">
+    <dt>Notify :</dt>
+    <dd><%= link_to @order.notification.company, @order.notification %></dd>
+  </div>
+  <div class="large-4 columns">
    <dt>Order Date :</dt>
    <dd><%= @order.order_date %></dd>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <dt>Mode :</dt>
     <dd><%= @order.mode %></dd>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <dt>Status :</dt>
     <dd><%= @order.status %></dd>
   </div>
@@ -52,7 +60,7 @@
         <td><%= link_to bl.id, order_path(bl.id) %></td>
         <td><%= bl.shipper_id %></td>
         <td><%= bl.exporter %></td>
-        <td><%= bl.consignee %></td>
+        <td><%= bl.receiver %></td>
         <td nowrap>
           <% if can? :read, BillOfLading %>
             <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, order_bill_of_lading_path(bl.id), :title => t('bill_of_ladings.show.hover_title') %>
@@ -131,7 +139,7 @@
       <td><%= link_to phyto.id, order_phytosanitary_path(phyto.id) %></td>
       <td><%= phyto.number %></td>
       <td><%= phyto.exporter %></td>
-      <td><%= phyto.consignee %></td>
+      <td><%= phyto.receiver %></td>
       <td><%= phyto.mode %></td>
       <td><%= phyto.point_of_exit %></td>
       <td nowrap>

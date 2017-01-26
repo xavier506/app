@@ -3,8 +3,10 @@
   <thead>
     <tr>
       <th>#</th>
-      <th>Name</th>
-      <th>Description</th>
+      <th>Company</th>
+      <th>Contact Name</th>
+      <th>Email</th>
+      <th>Telephone</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -12,8 +14,10 @@
   <% @notifications.each do |notify| %>
     <tr>
       <td><%= link_to notify.id, notification_path(notify.id) %></td>
-      <td><%= notify.name %></td>
-      <td><%= notify.description %></td>
+      <td><%= notify.company %></td>
+      <td><%= notify.contact_name %></td>
+      <td><%= notify.email %></td>
+      <td><%= notify.telephone %></td>
       <td nowrap>
       <% if can? :read, notify %>
         <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, notification_path(notify.id), :title => t('notifications.show.hover_title') %>

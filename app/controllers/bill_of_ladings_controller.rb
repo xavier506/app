@@ -39,7 +39,7 @@ class BillOfLadingsController < ApplicationController
       :document_number,
       :exporter,
       :export_references,
-      :consignee,
+      :receiver,
       :forwarding_agent_references,
       :place_of_origin,
       :place_of_reciept,
@@ -74,7 +74,7 @@ class BillOfLadingsController < ApplicationController
       :service_type,
       :laden_on_board,
       :shipper_id,
-      :notification_id,
+      :notify,
       :also_notify,
       :order_id
     )

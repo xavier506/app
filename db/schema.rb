@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106004145) do
+ActiveRecord::Schema.define(version: 20170124015905) do
 
   create_table "bill_of_ladings", force: :cascade do |t|
     t.string   "document_number"
+    t.string   "shipper_id"
+    t.text     "receiver"
+    t.text     "notify"
+    t.text     "also_notify"
     t.text     "exporter"
     t.text     "export_references"
-    t.text     "consignee"
     t.text     "forwarding_agent_references"
     t.string   "place_of_origin"
     t.string   "place_of_reciept"
@@ -50,23 +53,18 @@ ActiveRecord::Schema.define(version: 20170106004145) do
     t.decimal  "exchange_rate_2"
     t.text     "service_type"
     t.text     "laden_on_board"
-    t.integer  "shipper_id"
-    t.integer  "notification_id"
-    t.text     "also_notify"
     t.integer  "order_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.index ["notification_id"], name: "index_bill_of_ladings_on_notification_id"
     t.index ["order_id"], name: "index_bill_of_ladings_on_order_id"
   end
 
   create_table "certificates", force: :cascade do |t|
     t.text     "shipper"
-    t.text     "consignee"
+    t.text     "receiver"
     t.text     "farm"
     t.string   "mode"
-    t.integer  "order_id"
-    t.integer  "notification_id"
+    t.text     "notify"
     t.string   "country"
     t.string   "discharge_port"
     t.string   "departure_port"
@@ -79,9 +77,9 @@ ActiveRecord::Schema.define(version: 20170106004145) do
     t.decimal  "gross_weight"
     t.string   "weight_units"
     t.text     "invoices"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["notification_id"], name: "index_certificates_on_notification_id"
+    t.integer  "order_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["order_id"], name: "index_certificates_on_order_id"
   end
 
@@ -92,6 +90,7 @@ ActiveRecord::Schema.define(version: 20170106004145) do
     t.string   "contact_name"
     t.string   "address"
     t.string   "city"
+    t.string   "state"
     t.string   "country"
     t.string   "zip"
     t.integer  "user_id"
@@ -100,11 +99,36 @@ ActiveRecord::Schema.define(version: 20170106004145) do
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
+  create_table "consignees", force: :cascade do |t|
+    t.string   "company"
+    t.string   "email"
+    t.string   "telephone"
+    t.string   "contact_name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zip"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_consignees_on_user_id"
+  end
+
   create_table "notifications", force: :cascade do |t|
-    t.text     "name"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "company"
+    t.string   "email"
+    t.string   "telephone"
+    t.string   "contact_name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zip"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -112,19 +136,21 @@ ActiveRecord::Schema.define(version: 20170106004145) do
     t.text     "notes"
     t.string   "status"
     t.string   "mode"
-    t.string   "co_ids"
-    t.string   "bl_ids"
-    t.string   "ps_ids"
     t.integer  "client_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "consignee_id"
+    t.integer  "notification_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["consignee_id"], name: "index_orders_on_consignee_id"
+    t.index ["notification_id"], name: "index_orders_on_notification_id"
   end
 
   create_table "phytosanitaries", force: :cascade do |t|
     t.integer  "number"
     t.text     "exporter"
-    t.text     "consignee"
+    t.text     "receiver"
+    t.text     "notify"
     t.string   "organization"
     t.string   "place_of_origin"
     t.string   "point_of_entry"
@@ -142,10 +168,8 @@ ActiveRecord::Schema.define(version: 20170106004145) do
     t.string   "responsible"
     t.string   "inspector"
     t.integer  "order_id"
-    t.integer  "notification_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.index ["notification_id"], name: "index_phytosanitaries_on_notification_id"
     t.index ["order_id"], name: "index_phytosanitaries_on_order_id"
   end
 

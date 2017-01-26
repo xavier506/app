@@ -1,0 +1,22 @@
+en:
+  consignees:
+    new:
+      title: Creating New Consignees
+      link: Create New Consignee
+      success: 'Consignee was successfully created.'
+      hover_title: Create New Consignee
+      button: Create Consignee
+    show:
+      title: Showing Consignee
+      link: Consignee
+      hover_title: Show Consignee
+    edit:
+      title: Editing Consignee
+      link: Edit Consignee
+      success: 'Consignee was successfully updated.'
+      hover_title: Edit Consignee
+      button: Update Consignee
+    destroy:
+      link: Destroy Consignee
+      success: 'Consignee was successfully destroyed.'
+      hover_title: Destroy Consignee

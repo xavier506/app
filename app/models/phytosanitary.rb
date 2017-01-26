@@ -1,27 +1,28 @@
 class Phytosanitary < ApplicationRecord
   belongs_to :order
-  has_one :notification
   has_one :client, :through => :order
+  has_one :consignee, :through => :order
+  has_one :notification, :through => :order
 
-  validates :number, presence: true
-  validates :exporter, presence: true
-  validates :consignee, presence: true
-  validates :organization, presence: true
-  validates :place_of_origin, presence: true
-  validates :point_of_entry, presence: true
-  validates :point_of_exit, presence: true
-  validates :mode, presence: true
-  validates :description, presence: true
-  validates :place_of_issue, presence: true
-  validates :issue_date, presence: true
-  validates :treatment_date, presence: true
-  validates :treatment, presence: true
-  validates :active_ingredient, presence: true
-  validates :concentration, presence: true
-  validates :duration_temperature, presence: true
-  validates :responsible, presence: true
-  validates :inspector, presence: true
-  validates :order, presence: true
+  validates :number,
+    :exporter,
+    :receiver,
+    :organization,
+    :place_of_origin,
+    :point_of_entry,
+    :point_of_exit,
+    :mode,
+    :description,
+    :place_of_issue,
+    :issue_date,
+    :treatment_date,
+    :treatment,
+    :active_ingredient,
+    :concentration,
+    :duration_temperature,
+    :responsible,
+    :inspector,
+   presence: true
 
   MODES = ['Ocean / Maritimo','Land','Air', 'Export', 'Import', 'Other']
 

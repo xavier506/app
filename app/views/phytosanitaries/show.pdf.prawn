@@ -14,7 +14,7 @@ end
 
 #Consignee
 pdf.bounding_box([279, pdf.cursor + 21], :width => 250, :height => 21) do
-  pdf.text @phytosanitary.consignee.upcase, :size => 7
+  pdf.text @phytosanitary.receiver.upcase, :size => 7
 end
 
 #Organization

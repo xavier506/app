@@ -2,9 +2,12 @@ class AddBillOfLadingTable < ActiveRecord::Migration[5.0]
   def change
     create_table :bill_of_ladings do |t|
       t.string :document_number
+      t.string :shipper_id
+      t.text :receiver
+      t.text :notify
+      t.text :also_notify
       t.text :exporter
       t.text :export_references
-      t.text :consignee
       t.text :forwarding_agent_references
       t.string :place_of_origin
       t.string :place_of_reciept
@@ -38,9 +41,6 @@ class AddBillOfLadingTable < ActiveRecord::Migration[5.0]
       t.decimal :exchange_rate_2
       t.text :service_type
       t.text :laden_on_board
-      t.integer :shipper_id
-      t.references :notification
-      t.text :also_notify
       t.references :order
       t.timestamps
     end
