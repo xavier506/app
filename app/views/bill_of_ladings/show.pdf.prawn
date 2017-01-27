@@ -2,7 +2,7 @@
 if @bill_of_lading.liner == 'Evergreen'
   bg_image = "#{Rails.root}/app/assets/images/pdf/EVERGREEN.jpg"
 else
-  pdf.text 'No Shipper Selected', :size => 24, :align => :center
+  pdf.text 'No Template Available for Selected Liner', :size => 24, :align => :center
 end
 
 if bg_image
