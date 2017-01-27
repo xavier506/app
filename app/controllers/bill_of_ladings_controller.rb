@@ -73,7 +73,7 @@ class BillOfLadingsController < ApplicationController
       :exchange_rate_2,
       :service_type,
       :laden_on_board,
-      :shipper_id,
+      :liner,
       :notify,
       :also_notify,
       :order_id

@@ -5,7 +5,7 @@ class BillOfLading < ApplicationRecord
   has_many :notifications, :through => :order
 
   #Options for field selection
-  SHIPPERS = ['Evergreen']
+  LINERS = ['Evergreen','MSC','HAPAG-LLOYD','COSCO','CMA','NYK','MOL']
   UNIT_TYPES = ['Piezas / Pieces','Cajas / Boxes','Trozas / Logs','Bundles']
   VOLUME_UNITS = ['CBM','CBFT']
   WEIGHT_UNITS = ['KGS','TONS']
@@ -39,7 +39,7 @@ class BillOfLading < ApplicationRecord
     :issue_date,
     :service_type,
     :laden_on_board,
-    :shipper_id,
+    :liner,
     :notify,
     :order_id,
   presence: true

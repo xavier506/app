@@ -2,7 +2,7 @@ class AddBillOfLadingTable < ActiveRecord::Migration[5.0]
   def change
     create_table :bill_of_ladings do |t|
       t.string :document_number
-      t.string :shipper_id
+      t.string :liner
       t.text :receiver
       t.text :notify
       t.text :also_notify

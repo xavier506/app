@@ -1,5 +1,5 @@
 
-if @bill_of_lading.shipper_id == 'Evergreen'
+if @bill_of_lading.liner == 'Evergreen'
   bg_image = "#{Rails.root}/app/assets/images/pdf/EVERGREEN.jpg"
 else
   pdf.text 'No Shipper Selected', :size => 24, :align => :center

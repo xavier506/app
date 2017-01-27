@@ -4,8 +4,8 @@
     <%= f.input :document_number %>
   </div>
   <div class="large-4 columns">
-    <% @shippers = BillOfLading::SHIPPERS %>
-    <%= f.input :shipper_id, collection: @shippers, include_blank: false %>
+    <% @liners = BillOfLading::LINERS %>
+    <%= f.input :liner, collection: @liners, include_blank: false %>
   </div>
   <div class="large-4 columns">
     <%= f.input :order_id do %>

@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20170124015905) do
 
   create_table "bill_of_ladings", force: :cascade do |t|
     t.string   "document_number"
-    t.string   "shipper_id"
+    t.string   "liner"
     t.text     "receiver"
     t.text     "notify"
     t.text     "also_notify"
