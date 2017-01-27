@@ -5,7 +5,7 @@
   </span>
   <span class="float-right">
     <% if can? :read, BillOfLading %>
-      <%= link_to("View All BLs <i class='fi-magnifying-glass'></i>".html_safe, order_bill_of_lading_path, :class => "tiny button") %>
+      <%= link_to("View All BLs <i class='fi-magnifying-glass'></i>".html_safe, order_bill_of_ladings_path, :class => "tiny button") %>
     <% end %>
     <% if can? :update, @bill_of_lading %>
       <%= link_to("Edit This BL <i class='fi-page-edit'></i>".html_safe, edit_order_bill_of_lading_path(@bill_of_lading.order, @bill_of_lading.id), :class => "tiny button") %>
