@@ -77,8 +77,8 @@
 <h4>Containers</h4>
 <hr/>
 <div id="containers">
-  <%= simple_fields_for(:containers) do |container|  %>
-    <%= render 'container_fields', f: container %>
+  <%= simple_fields_for(@bill_of_lading) do |f|  %>
+    <%= render 'container_fields', f: f %>
   <% end %>
   <div class="row">
   <%= link_to_add_association "Add Container <i class='fi-plus'></i>".html_safe, f, :containers, :class => "tiny button float-right" %>
