@@ -3,6 +3,8 @@ class BillOfLading < ApplicationRecord
   has_one :client, :through => :order
   has_one :consignee, :through => :order
   has_many :notifications, :through => :order
+  has_many :containers
+  accepts_nested_attributes_for :containers, reject_if: :all_blank, allow_destroy: true
 
   #Options for field selection
   LINERS = ['Evergreen','MSC','HAPAG-LLOYD','COSCO','CMA','NYK','MOL']
@@ -16,18 +18,12 @@ class BillOfLading < ApplicationRecord
     :receiver,
     :place_of_origin,
     :place_of_reciept,
-    :place_of_delivery,
+    # :place_of_delivery,
     # :date_of_reciept,
     # :ocean_vessel,
     # :loading_port,
     # :discharge_port,
-    # :container_number,
-    # :units,:unit_type,
     # :description,
-    # :volume,
-    # :volume_units,
-    # :gross_weight,
-    # :weight_units,
     # :freight_charges,
     # :revenue_tons,
     # :rate,
@@ -37,7 +33,7 @@ class BillOfLading < ApplicationRecord
     # :prepaid_at,
     # :collect_at,
     # :place_of_issue,
-    :issue_date,
+    # :issue_date,
     # :service_type,
     # :laden_on_board,
     # :liner,

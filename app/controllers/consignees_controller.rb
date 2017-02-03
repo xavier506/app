@@ -36,6 +36,16 @@ class ConsigneesController < ApplicationController
   private
 
   def consignee_params
-    params.require(:consignee).permit(:company, :contact_name, :email, :telephone, :address, :city, :state, :country, :zip, :user_id)
+    params.require(:consignee).permit(:company,
+      :contact_name,
+      :email,
+      :telephone,
+      :address,
+      :city,
+      :state,
+      :country,
+      :zip,
+      :user_id
+    )
   end
 end

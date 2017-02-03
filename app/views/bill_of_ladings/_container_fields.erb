@@ -1,0 +1,41 @@
+<div class="nested-fields">
+  <div class="row">
+    <div class="large-3 columns">
+      <%= f.input :container_number %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :container_type, collection: BillOfLading::CONTAINER_TYPES, include_blank: false  %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :shipper_seal %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :carrier_seal %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-2 columns">
+      <%= f.input :units %>
+    </div>
+    <div class="large-2 columns">
+      <%= f.input :unit_type, collection: BillOfLading::UNIT_TYPES, include_blank: false %>
+    </div>
+    <div class="large-2 columns">
+      <%= f.input :volume %>
+    </div>
+    <div class="large-1 columns">
+      <%= f.input :volume_units, label: "Units", collection: BillOfLading::VOLUME_UNITS, include_blank: false %>
+    </div>
+    <div class="large-2 columns">
+      <%= f.input :tare_weight %>
+    </div>
+    <div class="large-2 columns">
+      <%= f.input :gross_weight %>
+    </div>
+    <div class="large-1 columns">
+      <%= f.input :weight_units, label: "Units", collection: BillOfLading::WEIGHT_UNITS, include_blank: false %>
+    </div>
+  </div>
+    <%#= link_to_remove_association %>
+</div>
+<hr/>

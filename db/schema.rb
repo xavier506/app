@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124015905) do
+ActiveRecord::Schema.define(version: 20170128150517) do
 
   create_table "bill_of_ladings", force: :cascade do |t|
     t.string   "document_number"
@@ -120,6 +120,22 @@ ActiveRecord::Schema.define(version: 20170124015905) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["user_id"], name: "index_consignees_on_user_id"
+  end
+
+  create_table "containers", force: :cascade do |t|
+    t.string  "shipper_seal"
+    t.string  "carrier_seal"
+    t.string  "container_number"
+    t.string  "container_type"
+    t.integer "units"
+    t.string  "unit_type"
+    t.decimal "volume"
+    t.string  "volume_units"
+    t.decimal "tare_weight"
+    t.decimal "gross_weight"
+    t.string  "weight_units"
+    t.integer "bill_of_lading_id"
+    t.index ["bill_of_lading_id"], name: "index_containers_on_bill_of_lading_id"
   end
 
   create_table "notifications", force: :cascade do |t|

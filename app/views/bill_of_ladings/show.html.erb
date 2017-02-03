@@ -31,10 +31,6 @@
       <dd><%= @bill_of_lading.order_id %></dd>
     </div>
     <div class="large-4 columns">
-      <dt>Container Number :</dt>
-      <dd><%= @bill_of_lading.container_number %></dd>
-    </div>
-    <div class="large-4 columns">
       <dt>Notify :</dt>
       <dd><%= @bill_of_lading.notify %></dd>
     </div>
@@ -98,17 +94,38 @@
       <dt>Description :</dt>
       <dd><%= @bill_of_lading.description %></dd>
     </div>
-    <div class="large-4 columns">
-      <dt>Units :</dt>
-      <dd><%= @bill_of_lading.units %> <%= @bill_of_lading.unit_type %></dd>
-    </div>
-    <div class="large-4 columns">
-      <dt>Volume :</dt>
-      <dd><%= @bill_of_lading.volume %> <%= @bill_of_lading.volume_units %></dd>
-    </div>
-    <div class="large-4 columns">
-      <dt>Weight :</dt>
-      <dd><%= @bill_of_lading.gross_weight %> <%= @bill_of_lading.weight_units %></dd>
+    <div class="large-12 columns">
+    <hr/>
+    <h4>Containers</h4>
+    <table class="hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Type</th>
+          <th>Shipper Seal</th>
+          <th>Carrier Seal</th>
+          <th>Units</th>
+          <th>Volume</th>
+          <th>Tare Weight</th>
+          <th>Gross Weight</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @bill_of_lading.containers.each do |container| %>
+        <tr>
+          <td><%= container.container_number %></td>
+          <td><%= container.container_type %></td>
+          <td><%= container.shipper_seal %></td>
+          <td><%= container.carrier_seal %></td>
+          <td><%= container.units %></td>
+          <td><%= container.volume %></td>
+          <td><%= container.tare_weight%></td>
+          <td><%= container.gross_weight %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <hr/>
     </div>
     <div class="large-3 columns">
       <dt>Freight :</dt>
@@ -165,10 +182,6 @@
     <div class="large-3 columns">
       <dt>Exchange Rate 2 :</dt>
       <dd><%= @bill_of_lading.exchange_rate_2 %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Service Type :</dt>
-      <dd><%= @bill_of_lading.service_type %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Laden on Board :</dt>

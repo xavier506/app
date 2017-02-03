@@ -72,11 +72,27 @@ class BillOfLadingsController < ApplicationController
       :exchange_rate_1,
       :exchange_rate_2,
       :service_type,
+      :rider_pages,
       :laden_on_board,
       :liner,
       :notify,
       :also_notify,
-      :order_id
+      :order_id,
+      containers_attributes: [
+        :shipper_seal,
+        :carrier_seal,
+        :container_number,
+        :container_type,
+        :units,
+        :unit_type,
+        :volume,
+        :volume_units,
+        :tare_weight,
+        :gross_weight,
+        :weight_units,
+        :bill_of_lading,
+        :_destroy
+      ]
     )
   end
 end
