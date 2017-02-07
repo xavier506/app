@@ -29,15 +29,11 @@ gem 'foundation-rails'
 gem 'simple_form'
 gem 'countries'
 gem 'country_select'
-gem "cocoon"
+gem 'cocoon'
 
 # Use client_side_validations for error messages
-gem 'client_side_validations',
-  github: 'DavyJonesLocker/client_side_validations',
-  branch: 'rails5'
-gem 'client_side_validations-simple_form',
-  github: 'DavyJonesLocker/client_side_validations-simple_form',
-  branch: 'rails5'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
@@ -50,7 +46,7 @@ gem 'jbuilder', '~> 2.5'
 
 #Use Prawn for PDF file generation
 gem 'prawn'
-gem "prawnto_2", :require => "prawnto"
+gem 'prawnto_2', :require => 'prawnto'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
