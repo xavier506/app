@@ -30,7 +30,7 @@ class CertificatesController < ApplicationController
 
   def destroy
     @certificate.destroy
-    redirect_to certificates_path
+    redirect_to order_path(@order)
   end
   private
 

@@ -30,7 +30,7 @@ class PhytosanitariesController < ApplicationController
 
   def destroy
     @phytosanitary.destroy
-    redirect_to phytosanitaries_path
+    redirect_to order_path(@order)
   end
   private
 

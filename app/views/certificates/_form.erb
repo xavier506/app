@@ -1,4 +1,3 @@
-<%= simple_form_for([@order, @certificate], :html => {'data-abide' => ' ' }, validate: true ) do |f| %>
 <div class="row">
   <div class="large-6 columns">
     <%= f.input :shipper, input_html: {value: @order.client.shipper_string }  %>
@@ -73,4 +72,3 @@
 <div class="actions row">
   <%= f.button :submit, class: 'expanded' %>
 </div>
-<% end %>

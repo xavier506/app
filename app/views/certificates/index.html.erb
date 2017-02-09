@@ -15,7 +15,7 @@
   <tbody>
   <% @certificates.each do |co| %>
     <tr>
-      <td><%= link_to co.id, order_certificate_path(co.id) %></td>
+      <td><%= link_to co.id, order_certificate_path(co.order.id, co.id) %></td>
       <td><%= co.shipper %></td>
       <td><%= co.receiver %></td>
       <td><%= co.farm %></td>
@@ -24,13 +24,13 @@
       <td><%= link_to co.order.id, order_path(co.order.id) %></td>
       <td nowrap>
         <% if can? :read, co %>
-          <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, order_certificate_path(co.id), :title => t('certificates.show.hover_title') %>
+          <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, order_certificate_path(co.order.id, co.id), :title => t('certificates.show.hover_title') %>
         <% end %>
         <% if can? :update, co %>
-          <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_order_certificate_path(co.id), :title => t('certificates.edit.hover_title') %>
+          <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_order_certificate_path(co.order.id, co.id), :title => t('certificates.edit.hover_title') %>
         <% end %>
         <% if can? :destroy, co %>
-          <%= link_to '<i class="delete fi-x"></i>'.html_safe, order_certificate_path(co.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('certificates.destroy.hover_title') %>
+          <%= link_to '<i class="delete fi-x"></i>'.html_safe, order_certificate_path(co.order.id, co.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('certificates.destroy.hover_title') %>
         <% end %>
       </td>
     </tr>

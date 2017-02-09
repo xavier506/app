@@ -29,7 +29,6 @@ class ClientsController < ApplicationController
 
   def destroy
     @client.destroy
-
     redirect_to clients_path
   end
 

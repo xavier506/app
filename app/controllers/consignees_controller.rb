@@ -29,7 +29,6 @@ class ConsigneesController < ApplicationController
 
   def destroy
     @consignee.destroy
-
     redirect_to consignees_path
   end
 

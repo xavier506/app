@@ -30,7 +30,7 @@ class BillOfLadingsController < ApplicationController
 
   def destroy
     @bill_of_lading.destroy
-    redirect_to order_bill_of_ladings_path
+    redirect_to order_path(@order)
   end
   private
 

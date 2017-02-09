@@ -15,7 +15,7 @@
   <tbody>
   <% @bill_of_ladings.each do |bl| %>
     <tr>
-      <td><%= link_to bl.id, order_bill_of_ladings_path(bl.id) %></td>
+      <td><%= link_to bl.id, order_bill_of_ladings_path(bl.order.id, bl.id) %></td>
       <td><%= bl.exporter %></td>
       <td><%= bl.receiver %></td>
       <td><%= bl.liner %></td>
