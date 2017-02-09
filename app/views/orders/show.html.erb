@@ -63,13 +63,13 @@
         <td><%= bl.receiver %></td>
         <td nowrap>
           <% if can? :read, BillOfLading %>
-            <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, order_bill_of_lading_path(bl.id), :title => t('bill_of_ladings.show.hover_title') %>
+            <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, order_bill_of_lading_path(bl.order.id, bl.id), :title => t('bill_of_ladings.show.hover_title') %>
           <% end %>
           <% if can? :update, BillOfLading %>
-            <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_order_bill_of_lading_path(@order,bl.id), :title => t('bill_of_ladings.edit.hover_title') %>
+            <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_order_bill_of_lading_path(bl.order.id, bl.id), :title => t('bill_of_ladings.edit.hover_title') %>
           <% end %>
           <% if can? :destroy, BillOfLading %>
-            <%= link_to '<i class="delete fi-x"></i>'.html_safe, order_bill_of_lading_path(@order, bl.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('bill_of_ladings.destroy.hover_title') %>
+            <%= link_to '<i class="delete fi-x"></i>'.html_safe, order_bill_of_lading_path(bl.order.id, bl.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('bill_of_ladings.destroy.hover_title') %>
           <% end %>
         </td>
       </tr>

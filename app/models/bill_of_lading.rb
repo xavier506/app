@@ -3,7 +3,8 @@ class BillOfLading < ApplicationRecord
   has_one :client, :through => :order
   has_one :consignee, :through => :order
   has_many :notifications, :through => :order
-  has_many :containers
+  has_many :containers, inverse_of: :bill_of_lading
+
   accepts_nested_attributes_for :containers, reject_if: :all_blank, allow_destroy: true
 
   #Options for field selection

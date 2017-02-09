@@ -22,7 +22,7 @@ class CertificatesController < ApplicationController
 
   def update
     if @certificate.update(certificate_params)
-      redirect_to order_certificate_path(@certificate)
+      redirect_to order_certificate_path(@order, @certificate)
     else
       render 'edit'
     end

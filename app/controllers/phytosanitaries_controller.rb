@@ -22,7 +22,7 @@ class PhytosanitariesController < ApplicationController
 
   def update
     if @phytosanitary.update(phytosanitary_params)
-      redirect_to order_phytosanitary_path(@phytosanitary)
+      redirect_to order_phytosanitary_path(@order, @phytosanitary)
     else
       render 'edit'
     end
