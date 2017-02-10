@@ -11,7 +11,7 @@
       <%= link_to("Edit This BL <i class='fi-page-edit'></i>".html_safe, edit_order_bill_of_lading_path(@bill_of_lading.order, @bill_of_lading.id), :class => "tiny button") %>
     <% end %>
     <% if can? :read, @bill_of_lading %>
-      <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_bill_of_lading_path(@bill_of_lading, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
+      <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_bill_of_lading_path(@bill_of_lading.order, @bill_of_lading, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
     <% end %>
   </span>
 </h3>

@@ -1,89 +1,112 @@
 
+# EVERGREEN
 if @bill_of_lading.liner == 'Evergreen'
-  bg_image = "#{Rails.root}/app/assets/images/pdf/EVERGREEN.jpg"
+  bg_image = "#{Rails.root}/app/assets/images/pdf/evergreen.png"
+  pdf.image bg_image, :scale => 0.90
+  pdf.move_up 666
+
+  indent 15 do
+
+    #Exporter
+    pdf.bounding_box([0, pdf.cursor + 0], :width => 290, :height => 50) do
+      pdf.text @bill_of_lading.exporter.upcase, :size => 7
+    end
+
+    # Document Number
+    pdf.bounding_box([295, pdf.cursor + 50], :width => 230, :height => 12) do
+      pdf.text @bill_of_lading.document_number.upcase, :size => 8
+    end
+
+    #Consignee
+    pdf.bounding_box([0, pdf.cursor - 54], :width => 290, :height => 50) do
+      pdf.text @bill_of_lading.receiver.upcase, :size => 7
+    end
+
+    #Export References
+    pdf.bounding_box([295, pdf.cursor + 94], :width => 230, :height => 35) do
+      pdf.text @bill_of_lading.export_references.upcase, :size => 7
+    end
+
+    #Forwarding Agent References
+    pdf.bounding_box([295, pdf.cursor - 10], :width => 230, :height => 50) do
+      pdf.text @bill_of_lading.forwarding_agent_references.upcase, :size => 7
+    end
+
+    #Notify
+    pdf.bounding_box([0, pdf.cursor - 5], :width => 290, :height => 65) do
+      pdf.text @bill_of_lading.notify.upcase, :size => 7
+    end
+
+    #Place of Origin
+    pdf.bounding_box([295, pdf.cursor + 65 ], :width => 230, :height => 12) do
+      pdf.text @bill_of_lading.place_of_origin.upcase, :size => 7
+    end
+
+    #Also Notify
+    pdf.bounding_box([295, pdf.cursor - 10], :width => 230, :height => 65) do
+      pdf.text @bill_of_lading.also_notify.upcase, :size => 7
+    end
+
+    #Precarrige
+    pdf.bounding_box([0, pdf.cursor + 8], :width => 155, :height => 12) do
+      pdf.text @bill_of_lading.precarriage.upcase, :size => 7
+    end
+
+    #Place of Reciept
+    pdf.bounding_box([160, pdf.cursor + 12], :width => 130, :height => 12) do
+      pdf.text @bill_of_lading.place_of_reciept.upcase, :size => 7
+    end
+
+    #Ocean Vessel
+    pdf.bounding_box([0, pdf.cursor - 8], :width => 155, :height => 12) do
+      pdf.text @bill_of_lading.ocean_vessel.upcase, :size => 7
+    end
+
+    #Loading Port
+    pdf.bounding_box([160, pdf.cursor + 11], :width => 130, :height => 12) do
+      pdf.text @bill_of_lading.loading_port.upcase, :size => 7
+    end
+
+    #Discharge Port
+    pdf.bounding_box([0, pdf.cursor - 9], :width => 155, :height => 12) do
+      pdf.text @bill_of_lading.discharge_port.upcase, :size => 7
+    end
+
+    #Place of Delivery
+    pdf.bounding_box([160, pdf.cursor + 11], :width => 130, :height => 12) do
+      pdf.text @bill_of_lading.place_of_delivery.upcase, :size => 7
+    end
+
+    #Place of Delivery
+    pdf.bounding_box([295, pdf.cursor + 30], :width => 230, :height => 30) do
+      pdf.text @bill_of_lading.instructions.upcase, :size => 7
+    end
+
+#      pdf.transparent(0.5) { pdf.stroke_bounds }
+
+    #
+    #
+    # @bill_of_lading.description.upcase
+    # @bill_of_lading.freight_charges.upcase
+    # @bill_of_lading.revenue_tons.upcase
+    # @bill_of_lading.rate.upcase
+    # @bill_of_lading.prepaid.upcase
+    # @bill_of_lading.collect.upcase
+    # @bill_of_lading.bl_number.upcase
+    # @bill_of_lading.original_number.upcase
+    # @bill_of_lading.prepaid_at.upcase
+    # @bill_of_lading.collect_at.upcase
+    # @bill_of_lading.place_of_issue.upcase
+    # @bill_of_lading.issue_date.upcase
+    # @bill_of_lading.exchange_rate_1.upcase
+    # @bill_of_lading.exchange_rate_2.upcase
+    # @bill_of_lading.service_type.upcase
+    # @bill_of_lading.laden_on_board.upcase
+    # @bill_of_lading.rider_pages.upcase
+    # @bill_of_lading.total_cmb.upcase
+    # @bill_of_lading.verfified_gross_mass.upcase
+
+  end
 else
   pdf.text 'No Template Available for Selected Liner', :size => 24, :align => :center
-end
-
-if bg_image
-  pdf.image bg_image, :scale => 0.32 #:scale => 0.2311
-  pdf.move_up 645
-end
-
-
-indent 30 do
-  # # Shipper
-  # pdf.bounding_box([0, pdf.cursor - 0], :width => 250, :height => 50) do
-  #   pdf.text @bill_of_lading.shipper.upcase, :size => 7
-  # end
-
-  # #Consignee
-  # pdf.bounding_box([0, pdf.cursor - 19], :width => 250, :height => 50) do
-  #   pdf.text @bill_of_lading.consignee.upcase, :size => 7
-  # end
-
-  # #Mode
-  # pdf.bounding_box([0, pdf.cursor - 17], :width => 250, :height => 10) do
-  #   pdf.text @bill_of_lading.mode.upcase, :size => 7
-  # end
-
-  # #Departure Port
-  # pdf.bounding_box([0, pdf.cursor - 10], :width => 250, :height => 10) do
-  #   pdf.text @bill_of_lading.departure_port.upcase, :size => 7
-  # end
-
-  # #Country
-  # pdf.bounding_box([0, pdf.cursor - 8], :width => 118, :height => 10) do
-  #   pdf.text @bill_of_lading.country_name.to_s.upcase, :size => 7
-  # end
-
-  # #Discharge Port
-  # pdf.bounding_box([130, pdf.cursor + 11], :width => 118, :height => 10) do
-  #   pdf.text @bill_of_lading.discharge_port.upcase, :size => 7
-  # end
-
-  # #Observations
-  # pdf.bounding_box([264, pdf.cursor + 27], :width => 220, :height => 24) do
-  #   pdf.text @bill_of_lading.observations.upcase, :size => 7
-  # end
-
-  # #Item No.
-  # pdf.bounding_box([0, pdf.cursor - 45], :width => 15, :height => 140) do
-  #   pdf.text '1', :size => 7, :align => :center
-  #   pdf.text '***', :size => 7, :align => :center
-  # end
-
-  # #Units
-  # units_text = @bill_of_lading.units.to_s.upcase + " " + @bill_of_lading.unit_type.to_s.upcase
-  # pdf.bounding_box([24, pdf.cursor + 140], :width => 60, :height => 140) do
-  #   pdf.text units_text, :size => 7, :align => :center
-  #   pdf.text '*********', :size => 7, :align => :center
-  # end
-
-  # #Description
-  # pdf.bounding_box([95, pdf.cursor + 140], :width => 186, :height => 140) do
-  #   pdf.text @bill_of_lading.description.upcase, :size => 7, :align => :center
-  #   pdf.text @bill_of_lading.farm.upcase, :size => 7, :align => :center
-  #   pdf.text '****************************************', :size => 7, :align => :center
-  # end
-
-  # #Volume
-  # volume_text = @bill_of_lading.volume.to_s.upcase + " " + @bill_of_lading.volume_units.to_s.upcase
-  # pdf.bounding_box([292, pdf.cursor + 140], :width => 65, :height => 140) do
-  #   pdf.text volume_text, :size => 7, :align => :center
-  #   pdf.text '*********', :size => 7, :align => :center
-  # end
-
-  # #Weight
-  # weight_text = @bill_of_lading.gross_weight.to_s.upcase + " " + @bill_of_lading.weight_units.to_s.upcase
-  # pdf.bounding_box([365, pdf.cursor + 140], :width => 50, :height => 140) do
-  #   pdf.text weight_text, :size => 7, :align => :center
-  #   pdf.text '*********', :size => 7, :align => :center
-  # end
-
-  # #Invoice
-  # pdf.bounding_box([420, pdf.cursor + 140], :width => 65, :height => 140) do
-  #   pdf.text @bill_of_lading.invoices.upcase, :size => 7, :align => :center
-  #   pdf.text '*********', :size => 7, :align => :center
-  # end
 end

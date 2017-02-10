@@ -1,5 +1,5 @@
 bg_image = "#{Rails.root}/app/assets/images/pdf/blank_co.png"
-  pdf.image bg_image, :scale => 0.32 #:scale => 0.2311
+  pdf.image bg_image, :scale => 0.32
   pdf.move_up 645
 
 indent 30 do
