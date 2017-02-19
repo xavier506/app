@@ -50,17 +50,6 @@ ActiveRecord::Schema.define(version: 20170128150517) do
     t.decimal  "total_cmb"
     t.decimal  "verfified_gross_mass"
     t.integer  "order_id"
-    t.string   "shipper_seal"
-    t.string   "carrier_seal"
-    t.string   "container_number"
-    t.string   "container_type"
-    t.integer  "units"
-    t.string   "unit_type"
-    t.decimal  "volume"
-    t.string   "volume_units"
-    t.decimal  "tare_weight"
-    t.decimal  "gross_weight"
-    t.string   "weight_units"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.index ["order_id"], name: "index_bill_of_ladings_on_order_id"

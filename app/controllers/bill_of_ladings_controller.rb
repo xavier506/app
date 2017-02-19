@@ -4,6 +4,7 @@ class BillOfLadingsController < ApplicationController
   load_and_authorize_resource :through => :order, shallow: true
 
   def new
+    @containers = Container.new
   end
 
   def index
@@ -13,6 +14,7 @@ class BillOfLadingsController < ApplicationController
   end
 
   def edit
+    @containers = Container.find(@order.id)
   end
 
   def create
