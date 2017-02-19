@@ -47,6 +47,7 @@ gem 'jbuilder', '~> 2.5'
 #Use Prawn for PDF file generation
 gem 'prawn'
 gem 'prawnto_2', :require => 'prawnto'
+gem 'prawn-table'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
