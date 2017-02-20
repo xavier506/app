@@ -10,7 +10,6 @@ end
 # Exporter
 pdf.bounding_box([25, pdf.cursor - 40], :width => 253, :height => 22) do
   pdf.text @phytosanitary.exporter.upcase, :size => 7
-  pdf.transparent(0.5) { pdf.stroke_bounds }
 end
 
 #Consignee
