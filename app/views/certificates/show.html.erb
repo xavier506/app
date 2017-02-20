@@ -11,7 +11,7 @@
       <%= link_to("Edit This CO <i class='fi-page-edit'></i>".html_safe, edit_order_certificate_path(@order, @certificate.id), :class => "tiny button") %>
     <% end %>
     <% if can? :read, @certificate %>
-      <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_certificate_path(@certificate, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
+      <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_certificate_path(@order, @certificate.id, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
     <% end %>
   </span>
 </h3>

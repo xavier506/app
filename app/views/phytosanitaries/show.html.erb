@@ -7,10 +7,10 @@
     <%= link_to("View All Phytos <i class='fi-magnifying-glass'></i>".html_safe, order_phytosanitaries_path, :class => "tiny button") %>
     <% end %>
     <% if can? :update, @phytosanitary %>
-    <%= link_to("Edit This Phyto <i class='fi-page-edit'></i>".html_safe, edit_order_phytosanitary_path(@order,@phytosanitary.id), :class => "tiny button") %>
+    <%= link_to("Edit This Phyto <i class='fi-page-edit'></i>".html_safe, edit_order_phytosanitary_path(@order, @phytosanitary.id), :class => "tiny button") %>
     <% end %>
     <% if can? :read, @phytosanitary %>
-    <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_phytosanitary_path(@phytosanitary, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
+    <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_phytosanitary_path(@order, @phytosanitary.id, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
     <% end %>
   </span>
 </h3>
