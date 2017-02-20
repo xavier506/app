@@ -1,6 +1,4 @@
 <h3>Register Consignee</h3>
 <div class="form-container">
-  <%= simple_form_for @consignee, url: {action: "create"}, :html => {'data-abide' => ' ' }, validate: true do |f| %>
-    <%= render 'form', f: f %>
-  <% end %>
+  <%= render 'form' %>
 </div>

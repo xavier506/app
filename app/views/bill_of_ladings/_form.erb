@@ -1,146 +1,148 @@
-<div class="row">
-  <div class="large-4 columns">
-    <%= f.input :document_number %>
-  </div>
-  <div class="large-4 columns">
-    <% @liners = BillOfLading::LINERS %>
-    <%= f.input :liner, collection: @liners, include_blank: false %>
-  </div>
-  <div class="large-4 columns">
-    <%= f.input :order_id do %>
-    <%= f.collection_select(:order_id, Order.all, :id, :order_for_select ) %>
-    <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="large-4 columns">
-    <%= f.input :exporter, input_html: {value: @order.client.shipper_string } %>
-  </div>
-  <div class="large-4 columns">
-    <%= f.input :receiver, label: 'Consignee', input_html: {value: @order.consignee.consignee_string } %>
-  </div>
-  <div class="large-4 columns">
-    <%= f.input :notify, input_html: {value: @order.notification.notify_string } %>
-  </div>
-
-</div>
-<div class="row">
-  <div class="large-4 columns">
-    <%= f.input :export_references %>
-  </div>
-  <div class="large-4 columns">
-    <%= f.input :forwarding_agent_references %>
-  </div>
-  <div class="large-4 columns">
-    <%= f.input :also_notify %>
-  </div>
-</div>
-<div class="row">
-  <div class="large-3 columns">
-    <%= f.input :place_of_origin %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :place_of_reciept %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :place_of_delivery %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :date_of_reciept do %>
-    <%= f.date_field :date_of_reciept, :value => Time.now.strftime('%Y-%m-%d') %>
-    <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="large-3 columns">
-    <%= f.input :precarriage %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :ocean_vessel %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :loading_port %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :discharge_port %>
-  </div>
-</div>
-<div class="row">
-  <div class="large-6 columns">
-    <%= f.input :instructions %>
-  </div>
-  <div class="large-6 columns">
-    <%= f.input :description %>
-  </div>
-</div>
-<h4>Containers</h4>
-<hr/>
-<div id="containers">
-  <%= simple_fields_for(@containers) do |f|  %>
-    <%= render 'container_fields', f: f %>
-  <% end %>
+<%= simple_form_for([@order, @bill_of_lading], :html => {'data-abide' => ' ' }, validate: true ) do |f| %>
   <div class="row">
-  <%= link_to_add_association "Add Container <i class='fi-plus'></i>".html_safe, f, :containers, :class => "tiny button float-right" %>
+    <div class="large-4 columns">
+      <%= f.input :document_number %>
+    </div>
+    <div class="large-4 columns">
+      <% @liners = BillOfLading::LINERS %>
+      <%= f.input :liner, collection: @liners, include_blank: false %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.input :order_id do %>
+      <%= f.collection_select(:order_id, Order.all, :id, :order_for_select ) %>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="large-3 columns">
-    <%= f.input :freight_charges %>
+  <div class="row">
+    <div class="large-4 columns">
+      <%= f.input :exporter, input_html: {value: @order.client.shipper_string } %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.input :receiver, label: 'Consignee', input_html: {value: @order.consignee.consignee_string } %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.input :notify, input_html: {value: @order.notification.notify_string } %>
+    </div>
+
   </div>
-  <div class="large-3 columns">
-    <%= f.input :revenue_tons %>
+  <div class="row">
+    <div class="large-4 columns">
+      <%= f.input :export_references %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.input :forwarding_agent_references %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.input :also_notify %>
+    </div>
   </div>
-  <div class="large-3 columns">
-    <%= f.input :rate %>
+  <div class="row">
+    <div class="large-3 columns">
+      <%= f.input :place_of_origin %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :place_of_reciept %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :place_of_delivery %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :date_of_reciept do %>
+      <%= f.date_field :date_of_reciept, :value => Time.now.strftime('%Y-%m-%d') %>
+      <% end %>
+    </div>
   </div>
-  <div class="large-3 columns">
-    <%= f.input :prepaid %>
+  <div class="row">
+    <div class="large-3 columns">
+      <%= f.input :precarriage %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :ocean_vessel %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :loading_port %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :discharge_port %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="large-3 columns">
-    <%= f.input :collect %>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.input :instructions %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.input :description %>
+    </div>
   </div>
-  <div class="large-3 columns">
-    <%= f.input :bl_number, label: "BL Number" %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :original_number %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :prepaid_at %>
-  </div>
-</div>
-<div class="row">
-  <div class="large-3 columns">
-    <%= f.input :collect_at %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :place_of_issue %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :issue_date do %>
-    <%= f.date_field :issue_date, :value => Time.now.strftime('%Y-%m-%d') %>
+  <h4>Containers</h4>
+  <hr/>
+  <div id="containers">
+    <%= simple_fields_for(@containers) do |f|  %>
+      <%= render 'container_fields', f: f %>
     <% end %>
+    <div class="row">
+    <%= link_to_add_association "Add Container <i class='fi-plus'></i>".html_safe, f, :containers, :class => "tiny button float-right" %>
+    </div>
   </div>
-  <div class="large-3 columns">
-    <%= f.input :rider_pages %>
+  <div class="row">
+    <div class="large-3 columns">
+      <%= f.input :freight_charges %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :revenue_tons %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :rate %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :prepaid %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="large-3 columns">
-    <%= f.input :exchange_rate_1 %>
+  <div class="row">
+    <div class="large-3 columns">
+      <%= f.input :collect %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :bl_number, label: "BL Number" %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :original_number %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :prepaid_at %>
+    </div>
   </div>
-  <div class="large-3 columns">
-    <%= f.input :exchange_rate_2 %>
+  <div class="row">
+    <div class="large-3 columns">
+      <%= f.input :collect_at %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :place_of_issue %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :issue_date do %>
+      <%= f.date_field :issue_date, :value => Time.now.strftime('%Y-%m-%d') %>
+      <% end %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :rider_pages %>
+    </div>
   </div>
-  <div class="large-3 columns">
-    <%= f.input :service_type %>
+  <div class="row">
+    <div class="large-3 columns">
+      <%= f.input :exchange_rate_1 %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :exchange_rate_2 %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :service_type %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :laden_on_board %>
+    </div>
   </div>
-  <div class="large-3 columns">
-    <%= f.input :laden_on_board %>
+  <div class="actions row">
+    <%= f.button :submit, class: 'expanded' %>
   </div>
-</div>
-<div class="actions row">
-  <%= f.button :submit, class: 'expanded' %>
-</div>
+<% end %>

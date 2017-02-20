@@ -1,49 +1,51 @@
-<div class="row">
-  <div class="large-4 columns">
-    <%= f.input :company %>
-  </div>
-  <div class="large-4 columns">
-    <%= f.input :contact_name %>
-  </div>
-  <div class="large-4 columns">
-    <div class="input-group">
-      <%= f.input :user do %>
-        <%= f.collection_select(:user_id, User.all, :id, :email, {include_blank: 'Assign a User'}, {:class=>'input-group-field'}) %>
-      <% end %>
-
-      <div class="input-group-button" style="padding-top: 25px;">
-        <% if can? :create, User %>
-          <%= link_to "New User", new_user_path, class: 'button' %>
+<%= simple_form_for @consignee, :html => {'data-abide' => ' ' }, validate: true do |f| %>
+  <div class="row">
+    <div class="large-4 columns">
+      <%= f.input :company %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.input :contact_name %>
+    </div>
+    <div class="large-4 columns">
+      <div class="input-group">
+        <%= f.input :user do %>
+          <%= f.collection_select(:user_id, User.all, :id, :email, {include_blank: 'Assign a User'}, {:class=>'input-group-field'}) %>
         <% end %>
+
+        <div class="input-group-button" style="padding-top: 25px;">
+          <% if can? :create, User %>
+            <%= link_to "New User", new_user_path, class: 'button' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="large-4 columns">
-    <%= f.input :email %>
+  <div class="row">
+    <div class="large-4 columns">
+      <%= f.input :email %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.input :telephone %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.input :address %>
+    </div>
   </div>
-  <div class="large-4 columns">
-    <%= f.input :telephone %>
+  <div class="row">
+    <div class="large-3 columns">
+      <%= f.input :city %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :state %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :country, priority: [ "Costa Rica" ] %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :zip %>
+    </div>
   </div>
-  <div class="large-4 columns">
-    <%= f.input :address %>
+  <div class="actions row">
+    <%= f.button :submit, class: 'expanded' %>
   </div>
-</div>
-<div class="row">
-  <div class="large-3 columns">
-    <%= f.input :city %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :state %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :country, priority: [ "Costa Rica" ] %>
-  </div>
-  <div class="large-3 columns">
-    <%= f.input :zip %>
-  </div>
-</div>
-<div class="actions row">
-  <%= f.button :submit, class: 'expanded' %>
-</div>
+<% end %>

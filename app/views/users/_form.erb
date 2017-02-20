@@ -1,6 +1,8 @@
-<div class="row column">
-  <%= f.input :email, label: 'Your email', error: 'Username is mandatory, please specify one' , placeholder: 'user@domain.com' %>
-  <%= f.input :password %>
-  <%= f.input :admin,  as: :boolean, checked_value: true, unchecked_value: false, label: 'User is an Administrator' %>
-  <%= f.button :submit, class: 'expanded' %>
-</div>
+<%= simple_form_for @user, validate: true do |f| %>
+  <div class="row column">
+    <%= f.input :email, label: 'Your email', error: 'Username is mandatory, please specify one' , placeholder: 'user@domain.com' %>
+    <%= f.input :password %>
+    <%= f.input :admin,  as: :boolean, checked_value: true, unchecked_value: false, label: 'User is an Administrator' %>
+    <%= f.button :submit, class: 'expanded' %>
+  </div>
+<% end %>

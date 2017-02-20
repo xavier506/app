@@ -1,64 +1,66 @@
-<div class="row">
-  <div class="large-4 columns">
-    <div class="input-group">
-      <%= f.input :client do %>
-        <%= f.collection_select(:client_id, Client.all, :id, :company, {}, {:class=>'input-group-field'}) %>
-      <% end %>
-
-      <div class="input-group-button" style="padding-top: 25px;">
-        <% if can? :create, Client %>
-          <%= link_to "New Client", new_client_path, class: 'button' %>
+<%= simple_form_for @order, :html => {'data-abide' => ' ' }, validate: true do |f| %>
+  <div class="row">
+    <div class="large-4 columns">
+      <div class="input-group">
+        <%= f.input :client do %>
+          <%= f.collection_select(:client_id, Client.all, :id, :company, {}, {:class=>'input-group-field'}) %>
         <% end %>
+
+        <div class="input-group-button" style="padding-top: 25px;">
+          <% if can? :create, Client %>
+            <%= link_to "New Client", new_client_path, class: 'button' %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="large-4 columns">
-  <%= f.input :consignee_id  do %>
-    <div class="input-group">
+    <div class="large-4 columns">
+    <%= f.input :consignee_id  do %>
+      <div class="input-group">
 
-      <%= f.collection_select(:consignee_id, Consignee.all, :id, :company, {}, {:class=>'input-group-field'}) %>
-      <div class="input-group-button" >
-        <% if can? :create, Consignee %>
-          <%= link_to "New Consignee", new_consignee_path, class: 'button' %>
-        <% end %>
+        <%= f.collection_select(:consignee_id, Consignee.all, :id, :company, {}, {:class=>'input-group-field'}) %>
+        <div class="input-group-button" >
+          <% if can? :create, Consignee %>
+            <%= link_to "New Consignee", new_consignee_path, class: 'button' %>
+          <% end %>
+        </div>
+
       </div>
-
-    </div>
-     <% end %>
-  </div>
-  <div class="large-4 columns">
-  <%= f.input :notification_id  do %>
-    <div class="input-group">
-
-      <%= f.collection_select(:notification_id, Notification.all, :id, :company, {}, {:class=>'input-group-field'}) %>
-      <div class="input-group-button" >
-        <% if can? :create, Notification %>
-          <%= link_to "New Notify", new_notification_path, class: 'button' %>
-        <% end %>
-      </div>
-
-    </div>
-     <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="large-4 columns">
-    <%= f.input :order_date do %>
-      <%= f.date_field :order_date, :value => Time.now.strftime('%Y-%m-%d') %>
     <% end %>
+    </div>
+    <div class="large-4 columns">
+    <%= f.input :notification_id  do %>
+      <div class="input-group">
+
+        <%= f.collection_select(:notification_id, Notification.all, :id, :company, {}, {:class=>'input-group-field'}) %>
+        <div class="input-group-button" >
+          <% if can? :create, Notification %>
+            <%= link_to "New Notify", new_notification_path, class: 'button' %>
+          <% end %>
+        </div>
+
+      </div>
+    <% end %>
+    </div>
   </div>
-  <div class="large-4 columns">
-    <%= f.input :status, collection: Order::STATUSES, include_blank: false  %>
+  <div class="row">
+    <div class="large-4 columns">
+      <%= f.input :order_date do %>
+        <%= f.date_field :order_date, :value => Time.now.strftime('%Y-%m-%d') %>
+      <% end %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.input :status, collection: Order::STATUSES, include_blank: false  %>
+    </div>
+    <div class="large-4 columns">
+      <%= f.input :mode, collection: Order::MODES, include_blank: false %>
+    </div>
   </div>
-  <div class="large-4 columns">
-    <%= f.input :mode, collection: Order::MODES, include_blank: false %>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.input :notes %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="large-12 columns">
-    <%= f.input :notes %>
+  <div class="actions row column">
+      <%= f.button :submit, class: 'expanded' %>
   </div>
-</div>
-<div class="actions row column">
-    <%= f.button :submit, class: 'expanded' %>
-</div>
+<% end %>
