@@ -8,8 +8,9 @@ pdf.bounding_box([472, pdf.cursor - 26], :width => 65, :height => 10) do
 end
 
 # Exporter
-pdf.bounding_box([28, pdf.cursor - 40], :width => 250, :height => 21) do
+pdf.bounding_box([25, pdf.cursor - 40], :width => 253, :height => 22) do
   pdf.text @phytosanitary.exporter.upcase, :size => 7
+  pdf.transparent(0.5) { pdf.stroke_bounds }
 end
 
 #Consignee
