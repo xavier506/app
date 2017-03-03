@@ -56,6 +56,40 @@
     </div>
   </div>
   <div class="row">
+    <div class="large-3 columns">
+      <%= f.input :booking_number %>
+    </div>
+
+    <div class="large-3 columns">
+      <%= f.input :customer_invoice %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :dua %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :fad %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
+      <% @liners = Order::LINERS %>
+      <%= f.input :liner, collection: @liners %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :vessel %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :vessel_departure do %>
+      <%= f.date_field :vessel_departure, :value => Time.now.strftime('%Y-%m-%d') %>
+      <% end %>
+    </div>
+    <div class="large-3 columns">
+    <%= f.input :cutoff do %>
+      <%= f.date_field :cutoff, :value => Time.now.strftime('%Y-%m-%d') %>
+    <% end %>
+    </div>
+  </div>
+  <div class="row">
     <div class="large-12 columns">
       <%= f.input :notes %>
     </div>

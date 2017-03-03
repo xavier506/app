@@ -1,18 +1,11 @@
 class BillOfLading < ApplicationRecord
-  belongs_to :order
+  belongs_to :order, inverse_of: :bill_of_ladings
   has_one :client, :through => :order
   has_one :consignee, :through => :order
   has_many :notifications, :through => :order
-  has_many :containers, inverse_of: :bill_of_lading
-
-  accepts_nested_attributes_for :containers, reject_if: :all_blank, allow_destroy: true
 
   #Options for field selection
   LINERS = ['EVERGREEN','MSC','HAPAG-LLOYD','COSCO','CMA','NYK','MOL']
-  CONTAINER_TYPES = ['40’', '40H', '20’', '40HQ', '40GP', '20GP', '40HC', '40DV', '40RH', '40RF']
-  UNIT_TYPES = ['Piezas / Pieces','Cajas / Boxes','Trozas / Logs','Bundles']
-  VOLUME_UNITS = ['CBM','CBFT']
-  WEIGHT_UNITS = ['KGS','TONS']
 
   validates :document_number,
     :exporter,
@@ -30,7 +23,6 @@ class BillOfLading < ApplicationRecord
     # :rate,
     # :prepaid,
     # :collect,
-    # :bl_number,
     # :prepaid_at,
     # :collect_at,
     # :place_of_issue,

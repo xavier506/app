@@ -25,17 +25,37 @@
     <dt>Notify :</dt>
     <dd><%= link_to @order.notification.company, @order.notification %></dd>
   </div>
-  <div class="large-4 columns">
+  <div class="large-3 columns">
    <dt>Order Date :</dt>
    <dd><%= @order.order_date %></dd>
   </div>
-  <div class="large-4 columns">
+  <div class="large-3 columns">
     <dt>Mode :</dt>
     <dd><%= @order.mode %></dd>
   </div>
-  <div class="large-4 columns">
+  <div class="large-3 columns">
     <dt>Status :</dt>
     <dd><%= @order.status %></dd>
+  </div>
+  <div class="large-3 columns">
+    <dt>Booking Number :</dt>
+    <dd><%= @order.booking_number %></dd>
+  </div>
+  <div class="large-3 columns">
+    <dt>Booking Number :</dt>
+    <dd><%= @order.booking_number %></dd>
+  </div>
+  <div class="large-3 columns">
+    <dt>Liner :</dt>
+    <dd><%= @order.liner %></dd>
+  </div>
+  <div class="large-3 columns">
+    <dt>Vessel :</dt>
+    <dd><%= @order.vessel %></dd>
+  </div>
+  <div class="large-3 columns">
+    <dt>Cutoff :</dt>
+    <dd><%= @order.cutoff %></dd>
   </div>
   <div class="large-12 columns">
     <dt>Notes :</dt>
@@ -45,22 +65,63 @@
 </div>
 <br/>
 <div class="row column">
+  <h4>Associated Containers</h4>
+  <table class="hover">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Shipper Seal</th>
+      <th>Carrier Seal</th>
+      <th>Container Number</th>
+      <th>Container Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @order.containers.each do |cont| %>
+    <tr>
+      <td><%= link_to cont.id, order_container_path(cont.order.id, cont.id) %></td>
+      <td><%= cont.shipper_seal %></td>
+      <td><%= cont.carrier_seal %></td>
+      <td><%= cont.container_number %></td>
+      <td><%= cont.container_type %></td>
+      <td nowrap>
+        <% if can? :read, Container %>
+          <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, order_container_path(cont.order.id, cont.id), :title => t('bill_of_ladings.show.hover_title') %>
+        <% end %>
+        <% if can? :update, Container %>
+          <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_order_container_path(cont.order.id, cont.id), :title => t('containers.edit.hover_title') %>
+        <% end %>
+        <% if can? :destroy, Container %>
+          <%= link_to '<i class="delete fi-x"></i>'.html_safe, order_container_path(cont.order.id, cont.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('containers.destroy.hover_title') %>
+        <% end %>
+      </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <% if can? :create, Container %>
+    <%= link_to("New Container <i class='fi-plus'></i>".html_safe, new_order_container_path(@order.id), :class => "button float-right" ) %>
+  <% end %>
+  Total Units: <%= @order.total_units(@order.id) %>
+  Total Weight: <%= @order.total_weight(@order.id) %>
+</div>
+<br/>
+<div class="row column">
   <h4>Associated Bill of Ladings</h4>
   <table class="hover">
     <thead>
       <th>#</th>
+      <th>Document Number</th>
       <th>Liner</th>
-      <th>Exporter</th>
-      <th>Consignee</th>
       <th>Actions</th>
     </thead>
     <tbody>
     <% @order.bill_of_ladings.each do |bl| %>
       <tr>
         <td><%= link_to bl.id, order_path(bl.id) %></td>
+        <td><%= bl.bl_number %></td>
         <td><%= bl.liner %></td>
-        <td><%= bl.exporter %></td>
-        <td><%= bl.receiver %></td>
         <td nowrap>
           <% if can? :read, BillOfLading %>
             <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, order_bill_of_lading_path(bl.order.id, bl.id), :title => t('bill_of_ladings.show.hover_title') %>

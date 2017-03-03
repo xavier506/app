@@ -128,14 +128,14 @@ elsif @bill_of_lading.liner == 'COSCO'
       pdf.text @bill_of_lading.exporter.upcase, :size => 7
     end
 
-    # Document Number
+    # Booking Number (comes from order)
     pdf.bounding_box([300, pdf.cursor + 59], :width => 114, :height => 10) do
-      pdf.text @bill_of_lading.document_number.upcase, :size => 8
+      pdf.text @bill_of_lading.order.booking_number.upcase, :size => 8
     end
 
-    # BL Number
+    # Document Number
     pdf.bounding_box([420, pdf.cursor + 10], :width => 114, :height => 10) do
-      pdf.text @bill_of_lading.bl_number.upcase, :size => 7
+      pdf.text @bill_of_lading.document_number.upcase, :size => 7
     end
 
     #Export References

@@ -1,0 +1,54 @@
+<h3>
+  <span class="float-left">
+    Container #<%= @container.id %>
+    <small>on <%= link_to("order # #{@container.order.id}", @container.order) %></small>
+  </span>
+  <span class="float-right">
+    <% if can? :read, Container %>
+      <%= link_to("View All Containers <i class='fi-magnifying-glass'></i>".html_safe, @container.order, :class => "tiny button") %>
+    <% end %>
+    <% if can? :update, @container %>
+      <%= link_to("Edit This Container <i class='fi-page-edit'></i>".html_safe, edit_order_container_path(@container.order, @container.id), :class => "tiny button") %>
+    <% end %>
+    <% if can? :read, @container %>
+      <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_container_path(@container.order, @container, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
+    <% end %>
+  </span>
+</h3>
+
+<div class="details row column">
+  <dl class="inline">
+    <div class="large-3 columns">
+      <dt>Container Number:</dt>
+      <dd><%= @container.container_number %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Container Type:</dt>
+      <dd><%= @container.container_type %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Shipper Seal:</dt>
+      <dd><%= @container.shipper_seal %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Carrier Seal:</dt>
+      <dd><%= @container.carrier_seal %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Units:</dt>
+      <dd><%= @container.units %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Volume:</dt>
+      <dd><%= @container.volume %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Tare Weight:</dt>
+      <dd><%= @container.tare_weight %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Gross Weight:</dt>
+      <dd><%= @container.gross_weight %></dd>
+    </div>
+  </dl>
+</div>

@@ -10,9 +10,8 @@ Rails.application.routes.draw do
   resources :orders do
     resources :certificates
     resources :phytosanitaries
-    resources :bill_of_ladings  do
-      resources :containers
-    end
+    resources :bill_of_ladings
+    resources :containers
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

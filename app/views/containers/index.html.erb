@@ -1,0 +1,38 @@
+<h3>Conatainers</h3>
+<table class="hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Shipper Seal</th>
+      <th>Carrier Seal</th>
+      <th>Container Number</th>
+      <th>Container Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @containers.each do |con| %>
+    <tr>
+      <td><%= link_to con.id, order_containers_path(con.order.id, con.id) %></td>
+      <td><%= con.shipper_seal %></td>
+      <td><%= con.carrier_seal %></td>
+      <td><%= con.container_number %></td>
+      <td><%= con.container_type %></td>
+      <td nowrap>
+        <% if can? :read, con %>
+          <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, order_container_path(con.order.id, con.id), :title => t('containers.show.hover_title') %>
+        <% end %>
+        <% if can? :update, con %>
+          <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_order_container_path(con.order.id, con.id), :title => t('containers.edit.hover_title') %>
+        <% end %>
+        <% if can? :destroy, con %>
+          <%= link_to '<i class="delete fi-x"></i>'.html_safe, order_container_path(con.order.id, con.id),method: :delete, data: { confirm: "Are you sure?" }, :title => t('containers.destroy.hover_title') %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% if can? :create, Container %>
+  <%= link_to "New Container <i class='fi-plus'></i>".html_safe, new_order_container_path, :class => "button float-right" %>
+<% end %>

@@ -1,10 +1,9 @@
 class BillOfLadingsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource :order
-  load_and_authorize_resource :through => :order, shallow: true
+  load_and_authorize_resource :through => :order
 
   def new
-    @containers = Container.new
   end
 
   def index
@@ -14,7 +13,6 @@ class BillOfLadingsController < ApplicationController
   end
 
   def edit
-    @containers = Container.find(@order.id)
   end
 
   def create
@@ -65,7 +63,6 @@ class BillOfLadingsController < ApplicationController
       :rate,
       :prepaid,
       :collect,
-      :bl_number,
       :original_number,
       :prepaid_at,
       :collect_at,
@@ -79,22 +76,7 @@ class BillOfLadingsController < ApplicationController
       :liner,
       :notify,
       :also_notify,
-      :order_id,
-      containers_attributes: [
-        :shipper_seal,
-        :carrier_seal,
-        :container_number,
-        :container_type,
-        :units,
-        :unit_type,
-        :volume,
-        :volume_units,
-        :tare_weight,
-        :gross_weight,
-        :weight_units,
-        :bill_of_lading,
-        :_destroy
-      ]
+      :order_id
     )
   end
 end

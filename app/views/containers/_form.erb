@@ -1,4 +1,4 @@
-<div class="nested-fields">
+<%= simple_form_for([@order, @container], :html => {'data-abide' => ' ' }, validate: true) do |f| %>
   <div class="row">
     <div class="large-3 columns">
       <%= f.input :container_number %>
@@ -10,10 +10,7 @@
       <%= f.input :carrier_seal %>
     </div>
     <div class="large-2 columns">
-      <%= f.input :container_type, collection: BillOfLading::CONTAINER_TYPES, include_blank: false  %>
-    </div>
-    <div class="large-1 columns">
-      <%= link_to_remove_association '<i class="fi-x"></i>'.html_safe, f, {class: "tiny icon float-right", style: "color: red"} %>
+      <%= f.input :container_type, collection: Container::CONTAINER_TYPES, include_blank: false  %>
     </div>
   </div>
   <div class="row">
@@ -21,13 +18,13 @@
       <%= f.input :units %>
     </div>
     <div class="large-2 columns">
-      <%= f.input :unit_type, collection: BillOfLading::UNIT_TYPES, include_blank: false %>
+      <%= f.input :unit_type, collection: Container::UNIT_TYPES, include_blank: false %>
     </div>
     <div class="large-2 columns">
       <%= f.input :volume %>
     </div>
     <div class="large-1 columns">
-      <%= f.input :volume_units, label: "Units", collection: BillOfLading::VOLUME_UNITS, include_blank: false %>
+      <%= f.input :volume_units, label: "Units", collection: Container::VOLUME_UNITS, include_blank: false %>
     </div>
     <div class="large-2 columns">
       <%= f.input :tare_weight %>
@@ -36,8 +33,10 @@
       <%= f.input :gross_weight %>
     </div>
     <div class="large-1 columns">
-      <%= f.input :weight_units, label: "Units", collection: BillOfLading::WEIGHT_UNITS, include_blank: false %>
+      <%= f.input :weight_units, label: "Units", collection: Container::WEIGHT_UNITS, include_blank: false %>
     </div>
   </div>
-  <hr/>
-</div>
+    <div class="actions row">
+    <%= f.button :submit, class: 'expanded' %>
+  </div>
+<% end %>

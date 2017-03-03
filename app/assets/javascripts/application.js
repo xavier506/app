@@ -16,6 +16,5 @@
 //= require turbolinks
 //= require_tree .
 //= require rails.validations.simple_form
-//= require cocoon
 
 $(function(){ $(document).foundation(); });

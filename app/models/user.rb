@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_one :client
+  has_one :client, inverse_of: :user
   has_one :consignee
   has_one :notification
   # Include default devise modules. Others available are:

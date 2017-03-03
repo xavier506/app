@@ -5,6 +5,14 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.text :notes
       t.string :status
       t.string :mode
+      t.string :booking_number
+      t.string :liner
+      t.string :vessel
+      t.date :vessel_departure
+      t.date :cutoff
+      t.string :dua
+      t.string :fad
+      t.string :customer_invoice
       t.references :client
       t.references :consignee
       t.references :notification

@@ -12,7 +12,8 @@ class AddContainerTable < ActiveRecord::Migration[5.0]
         t.decimal :tare_weight
         t.decimal :gross_weight
         t.string :weight_units
-        t.references :bill_of_lading
+        t.references :order
+        t.timestamps
     end
   end
 end

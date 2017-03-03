@@ -29,7 +29,7 @@ gem 'foundation-rails'
 gem 'simple_form'
 gem 'countries'
 gem 'country_select'
-gem 'cocoon'
+#gem 'cocoon'
 
 # Use client_side_validations for error messages
 gem 'client_side_validations'

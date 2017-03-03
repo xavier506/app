@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20170128150517) do
     t.text     "rate"
     t.text     "prepaid"
     t.text     "collect"
-    t.string   "bl_number"
     t.string   "original_number"
     t.string   "prepaid_at"
     t.string   "collect_at"
@@ -112,19 +111,21 @@ ActiveRecord::Schema.define(version: 20170128150517) do
   end
 
   create_table "containers", force: :cascade do |t|
-    t.string  "shipper_seal"
-    t.string  "carrier_seal"
-    t.string  "container_number"
-    t.string  "container_type"
-    t.integer "units"
-    t.string  "unit_type"
-    t.decimal "volume"
-    t.string  "volume_units"
-    t.decimal "tare_weight"
-    t.decimal "gross_weight"
-    t.string  "weight_units"
-    t.integer "bill_of_lading_id"
-    t.index ["bill_of_lading_id"], name: "index_containers_on_bill_of_lading_id"
+    t.string   "shipper_seal"
+    t.string   "carrier_seal"
+    t.string   "container_number"
+    t.string   "container_type"
+    t.integer  "units"
+    t.string   "unit_type"
+    t.decimal  "volume"
+    t.string   "volume_units"
+    t.decimal  "tare_weight"
+    t.decimal  "gross_weight"
+    t.string   "weight_units"
+    t.integer  "order_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["order_id"], name: "index_containers_on_order_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -148,11 +149,19 @@ ActiveRecord::Schema.define(version: 20170128150517) do
     t.text     "notes"
     t.string   "status"
     t.string   "mode"
+    t.string   "booking_number"
+    t.string   "liner"
+    t.string   "vessel"
+    t.date     "vessel_departure"
+    t.date     "cutoff"
+    t.string   "dua"
+    t.string   "fad"
+    t.string   "customer_invoice"
     t.integer  "client_id"
     t.integer  "consignee_id"
     t.integer  "notification_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
     t.index ["consignee_id"], name: "index_orders_on_consignee_id"
     t.index ["notification_id"], name: "index_orders_on_notification_id"

@@ -24,7 +24,6 @@ class AddBillOfLadingTable < ActiveRecord::Migration[5.0]
       t.text :rate
       t.text :prepaid
       t.text :collect
-      t.string :bl_number
       t.string :original_number
       t.string :prepaid_at
       t.string :collect_at

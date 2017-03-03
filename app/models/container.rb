@@ -1,5 +1,5 @@
 class Container < ApplicationRecord
-  belongs_to :bill_of_lading
+  belongs_to :order
 
   #Options for field selection
   CONTAINER_TYPES = ['40’', '40H', '20’', '40HQ', '40GP', '20GP', '40HC', '40DV', '40RH', '40RF']
@@ -14,7 +14,7 @@ class Container < ApplicationRecord
     :volume_units,
     :gross_weight,
     :weight_units,
-    :bill_of_lading_id,
+    :order_id,
   presence: true
 
 end

@@ -3,6 +3,7 @@ class Certificate < ApplicationRecord
   has_one :client, :through => :order
   has_one :consignee, :through => :order
   has_one :notification, :through => :order
+  has_many :containers, :through => :order
 
   #Options for field selection
   MODES = ['Ocean / Maritimo','Land','Air', 'Export', 'Import', 'Other']

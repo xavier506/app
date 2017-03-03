@@ -74,16 +74,6 @@
       <%= f.input :description %>
     </div>
   </div>
-  <h4>Containers</h4>
-  <hr/>
-  <div id="containers">
-    <%= simple_fields_for(@containers) do |f|  %>
-      <%= render 'container_fields', f: f %>
-    <% end %>
-    <div class="row">
-    <%= link_to_add_association "Add Container <i class='fi-plus'></i>".html_safe, f, :containers, :class => "tiny button float-right" %>
-    </div>
-  </div>
   <div class="row">
     <div class="large-3 columns">
       <%= f.input :freight_charges %>
@@ -101,9 +91,6 @@
   <div class="row">
     <div class="large-3 columns">
       <%= f.input :collect %>
-    </div>
-    <div class="large-3 columns">
-      <%= f.input :bl_number, label: "BL Number" %>
     </div>
     <div class="large-3 columns">
       <%= f.input :original_number %>

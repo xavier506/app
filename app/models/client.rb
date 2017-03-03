@@ -1,5 +1,5 @@
 class Client < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, inverse_of: :client
   has_many :orders, :dependent => :restrict_with_error
 
   validates :company, :email, presence: true

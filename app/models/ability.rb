@@ -32,9 +32,7 @@ class Ability
     if user.admin?
         can :manage, :all
     else
-        can :read, Order do |order|
-            order.try(:user) == user
-        end
+        can :read, Order, client_id: user.client.id
     end
   end
 end
