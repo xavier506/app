@@ -21,6 +21,20 @@ class Order < ApplicationRecord
     Container.where(order_id: order_id).sum(:gross_weight)
   end
 
+  def net_weight(order_id)
+    Container.where(order_id: order_id).sum(:gross_weight)
+    #gross weight -  tare_weight
+  end
+
+  def vgm
+    #container_tare + gross weight
+  end
+
+  def overpaylod
+    #gross_weight - payload
+    #only display if overload is greater than 0 than include value
+  end
+
   validates :client, presence: true
   validates :consignee, presence: true
   validates :notification, presence: true

@@ -41,19 +41,34 @@ class ContainersController < ApplicationController
 
   def container_params
     params.require(:container).permit(
-        :shipper_seal,
-        :carrier_seal,
-        :container_number,
-        :container_type,
-        :units,
-        :unit_type,
-        :volume,
-        :volume_units,
-        :tare_weight,
-        :gross_weight,
-        :weight_units,
-        :bill_of_lading,
-        :_destroy
+      :shipper_seal,
+      :carrier_seal,
+      :container_number,
+      :container_type,
+      :units,
+      :unit_type,
+      :volume,
+      :volume_units,
+      :tare_weight,
+      :gross_weight,
+      :weight_units,
+      :booking_number,
+      :liner,
+      :gate_in,
+      :gate_out,
+      :tir,
+      :vessel,
+      :client,
+      :license_plate,
+      :chasis,
+      :truck_tare,
+      :payload,
+      :treatment_date,
+      :fumigation_doc,
+      :fumigation_seal,
+      :inspector,
+      :farm,
+      :order_id
     )
   end
 end

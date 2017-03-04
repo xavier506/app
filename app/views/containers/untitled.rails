@@ -1,5 +1,5 @@
-<%= simple_form_for([@order, @container], :html => {'data-abide' => ' ' }, validate: true) do |f| %>
-       <%#= :order_id %>
+
+
   <div class="row">
     <div class="large-2 columns">
       <%= f.input :container_number %>
@@ -102,7 +102,3 @@
       <%= f.input :farm %>
     </div>
   </div>
-    <div class="actions row">
-    <%= f.button :submit, class: 'expanded' %>
-  </div>
-<% end %>
