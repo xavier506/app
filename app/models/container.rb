@@ -7,6 +7,26 @@ class Container < ApplicationRecord
   VOLUME_UNITS = ['CBM','CBFT']
   WEIGHT_UNITS = ['KGS','TONS']
 
+  def net_weight
+    gross_weight - tare_weight
+  end
+
+  def vgm
+    tare_weight + gross_weight
+  end
+
+  def overpayload
+    if payload != nil
+      overpayload = gross_weight - payload
+      #only display if overload is greater than 0 than include value
+      if overpayload > 0
+        overpayload
+      else
+        nil
+      end
+    end
+  end
+
   validates :container_number,
     :units,
     :unit_type,

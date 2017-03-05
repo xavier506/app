@@ -21,8 +21,8 @@ class AddContainerTable < ActiveRecord::Migration[5.0]
         t.decimal :tare_weight
         t.decimal :gross_weight
         t.string :weight_units
-        t.string :truck_tare
-        t.string :payload
+        t.decimal :truck_tare
+        t.decimal :payload
         t.string :treatment_date
         t.string :fumigation_doc
         t.string :fumigation_seal

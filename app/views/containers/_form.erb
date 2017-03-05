@@ -24,7 +24,8 @@
       <%= f.input :booking_number %>
     </div>
     <div class="large-3 columns">
-      <%= f.input :liner %>
+      <% @liners = Order::LINERS %>
+      <%= f.input :liner, collection: @liners %>
     </div>
     <div class="large-3 columns">
     <%= f.input :gate_in do %>
