@@ -25,7 +25,7 @@
     </div>
     <div class="large-3 columns">
       <% @liners = Order::LINERS %>
-      <%= f.input :liner, collection: @liners %>
+      <%= f.input :liner, collection: @liners, default: @order.liner %>
     </div>
     <div class="large-3 columns">
     <%= f.input :gate_in do %>
@@ -43,10 +43,10 @@
       <%= f.input :tir %>
     </div>
     <div class="large-3 columns">
-      <%= f.input :vessel %>
+      <%= f.input :vessel, input_html: {value: @order.vessel } %>
     </div>
     <div class="large-3 columns">
-      <%= f.input :client %>
+      <%= f.input :client, input_html: {value: @order.client.company }  %>
     </div>
     <div class="large-3 columns">
       <%= f.input :license_plate %>

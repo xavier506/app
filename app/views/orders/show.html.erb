@@ -66,6 +66,24 @@
 <br/>
 <div class="row column">
   <h4>Associated Containers</h4>
+  <dl class="inline">
+    <div class="large-3 columns">
+      <dt>Total Containers :</dt>
+      <dd><%= @order.total_containers(@order.id) %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Total Units :</dt>
+      <dd><%= @order.total_units(@order.id) %> <%= @order.unit_type(@order.id) %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Total Weight :</dt>
+      <dd><%= @order.total_weight(@order.id) %> <%= @order.weight_units(@order.id) %></dd>
+    </div>
+    <div class="large-3 columns">
+      <dt>Total Volume :</dt>
+      <dd><%= @order.total_volume(@order.id) %> <%= @order.volume_units(@order.id) %></dd>
+    </div>
+  </dl>
   <table class="hover">
     <thead>
     <tr>
@@ -103,8 +121,6 @@
   <% if can? :create, Container %>
     <%= link_to("New Container <i class='fi-plus'></i>".html_safe, new_order_container_path(@order.id), :class => "button float-right" ) %>
   <% end %>
-  Total Units: <%= @order.total_units(@order.id) %>
-  Total Weight: <%= @order.total_weight(@order.id) %>
 </div>
 <br/>
 <div class="row column">
