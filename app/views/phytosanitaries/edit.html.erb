@@ -1,4 +1,4 @@
-<h3>Edit Phytosanitary Certificate</h3>
+<h3>Edit Phytosanitary Certificate <small>on <%= link_to("order # #{@phytosanitary.order.id}", @phytosanitary.order) %></h3>
 <div class="form-container">
   <%= render 'form' %>
 </div>

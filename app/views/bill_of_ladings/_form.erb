@@ -57,7 +57,7 @@
       <%= f.input :precarriage %>
     </div>
     <div class="large-3 columns">
-      <%= f.input :ocean_vessel %>
+      <%= f.input :ocean_vessel, input_html: {value: @order.vessel } %>
     </div>
     <div class="large-3 columns">
       <%= f.input :loading_port %>

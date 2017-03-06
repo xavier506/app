@@ -19,11 +19,11 @@ class AddBillOfLadingTable < ActiveRecord::Migration[5.0]
       t.string :discharge_port
       t.text :instructions
       t.text :description
-      t.text :freight_charges
-      t.text :revenue_tons
-      t.text :rate
-      t.text :prepaid
-      t.text :collect
+      t.string :freight_charges
+      t.string :revenue_tons
+      t.string :rate
+      t.string :prepaid
+      t.string :collect
       t.string :original_number
       t.string :prepaid_at
       t.string :collect_at
@@ -31,8 +31,8 @@ class AddBillOfLadingTable < ActiveRecord::Migration[5.0]
       t.date :issue_date
       t.decimal :exchange_rate_1
       t.decimal :exchange_rate_2
-      t.text :service_type
-      t.text :laden_on_board
+      t.string :service_type
+      t.string :laden_on_board
       t.integer :rider_pages
       t.decimal :total_cmb
       t.decimal :verfified_gross_mass

@@ -1,4 +1,4 @@
-<h3>Edit Bill of Lading</h3>
+<h3>Edit Bill of Lading <small>on <%= link_to("order # #{@bill_of_lading.order.id}", @bill_of_lading.order) %></h3>
 <div class="form-container">
   <%= render 'form' %>
 </div>

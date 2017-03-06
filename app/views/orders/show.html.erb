@@ -105,7 +105,7 @@
       <td><%= cont.container_type %></td>
       <td nowrap>
         <% if can? :read, Container %>
-          <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, order_container_path(cont.order.id, cont.id), :title => t('bill_of_ladings.show.hover_title') %>
+          <%= link_to '<i class="show fi-magnifying-glass"></i>'.html_safe, order_container_path(cont.order.id, cont.id), :title => t('containers.show.hover_title') %>
         <% end %>
         <% if can? :update, Container %>
           <%= link_to '<i class="edit fi-page-edit"></i>'.html_safe, edit_order_container_path(cont.order.id, cont.id), :title => t('containers.edit.hover_title') %>
@@ -119,7 +119,7 @@
     </tbody>
   </table>
   <% if can? :create, Container %>
-    <%= link_to("New Container <i class='fi-plus'></i>".html_safe, new_order_container_path(@order.id), :class => "button float-right" ) %>
+    <%= link_to("Add Container <i class='fi-plus'></i>".html_safe, new_order_container_path(@order.id), :class => "button float-right" ) %>
   <% end %>
 </div>
 <br/>
@@ -154,7 +154,7 @@
     </tbody>
   </table>
   <% if can? :create, BillOfLading %>
-    <%= link_to("New BL <i class='fi-plus'></i>".html_safe, new_order_bill_of_lading_path(@order.id), :class => "button float-right" ) %>
+    <%= link_to("Add BL <i class='fi-plus'></i>".html_safe, new_order_bill_of_lading_path(@order.id), :class => "button float-right" ) %>
   <% end %>
 </div>
 <div class="row column">
@@ -192,7 +192,7 @@
     </tbody>
   </table>
   <% if can? :create, Certificate %>
-    <%= link_to("New CO <i class='fi-plus'></i>".html_safe, new_order_certificate_path(@order.id), :class => "button float-right" ) %>
+    <%= link_to("Add CO <i class='fi-plus'></i>".html_safe, new_order_certificate_path(@order.id), :class => "button float-right" ) %>
   <% end %>
 </div>
 
@@ -236,6 +236,6 @@
 </table>
 <% if can? :create, Phytosanitary %>
   <%# new_phyto_path = polymorphic_path([@order, @phytosanitary]) %>
-  <%= link_to("New Phyto <i class='fi-plus'></i>".html_safe, new_order_phytosanitary_path(@order.id), :class => "button float-right" ) %>
+  <%= link_to("Add Phyto <i class='fi-plus'></i>".html_safe, new_order_phytosanitary_path(@order.id), :class => "button float-right" ) %>
 <% end %>
 </div>
