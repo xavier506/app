@@ -10,9 +10,6 @@
     <% if can? :update, @container %>
       <%= link_to("Edit This Container <i class='fi-page-edit'></i>".html_safe, edit_order_container_path(@container.order, @container.id), :class => "tiny button") %>
     <% end %>
-    <% if can? :read, @container %>
-      <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_container_path(@container.order, @container, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
-    <% end %>
   </span>
 </h3>
 
