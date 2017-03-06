@@ -29,12 +29,12 @@
     </div>
     <div class="large-3 columns">
     <%= f.input :gate_in do %>
-    <%= f.date_field :gate_in, :value => Time.now.strftime('%Y-%m-%d') %>
+    <%= f.date_field :gate_in, value: @container.gate_in.present? ? @container.gate_in : Time.now.strftime('%Y-%m-%d') %>
     <% end %>
     </div>
     <div class="large-3 columns">
      <%= f.input :gate_out do %>
-     <%= f.date_field :gate_out, :value => Time.now.strftime('%Y-%m-%d') %>
+     <%= f.date_field :gate_out, value: @container.gate_out.present? ? @container.gate_out : Time.now.strftime('%Y-%m-%d') %>
      <% end %>
     </div>
   </div>
@@ -43,10 +43,10 @@
       <%= f.input :tir %>
     </div>
     <div class="large-3 columns">
-      <%= f.input :vessel, input_html: {value: @order.vessel } %>
+      <%= f.input :vessel, input_html: { value: @container.vessel.present? ? @container.vessel : @order.vessel } %>
     </div>
     <div class="large-3 columns">
-      <%= f.input :client, input_html: {value: @order.client.company }  %>
+      <%= f.input :client, input_html: { value: @container.client.present? ? @container.client : @order.client.company }  %>
     </div>
     <div class="large-3 columns">
       <%= f.input :license_plate %>

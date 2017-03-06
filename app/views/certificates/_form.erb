@@ -1,10 +1,10 @@
 <%= simple_form_for([@order, @certificate], :html => {'data-abide' => ' ' }, validate: true ) do |f| %>
   <div class="row">
     <div class="large-6 columns">
-      <%= f.input :shipper, input_html: {value: @order.client.shipper_string }  %>
+      <%= f.input :shipper, input_html: {value: @certificate.shipper.present? ? @certificate.shipper : @order.client.shipper_string }%>
     </div>
     <div class="large-6 columns">
-      <%= f.input :receiver, input_html: {value: @order.consignee.consignee_string }  %>
+      <%= f.input :receiver, input_html: {value: @certificate.receiver.present? ? @certificate.receiver : @order.consignee.consignee_string }  %>
     </div>
   </div>
   <div class="row">
@@ -25,7 +25,7 @@
       <%= f.input :mode, collection: Order::MODES, include_blank: false %>
     </div>
     <div class="large-4 columns">
-      <%= f.input :notify, input_html: {value: @order.notification.notify_string } %>
+      <%= f.input :notify, input_html: {value: @certificate.notify.present? ? @certificate.notify : @order.notification.notify_string } %>
     </div>
   </div>
   <div class="row">
@@ -52,19 +52,19 @@
   </div>
   <div class="row">
     <div class="large-2 columns">
-      <%= f.input :units %>
+      <%= f.input :units, input_html: {value: @certificate.units.present? ? @certificate.units : @order.total_units(@order.id) } %>
     </div>
     <div class="large-2 columns">
       <%= f.input :unit_type, collection: Certificate::UNIT_TYPES, include_blank: false %>
     </div>
     <div class="large-2 columns">
-      <%= f.input :volume %>
+      <%= f.input :volume, input_html: {value: @certificate.volume.present? ? @certificate.volume : @order.total_volume(@order.id) } %>
     </div>
     <div class="large-2 columns">
     <%= f.input :volume_units, collection: Certificate::VOLUME_UNITS, include_blank: false %>
     </div>
     <div class="large-2 columns">
-      <%= f.input :gross_weight %>
+      <%= f.input :gross_weight, input_html: {value: @certificate.gross_weight.present? ? @certificate.gross_weight : @order.total_weight(@order.id) } %>
     </div>
     <div class="large-2 columns">
       <%= f.input :weight_units, collection: Certificate::WEIGHT_UNITS, include_blank: false %>

@@ -8,11 +8,15 @@ class Container < ApplicationRecord
   WEIGHT_UNITS = ['KGS','TONS']
 
   def net_weight
-    gross_weight - tare_weight
+    if gross_weight && tare_weight
+      gross_weight - tare_weight
+    end
   end
 
   def vgm
-    tare_weight + gross_weight
+    if gross_weight && tare_weight
+      tare_weight + gross_weight
+    end
   end
 
   def overpayload

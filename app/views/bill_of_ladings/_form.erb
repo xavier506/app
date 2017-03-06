@@ -15,13 +15,13 @@
   </div>
   <div class="row">
     <div class="large-4 columns">
-      <%= f.input :exporter, input_html: {value: @order.client.shipper_string } %>
+      <%= f.input :exporter, input_html: {value: @bill_of_lading.exporter.present? ? @bill_of_lading.exporter : @order.client.shipper_string } %>
     </div>
     <div class="large-4 columns">
-      <%= f.input :receiver, label: 'Consignee', input_html: {value: @order.consignee.consignee_string } %>
+      <%= f.input :receiver, label: 'Consignee', input_html: {value: @bill_of_lading.receiver.present? ? @bill_of_lading.receiver : @order.consignee.consignee_string } %>
     </div>
     <div class="large-4 columns">
-      <%= f.input :notify, input_html: {value: @order.notification.notify_string } %>
+      <%= f.input :notify, input_html: {value: @bill_of_lading.notify.present? ? @bill_of_lading.notify : @order.notification.notify_string } %>
     </div>
 
   </div>
@@ -48,7 +48,7 @@
     </div>
     <div class="large-3 columns">
       <%= f.input :date_of_reciept do %>
-      <%= f.date_field :date_of_reciept, :value => Time.now.strftime('%Y-%m-%d') %>
+      <%= f.date_field :date_of_reciept,  value: @bill_of_lading.date_of_reciept.present? ? @bill_of_lading.date_of_reciept : Time.now.strftime('%Y-%m-%d') %>
       <% end %>
     </div>
   </div>
@@ -57,7 +57,7 @@
       <%= f.input :precarriage %>
     </div>
     <div class="large-3 columns">
-      <%= f.input :ocean_vessel, input_html: {value: @order.vessel } %>
+      <%= f.input :ocean_vessel, input_html: { value: @bill_of_lading.ocean_vessel.present? ? @bill_of_lading.ocean_vessel : @order.vessel } %>
     </div>
     <div class="large-3 columns">
       <%= f.input :loading_port %>
@@ -108,7 +108,7 @@
     </div>
     <div class="large-3 columns">
       <%= f.input :issue_date do %>
-      <%= f.date_field :issue_date, :value => Time.now.strftime('%Y-%m-%d') %>
+      <%= f.date_field :issue_date, value: @bill_of_lading.issue_date.present? ? @bill_of_lading.issue_date : Time.now.strftime('%Y-%m-%d')  %>
       <% end %>
     </div>
     <div class="large-3 columns">
