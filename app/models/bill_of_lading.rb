@@ -4,6 +4,10 @@ class BillOfLading < ApplicationRecord
   has_one :consignee, :through => :order
   has_many :notifications, :through => :order
 
+  def containers(order_id)
+    Container.where(order_id: order_id)
+  end
+
   #Options for field selection
   LINERS = ['EVERGREEN','MSC','HAPAG-LLOYD','COSCO','CMA','NYK','MOL']
 

@@ -25,6 +25,18 @@
     <dt>Notify :</dt>
     <dd><%= link_to @order.notification.company, @order.notification %></dd>
   </div>
+  <div class="large-4 columns">
+    <dt>Liner :</dt>
+    <dd><%= @order.liner %></dd>
+  </div>
+  <div class="large-4 columns">
+    <dt>Vessel :</dt>
+    <dd><%= @order.vessel %></dd>
+  </div>
+  <div class="large-4 columns">
+    <dt>Vessel Departure :</dt>
+    <dd><%= @order.vessel_departure %></dd>
+  </div>
   <div class="large-3 columns">
    <dt>Order Date :</dt>
    <dd><%= @order.order_date %></dd>
@@ -42,20 +54,20 @@
     <dd><%= @order.booking_number %></dd>
   </div>
   <div class="large-3 columns">
-    <dt>Booking Number :</dt>
-    <dd><%= @order.booking_number %></dd>
-  </div>
-  <div class="large-3 columns">
-    <dt>Liner :</dt>
-    <dd><%= @order.liner %></dd>
-  </div>
-  <div class="large-3 columns">
-    <dt>Vessel :</dt>
-    <dd><%= @order.vessel %></dd>
-  </div>
-  <div class="large-3 columns">
     <dt>Cutoff :</dt>
     <dd><%= @order.cutoff %></dd>
+  </div>
+  <div class="large-3 columns">
+    <dt>DUA :</dt>
+    <dd><%= @order.dua %></dd>
+  </div>
+  <div class="large-3 columns">
+    <dt>FAD :</dt>
+    <dd><%= @order.fad %></dd>
+  </div>
+  <div class="large-3 columns">
+    <dt>Customer Invoice :</dt>
+    <dd><%= @order.customer_invoice %></dd>
   </div>
   <div class="large-12 columns">
     <dt>Notes :</dt>

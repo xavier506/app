@@ -111,7 +111,8 @@
         </tr>
       </thead>
       <tbody>
-      <% @bill_of_lading.containers.each do |container| %>
+      <% @containers = @bill_of_lading.containers(@bill_of_lading.order.id) %>
+      <% @containers.each do |container| %>
         <tr>
           <td><%= container.container_number %></td>
           <td><%= container.container_type %></td>
@@ -149,7 +150,7 @@
     </div>
     <div class="large-3 columns">
       <dt>BL number :</dt>
-      <dd><%= @bill_of_lading.bl_number %></dd>
+      <dd><%= @bill_of_lading.document_number %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Original Number :</dt>
