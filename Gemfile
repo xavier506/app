@@ -49,6 +49,9 @@ gem 'prawn'
 gem 'prawnto_2', :require => 'prawnto'
 gem 'prawn-table'
 
+# Convert Numbers to Words
+gem 'to_words'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

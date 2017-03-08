@@ -3,7 +3,6 @@ class BillOfLadingsController < ApplicationController
   load_and_authorize_resource :order
   load_and_authorize_resource :through => :order
 
-
   def new
   end
 

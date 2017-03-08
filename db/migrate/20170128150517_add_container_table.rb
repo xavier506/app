@@ -27,6 +27,7 @@ class AddContainerTable < ActiveRecord::Migration[5.0]
         t.string :fumigation_doc
         t.string :fumigation_seal
         t.string :inspector
+        t.string :description
         t.string :farm
         t.references :order
         t.timestamps

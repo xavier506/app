@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 20170128150517) do
     t.string   "fumigation_doc"
     t.string   "fumigation_seal"
     t.string   "inspector"
+    t.string   "description"
     t.string   "farm"
     t.integer  "order_id"
     t.datetime "created_at",       null: false

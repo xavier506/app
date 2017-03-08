@@ -63,6 +63,7 @@ class ContainersController < ApplicationController
       :chasis,
       :truck_tare,
       :payload,
+      :description,
       :treatment_date,
       :fumigation_doc,
       :fumigation_seal,

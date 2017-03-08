@@ -82,39 +82,105 @@ if @bill_of_lading.liner == 'EVERGREEN'
       pdf.text @bill_of_lading.instructions.upcase, :size => 7
     end
 
+    move_down 28
     #CONTAINERS
-    # containers = [1,2,3,4]
-    # # @bill_of_lading.containers.each do |c|
-    # #   containers.push(c)
-    # # end
+    table_containers = []
+    @containers = @bill_of_lading.containers(@bill_of_lading.order.id)
+    @containers.each do |c|
+      container_data = [c.container_number,c.units,c.description,c.gross_weight]
+      if table_containers.size < 15 then
+        table_containers.push(container_data)
+      end
+    end
 
-    # container_data = [[Prawn::Table::Cell::Text.new( pdf, [0,0],
-    #                :content => "", :align => :center,
-    #                :inline_format => true, :size => 7)], containers]
+    table(
+      table_containers,
+      :column_widths => {0 => 115, 1 => 60, 2 => 240, 3 => 110},
+      :cell_style =>{:size => 8, :border_width => 0, :padding => 1}
+    )
 
-    # table(container_data)
+    #Number of Containers
+    pdf.bounding_box([116, pdf.cursor - 8], :width => 400, :height => 20) do
+      pdf.text @bill_of_lading.order.total_containers(@bill_of_lading.order_id).to_words.upcase, :size => 8
+    end
 
-    # pdf.transparent(0.5) { pdf.stroke_bounds }
+    #Freight & Charges
+    pdf.bounding_box([0, pdf.cursor - 6], :width => 114, :height => 97) do
+      pdf.text @bill_of_lading.freight_charges.upcase, :size => 7
+    end
 
-    # @bill_of_lading.description.upcase
-    # @bill_of_lading.freight_charges.upcase
-    # @bill_of_lading.revenue_tons.upcase
-    # @bill_of_lading.rate.upcase
-    # @bill_of_lading.prepaid.upcase
-    # @bill_of_lading.collect.upcase
-    # @bill_of_lading.bl_number.upcase
-    # @bill_of_lading.original_number.upcase
-    # @bill_of_lading.prepaid_at.upcase
-    # @bill_of_lading.collect_at.upcase
-    # @bill_of_lading.place_of_issue.upcase
-    # @bill_of_lading.issue_date.upcase
-    # @bill_of_lading.exchange_rate_1.upcase
-    # @bill_of_lading.exchange_rate_2.upcase
-    # @bill_of_lading.service_type.upcase
-    # @bill_of_lading.laden_on_board.upcase
+    #Revenue Tons
+    pdf.bounding_box([116, pdf.cursor + 97], :width => 100, :height => 97) do
+      pdf.text @bill_of_lading.revenue_tons.upcase, :size => 7
+    end
+
+    #Rate
+    pdf.bounding_box([217, pdf.cursor + 97], :width => 95, :height => 97) do
+      pdf.text @bill_of_lading.rate.upcase, :size => 7
+    end
+
+    #Prepaid
+    pdf.bounding_box([311, pdf.cursor + 97], :width => 105, :height => 97) do
+      pdf.text @bill_of_lading.prepaid.upcase, :size => 7
+    end
+
+    #Collect
+    pdf.bounding_box([416, pdf.cursor + 97], :width => 112, :height => 97) do
+      pdf.text @bill_of_lading.collect.upcase, :size => 7
+    end
+
+    #Document Number
+    pdf.bounding_box([0, pdf.cursor - 8], :width => 114, :height => 28) do
+      pdf.text @bill_of_lading.document_number.upcase, :size => 7
+    end
+
+    #Original Number
+    pdf.bounding_box([115, pdf.cursor + 28], :width => 194, :height => 12) do
+      pdf.text @bill_of_lading.original_number.upcase, :size => 7
+    end
+
+    #Prepaid At
+    pdf.bounding_box([312, pdf.cursor + 12], :width => 102, :height => 12) do
+      pdf.text @bill_of_lading.prepaid_at.upcase, :size => 7
+    end
+
+    #Collect At
+    pdf.bounding_box([416, pdf.cursor + 12], :width => 110, :height => 12) do
+      pdf.text @bill_of_lading.collect_at.upcase, :size => 7
+    end
+
+    #Place of Issue
+    pdf.bounding_box([116, pdf.cursor - 6], :width => 194, :height => 12) do
+      pdf.text @bill_of_lading.place_of_issue.upcase, :size => 7
+      #pdf.text @bill_of_lading.issue_date
+    end
+
+    #Exchange Rate 1
+    pdf.bounding_box([312, pdf.cursor + 12], :width => 102, :height => 12) do
+      pdf.text @bill_of_lading.exchange_rate_1.to_s, :size => 7
+    end
+
+    #Exchange Rate 2
+    pdf.bounding_box([416, pdf.cursor + 12], :width => 110, :height => 12) do
+      pdf.text @bill_of_lading.exchange_rate_2.to_s, :size => 7
+    end
+
+    #Service Type
+    pdf.bounding_box([0, pdf.cursor - 5], :width => 114, :height => 20) do
+      pdf.text @bill_of_lading.service_type.upcase, :size => 7
+    end
+
+    #Laden on Board
+    pdf.bounding_box([116, pdf.cursor + 20], :width => 410, :height => 20) do
+      pdf.text @bill_of_lading.laden_on_board.upcase, :size => 7
+    end
+
+
+     # @bill_of_lading.description.upcase
     # @bill_of_lading.rider_pages.upcase
     # @bill_of_lading.total_cmb.upcase
     # @bill_of_lading.verfified_gross_mass.upcase
+
   end
 
 elsif @bill_of_lading.liner == 'COSCO'
