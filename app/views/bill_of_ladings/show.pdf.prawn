@@ -93,14 +93,16 @@ if @bill_of_lading.liner == 'EVERGREEN'
       end
     end
 
-    table(
-      table_containers,
-      :column_widths => {0 => 115, 1 => 60, 2 => 240, 3 => 110},
-      :cell_style =>{:size => 8, :border_width => 0, :padding => 1}
-    )
+    pdf.bounding_box([0, pdf.cursor - 2], :width => 525, :height => 170) do
+      table(
+        table_containers,
+        :column_widths => {0 => 115, 1 => 60, 2 => 240, 3 => 110},
+        :cell_style =>{:size => 8, :border_width => 0, :padding => 1}
+      )
+    end
 
     #Number of Containers
-    pdf.bounding_box([116, pdf.cursor - 8], :width => 400, :height => 20) do
+    pdf.bounding_box([116, pdf.cursor - 5], :width => 400, :height => 20) do
       pdf.text @bill_of_lading.order.total_containers(@bill_of_lading.order_id).to_words.upcase, :size => 8
     end
 
@@ -176,11 +178,11 @@ if @bill_of_lading.liner == 'EVERGREEN'
     end
 
 
-     # @bill_of_lading.description.upcase
+    # @bill_of_lading.description.upcase
     # @bill_of_lading.rider_pages.upcase
     # @bill_of_lading.total_cmb.upcase
     # @bill_of_lading.verfified_gross_mass.upcase
-
+    # pdf.transparent(0.5) { pdf.stroke_bounds }
   end
 
 elsif @bill_of_lading.liner == 'COSCO'
