@@ -176,13 +176,6 @@ if @bill_of_lading.liner == 'EVERGREEN'
     pdf.bounding_box([116, pdf.cursor + 20], :width => 410, :height => 20) do
       pdf.text @bill_of_lading.laden_on_board.upcase, :size => 7
     end
-
-
-    # @bill_of_lading.description.upcase
-    # @bill_of_lading.rider_pages.upcase
-    # @bill_of_lading.total_cmb.upcase
-    # @bill_of_lading.verfified_gross_mass.upcase
-    # pdf.transparent(0.5) { pdf.stroke_bounds }
   end
 
 elsif @bill_of_lading.liner == 'COSCO'
@@ -255,6 +248,106 @@ elsif @bill_of_lading.liner == 'COSCO'
     pdf.bounding_box([168, pdf.cursor + 12], :width => 126, :height => 12) do
       pdf.text @bill_of_lading.loading_port.upcase, :size => 7
     end
+
+    #Service Contract #
+    pdf.bounding_box([298, pdf.cursor + 11], :width => 98, :height => 12) do
+      #pdf.text @bill_of_lading.loading_port.upcase, :size => 7
+    end
+
+    #Commodity Code
+    pdf.bounding_box([398, pdf.cursor + 12], :width => 130, :height => 12) do
+      #pdf.text @bill_of_lading.loading_port.upcase, :size => 7
+    end
+
+    #Discharge Port
+    pdf.bounding_box([0, pdf.cursor - 9], :width => 165, :height => 12) do
+      pdf.text @bill_of_lading.discharge_port.upcase, :size => 7
+    end
+
+    #Place of Delivery
+    pdf.bounding_box([167, pdf.cursor + 11], :width => 130, :height => 12) do
+      pdf.text @bill_of_lading.place_of_delivery.upcase, :size => 7
+    end
+
+    #Service Type
+    pdf.bounding_box([299, pdf.cursor + 12], :width => 230, :height => 12) do
+      pdf.text @bill_of_lading.service_type.upcase, :size => 7
+    end
+
+    move_down 28
+    #CONTAINERS
+    table_containers = []
+    @containers = @bill_of_lading.containers(@bill_of_lading.order.id)
+    @containers.each do |c|
+      container_data = [c.container_number,c.units,c.description,c.gross_weight]
+      if table_containers.size < 4  then
+        table_containers.push(container_data)
+      end
+    end
+
+    pdf.bounding_box([0, pdf.cursor + 10], :width => 535, :height => 165) do
+      table(
+        table_containers,
+        :column_widths => {0 => 115, 1 => 60, 2 => 240, 3 => 110},
+        :cell_style =>{:size => 8, :border_width => 0, :padding => 1}
+      )
+    end
+
+    #Declared Cargo Value
+    pdf.bounding_box([80, pdf.cursor - 1], :width => 90, :height => 11) do
+      #pdf.text @bill_of_lading.declared_value.upcase, :size => 7
+    end
+
+    #Description of Contents
+    pdf.bounding_box([420, pdf.cursor + 10], :width => 110, :height => 11) do
+      #pdf.text @bill_of_lading.loading_port.upcase, :size => 7
+    end
+
+    #Number of Containers
+    pdf.bounding_box([170, pdf.cursor - 4], :width => 350, :height => 10) do
+      pdf.text @bill_of_lading.order.total_containers(@bill_of_lading.order_id).to_words.upcase, :size => 7
+    end
+
+    #Freight & Charges
+    pdf.bounding_box([0, pdf.cursor - 10], :width => 102, :height => 112) do
+      pdf.text @bill_of_lading.freight_charges.upcase, :size => 7
+    end
+
+    #Revenue Tons
+    pdf.bounding_box([103, pdf.cursor + 112], :width => 41, :height => 112) do
+      pdf.text @bill_of_lading.revenue_tons.upcase, :size => 7
+    end
+
+    #Rate
+    pdf.bounding_box([145, pdf.cursor + 112], :width => 47, :height => 112) do
+      pdf.text @bill_of_lading.rate.upcase, :size => 7
+    end
+
+    #Per
+    pdf.bounding_box([192, pdf.cursor + 112], :width => 65, :height => 112) do
+      #pdf.text @bill_of_lading.per.upcase, :size => 7
+    end
+
+    #Amount
+    pdf.bounding_box([260, pdf.cursor + 112], :width => 98, :height => 112) do
+      #pdf.text @bill_of_lading.amount.upcase, :size => 7
+    end
+
+    #Prepaid
+    pdf.bounding_box([360, pdf.cursor + 112], :width => 20, :height => 112) do
+      pdf.text @bill_of_lading.prepaid.upcase, :size => 7
+    end
+
+    #Collect
+    pdf.bounding_box([381, pdf.cursor + 112], :width => 20, :height => 112) do
+      pdf.text @bill_of_lading.collect.upcase, :size => 7
+    end
+
+    #Collect At
+    pdf.bounding_box([402, pdf.cursor + 112], :width => 130, :height => 112) do
+      pdf.text @bill_of_lading.collect_at.upcase, :size => 7
+    end
+    # pdf.transparent(0.5) { pdf.stroke_bounds }
   end
 else
   pdf.text 'No Template Available for Selected Liner', :size => 24, :align => :center
