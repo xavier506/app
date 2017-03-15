@@ -9,8 +9,8 @@ class Order < ApplicationRecord
   has_many :containers, :dependent => :restrict_with_error
 
   #Options for field selection
-  LINERS = ['EVERGREEN','MSC','HAPAG-LLOYD','COSCO','CMA','NYK','MOL']
-  MODES = ['Ocean / Maritimo','Land','Air', 'Export', 'Import', 'Other']
+  LINERS = ['EVERGREEN','COSCO','MSC','HAPAG-LLOYD','CMA','NYK','MOL']
+  MODES = ['Ocean','Land','Air', 'Export', 'Import', 'Other']
   STATUSES = ['Open','Closed','Void']
 
   def total_containers(order_id)

@@ -6,7 +6,7 @@ class Certificate < ApplicationRecord
   has_many :containers, :through => :order
 
   #Options for field selection
-  MODES = ['Ocean / Maritimo','Land','Air', 'Export', 'Import', 'Other']
+  MODES = ['Ocean','Land','Air', 'Export', 'Import', 'Other']
   UNIT_TYPES = ['Piezas / Pieces','Cajas / Boxes','Trozas / Logs','Bundles']
   VOLUME_UNITS = ['CBM','CBFT']
   WEIGHT_UNITS = ['KGS','TONS']

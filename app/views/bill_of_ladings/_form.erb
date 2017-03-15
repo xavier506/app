@@ -4,7 +4,7 @@
       <%= f.input :document_number %>
     </div>
     <div class="large-4 columns">
-      <% @liners = BillOfLading::LINERS %>
+      <% @liners = Order::LINERS %>
       <%= f.input :liner, collection: @liners, include_blank: false %>
     </div>
     <div class="large-4 columns">

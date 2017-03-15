@@ -8,9 +8,6 @@ class BillOfLading < ApplicationRecord
     Container.where(order_id: order_id)
   end
 
-  #Options for field selection
-  LINERS = ['EVERGREEN','MSC','HAPAG-LLOYD','COSCO','CMA','NYK','MOL']
-
   validates :document_number,
     :exporter,
     :receiver,
