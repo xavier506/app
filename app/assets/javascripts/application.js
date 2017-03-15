@@ -18,3 +18,17 @@
 //= require rails.validations.simple_form
 
 $(function(){ $(document).foundation(); });
+
+$(document).ready(function() {
+  $("[id*='user_admin']").click(function() {
+    var isAdmin = $(this).prop("checked");
+    var clientSelects = $("[id*='user_client_id']");
+    if (isAdmin == true) {
+      clientSelects.prop("disabled", "disabled");
+    }
+    else {
+      clientSelects.prop("disabled", false);
+    }
+  });
+});
+
