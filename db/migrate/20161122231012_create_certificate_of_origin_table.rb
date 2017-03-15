@@ -11,7 +11,7 @@ class CreateCertificateOfOriginTable < ActiveRecord::Migration[5.0]
       t.string :state
       t.string :country
       t.string :zip
-      t.references :user
+      t.references :client
       t.timestamps
     end
 

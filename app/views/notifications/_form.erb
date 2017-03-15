@@ -7,17 +7,9 @@
       <%= f.input :contact_name %>
     </div>
     <div class="large-4 columns">
-      <div class="input-group">
-        <%= f.input :user do %>
-          <%= f.collection_select(:user_id, User.all, :id, :email, {include_blank: 'Assign a User'}, {:class=>'input-group-field'}) %>
-        <% end %>
-
-        <div class="input-group-button" style="padding-top: 25px;">
-          <% if can? :create, User %>
-            <%= link_to "New User", new_user_path, class: 'button' %>
-          <% end %>
-        </div>
-      </div>
+      <%= f.input :client do %>
+        <%= f.collection_select(:client_id, Client.all, :id, :company, {include_blank: 'Assign a Client'}) %>
+      <% end %>
     </div>
   </div>
   <div class="row">

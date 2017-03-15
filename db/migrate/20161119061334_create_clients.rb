@@ -10,7 +10,6 @@ class CreateClients < ActiveRecord::Migration[5.0]
       t.string :state
       t.string :country
       t.string :zip
-      t.references :user
       t.timestamps
     end
   end

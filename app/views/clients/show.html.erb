@@ -1,9 +1,6 @@
 <h3>
   <span class="float-left">
     Viewing Client / Shipper <small>#<%= @client.id %></small>
-    <% if @client.user %>
-      <small>related to <%= link_to("user #{@client.user.email}", @client.user) %></small>
-    <% end %>
   </span>
   <span class="float-right">
     <% if can? :read, Client %>
@@ -54,3 +51,24 @@
   </div>
   </dl>
 </div>
+<h4>Associated Users</h4>
+<table class="hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Company</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @client.users.each do |user| %>
+    <tr>
+      <td><%= link_to user.id, user_path(user.id) %></td>
+      <td><%= link_to user.full_name, user_path(user.id) %></td>
+      <td><%= user.email %></td>
+      <td><%= user.client.company %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

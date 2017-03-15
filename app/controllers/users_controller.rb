@@ -15,8 +15,8 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user
     else
-      flash[:error] = "Client could not be saved!"
-      render 'show'
+      flash[:error] = "User could not be saved!"
+      render 'edit'
     end
   end
 
@@ -39,6 +39,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:email, :password, :admin)
+      params.require(:user).permit(:email, :password, :admin, :client_id, :full_name)
     end
 end

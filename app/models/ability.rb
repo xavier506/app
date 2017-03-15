@@ -31,8 +31,10 @@ class Ability
 
     if user.admin?
         can :manage, :all
-    else
+    elsif user.client.present?
         can :read, Order, client_id: user.client.id
+    else
+        cannot :manage, :all
     end
   end
 end

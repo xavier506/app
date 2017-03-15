@@ -88,10 +88,8 @@ ActiveRecord::Schema.define(version: 20170128150517) do
     t.string   "state"
     t.string   "country"
     t.string   "zip"
-    t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
   create_table "consignees", force: :cascade do |t|
@@ -104,10 +102,10 @@ ActiveRecord::Schema.define(version: 20170128150517) do
     t.string   "state"
     t.string   "country"
     t.string   "zip"
-    t.integer  "user_id"
+    t.integer  "client_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["user_id"], name: "index_consignees_on_user_id"
+    t.index ["client_id"], name: "index_consignees_on_client_id"
   end
 
   create_table "containers", force: :cascade do |t|
@@ -155,10 +153,10 @@ ActiveRecord::Schema.define(version: 20170128150517) do
     t.string   "state"
     t.string   "country"
     t.string   "zip"
-    t.integer  "user_id"
+    t.integer  "client_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["user_id"], name: "index_notifications_on_user_id"
+    t.index ["client_id"], name: "index_notifications_on_client_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -222,9 +220,12 @@ ActiveRecord::Schema.define(version: 20170128150517) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "full_name"
+    t.integer  "client_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "admin"
+    t.index ["client_id"], name: "index_users_on_client_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

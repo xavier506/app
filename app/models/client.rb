@@ -1,6 +1,9 @@
 class Client < ApplicationRecord
-  belongs_to :user, inverse_of: :client
+  has_many :users, :dependent => :restrict_with_error
   has_many :orders, :dependent => :restrict_with_error
+
+  has_one :consignee
+  has_one :notification
 
   validates :company, :email, presence: true
   validates :email, uniqueness: true

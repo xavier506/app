@@ -1,6 +1,9 @@
 <h3>
   <span class="float-left">
     Viewing User <small>#<%= @user.id %></small>
+    <% if @user.client %>
+      <small>related to <%= link_to("client #{@user.client.company}", @user.client) %></small>
+    <% end %>
   </span>
   <span class="float-right">
   <% if can? :update, @user %>
@@ -10,9 +13,13 @@
 </h3>
 <div class="details row column">
   <dl class="inline">
-  <div class="large-12 columns">
+  <div class="large-6 columns">
     <dt>Email :</dt>
     <dd><%= @user.email %></dd>
+  </div>
+  <div class="large-6 columns">
+    <dt>Name :</dt>
+    <dd><%= @user.full_name %></dd>
   </div>
   <div class="large-6 columns">
    <dt>User is Admin :</dt>

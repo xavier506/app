@@ -2,15 +2,15 @@
   <span class="float-left">
     Viewing Consignee <small>#<%= @consignee.id %></small>
     <% if @consignee.user %>
-      <small>related to <%= link_to("user #{@consignee.user.email}", @consignee.user) %></small>
+      <small>related to <%= link_to("uclient #{@consignee.client.company}", @consignee.client) %></small>
     <% end %>
   </span>
   <span class="float-right">
     <% if can? :read, Consignee %>
-      <%= link_to("View All Consignees <i class='fi-magnifying-glass'></i>".html_safe, clients_path, :class => 'tiny button') %>
+      <%= link_to("View All Consignees <i class='fi-magnifying-glass'></i>".html_safe, consignees_path, :class => 'tiny button') %>
     <% end %>
     <% if can? :update, @consignee %>
-      <%= link_to("Edit Consignee <i class='fi-page-edit'></i>".html_safe, edit_client_path(@consignee.id), :class => 'tiny button') %>
+      <%= link_to("Edit Consignee <i class='fi-page-edit'></i>".html_safe, edit_consignee_path(@consignee.id), :class => 'tiny button') %>
     <% end %>
   </span>
 </h3>
