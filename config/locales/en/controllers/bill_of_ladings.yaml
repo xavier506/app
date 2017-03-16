@@ -10,7 +10,7 @@ en:
       title: Showing Bill of Lading
       link: Bill of Lading
       hover_title: Show Bill of Lading
-    showPDF:
+    showpdf:
       title: Showing Bill of Lading PDF
       link: Bill of Lading PDF
       hover_title: Show Bill of Lading PDF

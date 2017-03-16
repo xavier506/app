@@ -10,6 +10,10 @@ en:
       title: Showing Order
       link: Order
       hover_title: Show Order
+    showpdf:
+      title: Show PDF document
+      link: PDF document
+      hover_title: Show PDF document
     edit:
       title: Editing Order
       link: Edit Order

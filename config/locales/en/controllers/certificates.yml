@@ -10,7 +10,7 @@ en:
       title: Showing Certificate
       link: Certificate
       hover_title: Show Certificate
-    showPDF:
+    showpdf:
       title: Showing Certificate PDF
       link: Certificate PDF
       hover_title: Show Certificate PDF
