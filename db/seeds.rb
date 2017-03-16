@@ -10,7 +10,7 @@ user = User.new(
   email: 'gardella@pcalogistica.com',
   password: 'sexavier69',
   password_confirmation: 'sexavier69',
-  admin: true
+  user_type: 'Administrator'
 )
 user.save!
 

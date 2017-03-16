@@ -1,9 +1,6 @@
 <h3>
   <span class="float-left">
     Viewing Consignee <small>#<%= @consignee.id %></small>
-    <% if @consignee.user %>
-      <small>related to <%= link_to("uclient #{@consignee.client.company}", @consignee.client) %></small>
-    <% end %>
   </span>
   <span class="float-right">
     <% if can? :read, Consignee %>
@@ -54,3 +51,23 @@
   </div>
   </dl>
 </div>
+<h4>Associated Users</h4>
+<table class="hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @consignee.users.each do |user| %>
+    <tr>
+      <td><%= link_to user.id, user_path(user.id) %></td>
+      <td><%= link_to user.full_name, user_path(user.id) %></td>
+      <td><%= user.email %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

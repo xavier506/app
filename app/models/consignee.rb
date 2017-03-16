@@ -1,6 +1,7 @@
 class Consignee < ApplicationRecord
-  belongs_to :client
+
   has_many :orders, :dependent => :restrict_with_error
+  has_many :users
 
   validates :address, presence: true
 

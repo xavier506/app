@@ -31,6 +31,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       # t.datetime :locked_at
       t.string :full_name
       t.references :client
+      t.references :notification
+      t.references :consignee
 
       t.timestamps null: false
     end

@@ -58,7 +58,6 @@
       <th>ID</th>
       <th>Name</th>
       <th>Email</th>
-      <th>Company</th>
     </tr>
   </thead>
   <tbody>
@@ -67,7 +66,6 @@
       <td><%= link_to user.id, user_path(user.id) %></td>
       <td><%= link_to user.full_name, user_path(user.id) %></td>
       <td><%= user.email %></td>
-      <td><%= user.client.company %></td>
     </tr>
   <% end %>
   </tbody>

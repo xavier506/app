@@ -1,8 +1,14 @@
 <h3>
   <span class="float-left">
-    Viewing User <small>#<%= @user.id %></small>
-    <% if @user.client %>
-      <small>related to <%= link_to("client #{@user.client.company}", @user.client) %></small>
+    Viewing <%= @user.user_type %> User <small>#<%= @user.id %></small>
+    <% if @user.client_id %>
+      <small>Assigned to Client <%= @user.client.company %></small>
+    <% end %>
+    <% if @user.consignee_id %>
+      <small>Assigned to Consignee <%= @user.consignee.company %></small>
+    <% end %>
+    <% if @user.notification_id %>
+      <small>Assigned to Notify <%= @user.notification.company %></small>
     <% end %>
   </span>
   <span class="float-right">
@@ -22,8 +28,8 @@
     <dd><%= @user.full_name %></dd>
   </div>
   <div class="large-6 columns">
-   <dt>User is Admin :</dt>
-   <dd><%= @user.admin? %></dd>
+   <dt>User Type :</dt>
+   <dd><%= @user.user_type %></dd>
   </div>
   <div class="large-6 columns">
     <dt>Sign-in Count :</dt>

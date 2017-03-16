@@ -102,10 +102,8 @@ ActiveRecord::Schema.define(version: 20170128150517) do
     t.string   "state"
     t.string   "country"
     t.string   "zip"
-    t.integer  "client_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["client_id"], name: "index_consignees_on_client_id"
   end
 
   create_table "containers", force: :cascade do |t|
@@ -153,10 +151,8 @@ ActiveRecord::Schema.define(version: 20170128150517) do
     t.string   "state"
     t.string   "country"
     t.string   "zip"
-    t.integer  "client_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["client_id"], name: "index_notifications_on_client_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -222,11 +218,15 @@ ActiveRecord::Schema.define(version: 20170128150517) do
     t.string   "last_sign_in_ip"
     t.string   "full_name"
     t.integer  "client_id"
+    t.integer  "notification_id"
+    t.integer  "consignee_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.boolean  "admin"
+    t.string   "user_type"
     t.index ["client_id"], name: "index_users_on_client_id"
+    t.index ["consignee_id"], name: "index_users_on_consignee_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["notification_id"], name: "index_users_on_notification_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

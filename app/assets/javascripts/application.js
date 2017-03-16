@@ -20,15 +20,71 @@
 $(function(){ $(document).foundation(); });
 
 $(document).ready(function() {
-  $("[id*='user_admin']").click(function() {
-    var isAdmin = $(this).prop("checked");
-    var clientSelects = $("[id*='user_client_id']");
-    if (isAdmin == true) {
-      clientSelects.prop("disabled", "disabled");
+
+  var client = $("[id*='user_client_id']");
+  var consignee = $("[id*='user_consignee_id']");
+  var notify = $("[id*='user_notification_id']");
+
+  var clientSelects = $("[id*='user_client_id']").parent();
+  var consigneeSelects = $("[id*='user_consignee_id']").parent();
+  var notifySelects = $("[id*='user_notification_id']").parent();
+
+  clientSelects.hide();
+  consigneeSelects.hide();
+  notifySelects.hide();
+
+  var user_type = $("[id*='user_user_type']").val();
+
+    if (user_type == "Client") {
+      clientSelects.show();
     }
-    else {
-      clientSelects.prop("disabled", false);
+    else if (user_type == "Consignee"){
+      consigneeSelects.show();
+    }
+    else if (user_type == "Notify"){
+      notifySelects.show();
+    }
+
+  $("[id*='user_user_type']").change(function() {
+    var type = $(this).val();
+
+    if (type == "Client") {
+      clientSelects.show();
+
+      consignee.val(null);
+      consigneeSelects.hide();
+
+      notify.val(null);
+      notifySelects.hide();
+    }
+    else if (type == "Consignee"){
+      consigneeSelects.show();
+
+      client.val(null);
+      clientSelects.hide();
+
+      notify.val(null);
+      notifySelects.hide();
+
+    }
+    else if (type == "Notify"){
+      notifySelects.show();
+
+      client.val(null);
+      clientSelects.hide();
+
+      consignee.val(null);
+      consigneeSelects.hide();
+    }
+    else{
+      client.val(null);
+      clientSelects.hide();
+
+      consignee.val(null);
+      consigneeSelects.hide();
+
+      notify.val(null);
+      notifySelects.hide();
     }
   });
 });
-
