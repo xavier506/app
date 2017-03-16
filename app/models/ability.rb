@@ -33,6 +33,10 @@ class Ability
         can :manage, :all
     elsif user.client.present?
         can :read, Order, client_id: user.client.id
+        can :read, BillOfLading, :order => { :client_id => user.client.id }
+        can :read, Certificate, :order => { :client_id => user.client.id }
+        can :read, Phytosanitary, :order => { :client_id => user.client.id }
+        can :read, Container, :order => { :client_id => user.client.id }
     else
         cannot :manage, :all
     end

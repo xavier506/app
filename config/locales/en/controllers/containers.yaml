@@ -1,0 +1,22 @@
+en:
+  containers:
+    new:
+      title: Creating New Container
+      link: Create New Container
+      success: 'Container was successfully created.'
+      hover_title: Create Container
+      button: Create Container
+    show:
+      title: Showing Container
+      link: Container
+      hover_title: Show Container
+    edit:
+      title: Editing Container
+      link: Edit Container
+      success: 'Container was successfully updated.'
+      hover_title: Edit Container
+      button: Update Container
+    destroy:
+      link: Destroy Container
+      success: 'Container was successfully destroyed.'
+      hover_title: Destroy Container

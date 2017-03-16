@@ -10,6 +10,10 @@ en:
       title: Showing Phytosanitary Certificate
       link: Phytosanitary Certificate
       hover_title: Show Phytosanitary Certificate
+    showPDF:
+      title: Showing Phytosanitary Certificate PDF
+      link: Phytosanitary Certificate PDF
+      hover_title: Show Phytosanitary Certificate PDF
     edit:
       title: Editing Phytosanitary Certificate
       link: Edit Phytosanitary Certificate

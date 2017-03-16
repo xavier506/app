@@ -94,11 +94,15 @@ if @bill_of_lading.liner == 'EVERGREEN'
     end
 
     pdf.bounding_box([0, pdf.cursor - 2], :width => 525, :height => 170) do
-      table(
-        table_containers,
-        :column_widths => {0 => 115, 1 => 60, 2 => 240, 3 => 110},
-        :cell_style =>{:size => 8, :border_width => 0, :padding => 1}
-      )
+      if table_containers.size > 0
+        table(
+          table_containers,
+          :column_widths => {0 => 115, 1 => 60, 2 => 240, 3 => 110},
+          :cell_style =>{:size => 8, :border_width => 0, :padding => 1}
+        )
+      else
+        pdf.text "No Containers", :size => 8
+      end
     end
 
     #Number of Containers
@@ -286,11 +290,15 @@ elsif @bill_of_lading.liner == 'COSCO'
     end
 
     pdf.bounding_box([0, pdf.cursor + 10], :width => 535, :height => 165) do
-      table(
-        table_containers,
-        :column_widths => {0 => 115, 1 => 60, 2 => 240, 3 => 110},
-        :cell_style =>{:size => 8, :border_width => 0, :padding => 1}
-      )
+      if table_containers.size > 0
+        table(
+          table_containers,
+          :column_widths => {0 => 115, 1 => 60, 2 => 240, 3 => 110},
+          :cell_style =>{:size => 8, :border_width => 0, :padding => 1}
+        )
+      else
+        pdf.text "No Containers", :size => 8
+      end
     end
 
     #Declared Cargo Value
