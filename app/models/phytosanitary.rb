@@ -24,8 +24,6 @@ class Phytosanitary < ApplicationRecord
     :inspector,
    presence: true
 
-  MODES = ['Ocean','Land','Air', 'Export', 'Import', 'Other']
-
   def country_name
     c = ISO3166::Country.find_country_by_alpha2(country)
     c

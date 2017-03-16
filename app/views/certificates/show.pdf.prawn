@@ -59,14 +59,14 @@ indent 30 do
   end
 
   #Volume
-  volume_text = @certificate.volume.to_s.upcase + " " + @certificate.volume_units.to_s.upcase
+  volume_text = @certificate.volume.to_s.upcase + " " + @certificate.order.volume_units.to_s.upcase
   pdf.bounding_box([292, pdf.cursor + 140], :width => 65, :height => 140) do
     pdf.text volume_text, :size => 7, :align => :center
     pdf.text '*********', :size => 7, :align => :center
   end
 
   #Weight
-  weight_text = @certificate.gross_weight.to_s.upcase + " " + @certificate.weight_units.to_s.upcase
+  weight_text = @certificate.gross_weight.to_s.upcase + " " + @certificate.order.weight_units.to_s.upcase
   pdf.bounding_box([365, pdf.cursor + 140], :width => 50, :height => 140) do
     pdf.text weight_text, :size => 7, :align => :center
     pdf.text '*********', :size => 7, :align => :center

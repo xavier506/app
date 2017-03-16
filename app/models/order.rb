@@ -12,6 +12,9 @@ class Order < ApplicationRecord
   LINERS = ['EVERGREEN','COSCO','MSC','HAPAG-LLOYD','CMA','NYK','MOL']
   MODES = ['Ocean','Land','Air', 'Export', 'Import', 'Other']
   STATUSES = ['Open','Closed','Void']
+  UNIT_TYPES = ['Piezas / Pieces','Cajas / Boxes','Trozas / Logs','Bundles']
+  VOLUME_UNITS = ['CBM','CBFT']
+  WEIGHT_UNITS = ['KGS','TONS']
 
   def total_containers(order_id)
     Container.where(order_id: order_id).count
@@ -32,18 +35,6 @@ class Order < ApplicationRecord
   def unit_type(order_id)
     if Container.where(order_id: order_id).exists?
       Container.where(order_id: order_id).first.unit_type
-    end
-  end
-
-  def weight_units(order_id)
-    if Container.where(order_id: order_id).exists?
-      Container.where(order_id: order_id).first.weight_units
-    end
-  end
-
-  def volume_units(order_id)
-    if Container.where(order_id: order_id).exists?
-      Container.where(order_id: order_id).first.volume_units
     end
   end
 

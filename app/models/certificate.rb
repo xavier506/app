@@ -5,12 +5,6 @@ class Certificate < ApplicationRecord
   has_one :notification, :through => :order
   has_many :containers, :through => :order
 
-  #Options for field selection
-  MODES = ['Ocean','Land','Air', 'Export', 'Import', 'Other']
-  UNIT_TYPES = ['Piezas / Pieces','Cajas / Boxes','Trozas / Logs','Bundles']
-  VOLUME_UNITS = ['CBM','CBFT']
-  WEIGHT_UNITS = ['KGS','TONS']
-
   validates :order,
     :shipper,
     :farm,

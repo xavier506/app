@@ -13,6 +13,8 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.string :dua
       t.string :fad
       t.string :customer_invoice
+      t.string :weight_units
+      t.string :volume_units
       t.references :client
       t.references :consignee
       t.references :notification

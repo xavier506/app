@@ -69,11 +69,11 @@
     </div>
     <div class="large-3 columns">
       <dt>Truck Tare:</dt>
-      <dd><%= @container.truck_tare %></dd>
+      <dd><%= @container.truck_tare %>  <%= @container.order.volume_units %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Payload:</dt>
-      <dd><%= @container.payload %></dd>
+      <dd><%= @container.payload %>  <%= @container.order.volume_units %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Treatment Date:</dt>
@@ -97,31 +97,31 @@
     </div>
     <div class="large-3 columns">
       <dt>Units:</dt>
-      <dd><%= @container.units %></dd>
+      <dd><%= @container.units %> <%= @container.unit_type %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Volume:</dt>
-      <dd><%= @container.volume %></dd>
+      <dd><%= @container.volume %> <%= @container.order.volume_units %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Tare Weight:</dt>
-      <dd><%= @container.tare_weight %></dd>
+      <dd><%= @container.tare_weight %> <%= @container.order.weight_units %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Gross Weight:</dt>
-      <dd><%= @container.gross_weight %></dd>
+      <dd><%= @container.gross_weight %> <%= @container.order.weight_units %></dd>
     </div>
         <div class="large-4 columns">
       <dt>Net Weight:</dt>
-      <dd><%= @container.net_weight %></dd>
+      <dd><%= @container.net_weight %>  <%= @container.order.weight_units %></dd>
     </div>
         <div class="large-4 columns">
       <dt>VGM:</dt>
-      <dd><%= @container.vgm %></dd>
+      <dd><%= @container.vgm %> <%= @container.order.weight_units %></dd>
     </div>
         <div class="large-4 columns">
       <dt>Overpayload:</dt>
-      <dd><%= @container.overpayload %></dd>
+      <dd><%= @container.overpayload %> <%= @container.order.weight_units %></dd>
     </div>
   </dl>
 </div>

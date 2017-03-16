@@ -51,6 +51,8 @@ class OrdersController < ApplicationController
       :dua,
       :fad,
       :customer_invoice,
+      :volume_units,
+      :weight_units,
     )
   end
 end

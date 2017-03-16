@@ -51,23 +51,23 @@
     </div>
   </div>
   <div class="row">
-    <div class="large-2 columns">
+    <div class="large-3 columns">
       <%= f.input :units, input_html: {value: @certificate.units.present? ? @certificate.units : @order.total_units(@order.id) } %>
     </div>
-    <div class="large-2 columns">
-      <%= f.input :unit_type, collection: Certificate::UNIT_TYPES, include_blank: false %>
+    <div class="large-3 columns">
+      <%= f.input :unit_type, collection: Order::UNIT_TYPES, include_blank: false %>
     </div>
-    <div class="large-2 columns">
-      <%= f.input :volume, input_html: {value: @certificate.volume.present? ? @certificate.volume : @order.total_volume(@order.id) } %>
+    <div class="large-3 columns">
+      <div class="input-group">
+        <%= f.input :volume, input_html: {value: @certificate.volume.present? ? @certificate.volume : @order.total_volume(@order.id), class: 'input-group-field' } %>
+            <label class="input-group-label"><%= @certificate.order.volume_units %></label>
+      </div>
     </div>
-    <div class="large-2 columns">
-    <%= f.input :volume_units, collection: Certificate::VOLUME_UNITS, include_blank: false %>
-    </div>
-    <div class="large-2 columns">
-      <%= f.input :gross_weight, input_html: {value: @certificate.gross_weight.present? ? @certificate.gross_weight : @order.total_weight(@order.id) } %>
-    </div>
-    <div class="large-2 columns">
-      <%= f.input :weight_units, collection: Certificate::WEIGHT_UNITS, include_blank: false %>
+      <div class="large-3 columns">
+      <div class="input-group">
+        <%= f.input :gross_weight, input_html: {value: @certificate.gross_weight.present? ? @certificate.gross_weight : @order.total_weight(@order.id), class: 'input-group-field' } %>
+        <label class="input-group-label"><%= @certificate.order.weight_units %></label>
+      </div>
     </div>
   </div>
   <div class="actions row">

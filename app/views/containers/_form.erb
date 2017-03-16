@@ -57,13 +57,21 @@
       <%= f.input :chasis %>
     </div>
     <div class="large-3 columns">
-      <%= f.input :truck_tare %>
+      <div class="input-group">
+        <%= f.input :truck_tare, input_html: { class: 'input-group-field' } %>
+          <label class="input-group-label"><%= @container.order.weight_units %></label>
+      </div>
     </div>
     <div class="large-3 columns">
-      <%= f.input :payload %>
+      <div class="input-group">
+        <%= f.input :payload, input_html: { class: 'input-group-field' } %>
+          <label class="input-group-label"><%= @container.order.weight_units %></label>
+      </div>
     </div>
     <div class="large-3 columns">
-      <%= f.input :treatment_date %>
+      <%= f.input :treatment_date do %>
+        <%= f.date_field :treatment_date, value: @container.treatment_date.present? ? @container.treatment_date : Time.now.strftime('%Y-%m-%d') %>
+     <% end %>
     </div>
   </div>
   <div class="row">
@@ -71,22 +79,26 @@
       <%= f.input :units %>
     </div>
     <div class="large-2 columns">
-      <%= f.input :unit_type, collection: Container::UNIT_TYPES, include_blank: false %>
+      <%= f.input :unit_type, collection: Order::UNIT_TYPES, include_blank: false %>
     </div>
+
     <div class="large-2 columns">
-      <%= f.input :volume %>
+      <div class="input-group">
+        <%= f.input :volume, input_html: { class: 'input-group-field' } %>
+        <label class="input-group-label"><%= @container.order.volume_units %></label>
+      </div>
     </div>
-    <div class="large-1 columns">
-      <%= f.input :volume_units, label: "Units", collection: Container::VOLUME_UNITS, include_blank: false %>
+    <div class="large-3 columns">
+      <div class="input-group">
+        <%= f.input :tare_weight, input_html: { class: 'input-group-field' } %>
+        <label class="input-group-label"><%= @container.order.weight_units %></label>
+      </div>
     </div>
-    <div class="large-2 columns">
-      <%= f.input :tare_weight %>
-    </div>
-    <div class="large-2 columns">
-      <%= f.input :gross_weight %>
-    </div>
-    <div class="large-1 columns">
-      <%= f.input :weight_units, label: "Units", collection: Container::WEIGHT_UNITS, include_blank: false %>
+    <div class="large-3 columns">
+      <div class="input-group">
+        <%= f.input :gross_weight, input_html: { class: 'input-group-field' } %>
+        <label class="input-group-label"><%= @container.order.weight_units %></label>
+      </div>
     </div>
   </div>
   <div class="row">

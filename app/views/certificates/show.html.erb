@@ -61,11 +61,11 @@
     </div>
     <div class="large-3 columns">
       <dt>Volume :</dt>
-      <dd><%= @certificate.volume %> <%= @certificate.volume_units %></dd>
+      <dd><%= @certificate.volume %> <%= @certificate.order.volume_units %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Weight :</dt>
-      <dd><%= @certificate.gross_weight %> <%= @certificate.weight_units %></dd>
+      <dd><%= @certificate.gross_weight %> <%= @certificate.order.weight_units %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Invoices :</dt>

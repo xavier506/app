@@ -43,16 +43,22 @@
     </div>
   </div>
   <div class="row">
-    <div class="large-4 columns">
+    <div class="large-3 columns">
       <%= f.input :order_date do %>
         <%= f.date_field :order_date, :value => Time.now.strftime('%Y-%m-%d') %>
       <% end %>
     </div>
-    <div class="large-4 columns">
+    <div class="large-3 columns">
       <%= f.input :status, collection: Order::STATUSES, include_blank: false  %>
     </div>
-    <div class="large-4 columns">
+    <div class="large-2 columns">
       <%= f.input :mode, collection: Order::MODES, include_blank: false %>
+    </div>
+    <div class="large-2 columns">
+      <%= f.input :volume_units, collection: Order::VOLUME_UNITS, include_blank: false %>
+    </div>
+    <div class="large-2 columns">
+      <%= f.input :weight_units, collection: Order::WEIGHT_UNITS, include_blank: false %>
     </div>
   </div>
   <div class="row">

@@ -89,11 +89,11 @@
     </div>
     <div class="large-3 columns">
       <dt>Total Weight :</dt>
-      <dd><%= @order.total_weight(@order.id) %> <%= @order.weight_units(@order.id) %></dd>
+      <dd><%= @order.total_weight(@order.id) %> <%= @order.weight_units %></dd>
     </div>
     <div class="large-3 columns">
       <dt>Total Volume :</dt>
-      <dd><%= @order.total_volume(@order.id) %> <%= @order.volume_units(@order.id) %></dd>
+      <dd><%= @order.total_volume(@order.id) %> <%= @order.volume_units %></dd>
     </div>
   </dl>
   <table class="hover">

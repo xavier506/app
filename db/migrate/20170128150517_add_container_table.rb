@@ -17,17 +17,15 @@ class AddContainerTable < ActiveRecord::Migration[5.0]
         t.integer :units
         t.string :unit_type
         t.decimal :volume
-        t.string :volume_units
         t.decimal :tare_weight
         t.decimal :gross_weight
-        t.string :weight_units
         t.decimal :truck_tare
         t.decimal :payload
-        t.string :treatment_date
+        t.date :treatment_date
         t.string :fumigation_doc
         t.string :fumigation_seal
         t.string :inspector
-        t.string :description
+        t.text :description
         t.string :farm
         t.references :order
         t.timestamps

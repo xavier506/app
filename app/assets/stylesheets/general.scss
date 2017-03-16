@@ -60,6 +60,11 @@ label {
   font-weight: 700;
 }
 
+label.input-group-label {
+  background: none;
+  border: none;
+}
+
 .required label:after {
     color: #e32;
     content: ' *';

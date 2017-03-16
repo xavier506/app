@@ -49,9 +49,7 @@ class CertificatesController < ApplicationController
       :units,
       :unit_type,
       :volume,
-      :volume_units,
       :gross_weight,
-      :weight_units,
       :invoices,
       :description
     )
