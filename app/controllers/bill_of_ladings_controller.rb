@@ -1,5 +1,6 @@
 class BillOfLadingsController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource :bill_of_lading_containers
   load_and_authorize_resource :order
   load_and_authorize_resource :through => :order
 
@@ -74,7 +75,8 @@ class BillOfLadingsController < ApplicationController
       :liner,
       :notify,
       :also_notify,
-      :order_id
+      :order_id,
+      container_ids: [],
     )
   end
 end

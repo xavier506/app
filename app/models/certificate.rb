@@ -19,7 +19,6 @@ class Certificate < ApplicationRecord
     :description,
     :receiver,
   presence: true
-  # validates_inclusion_of :certificate, :in => MODES
 
   def country_name
     c = ISO3166::Country.find_country_by_alpha2(country)

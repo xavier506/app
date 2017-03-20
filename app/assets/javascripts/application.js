@@ -19,9 +19,12 @@
 
 $(function(){ $(document).foundation(); });
 
-$('[data-behaviour="select-all"][value=0]').on('change', function(){
+$('#Select_All').on('change', function(){
   var checked = this.checked;
-  $('[data-behaviour="select-all"]').each(function(){
+  $('[id^=bill_of_lading_container_ids]').each(function(){
+    $(this).prop('checked', checked);
+  });
+  $('[id^=certificate_container_ids]').each(function(){
     $(this).prop('checked', checked);
   });
 })

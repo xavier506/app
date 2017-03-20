@@ -1,5 +1,6 @@
 class CertificatesController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource :certificate_containers
   load_and_authorize_resource :order
   load_and_authorize_resource :through => :order, shallow: true
 
@@ -51,7 +52,8 @@ class CertificatesController < ApplicationController
       :volume,
       :gross_weight,
       :invoices,
-      :description
-    )
+      :description,
+      container_ids: [],
+      )
   end
 end

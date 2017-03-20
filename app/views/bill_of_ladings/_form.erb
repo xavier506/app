@@ -132,11 +132,12 @@
   <div class="details row ">
     <div class="large-6 columns">
       <h4> Select Containers for this BL</h4>
-      <%= f.association :containers,
-      collection: [Container.new(id: 0, container_number: 'Select All')] +Container.where(order_id: @bill_of_lading.order_id),
-      label_method: :container_number,
-      as: :check_boxes,
-      input_html: {data: {behaviour: 'select-all'}} %>
+      <%= check_box_tag 'Select All' %>
+      <%= label_tag 'Select All' %>
+      <%= f.collection_check_boxes :container_ids,
+        Container.where(order_id: @bill_of_lading.order_id),
+        :id,
+        :container_number %>
     </div>
   </div>
   <div class="actions row">

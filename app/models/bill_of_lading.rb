@@ -5,7 +5,6 @@ class BillOfLading < ApplicationRecord
   has_many :notifications, :through => :order
   has_many :bill_of_lading_containers
   has_many :containers, :through => :bill_of_lading_containers
-  scope :containers, ->(order_id) {where order_id === container.order_id}
 
   validates :document_number,
     :exporter,
