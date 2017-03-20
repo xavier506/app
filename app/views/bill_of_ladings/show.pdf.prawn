@@ -85,8 +85,7 @@ if @bill_of_lading.liner == 'EVERGREEN'
     move_down 28
     #CONTAINERS
     table_containers = []
-    @containers = @bill_of_lading.containers(@bill_of_lading.order.id)
-    @containers.each do |c|
+    @bill_of_lading.containers.each do |c|
       container_data = [c.container_number,c.units,c.description,c.gross_weight]
       if table_containers.size < 15 then
         table_containers.push(container_data)
@@ -281,8 +280,7 @@ elsif @bill_of_lading.liner == 'COSCO'
     move_down 28
     #CONTAINERS
     table_containers = []
-    @containers = @bill_of_lading.containers(@bill_of_lading.order.id)
-    @containers.each do |c|
+    @bill_of_lading.containers.each do |c|
       container_data = [c.container_number,c.units,c.description,c.gross_weight]
       if table_containers.size < 4  then
         table_containers.push(container_data)

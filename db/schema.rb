@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170128150517) do
+ActiveRecord::Schema.define(version: 20170317213112) do
+
+  create_table "bill_of_lading_containers", force: :cascade do |t|
+    t.integer  "bill_of_lading_id"
+    t.integer  "container_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["bill_of_lading_id"], name: "index_bill_of_lading_containers_on_bill_of_lading_id"
+    t.index ["container_id"], name: "index_bill_of_lading_containers_on_container_id"
+  end
 
   create_table "bill_of_ladings", force: :cascade do |t|
     t.string   "document_number"
@@ -52,6 +61,15 @@ ActiveRecord::Schema.define(version: 20170128150517) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.index ["order_id"], name: "index_bill_of_ladings_on_order_id"
+  end
+
+  create_table "certificate_containers", force: :cascade do |t|
+    t.integer  "certificate_id"
+    t.integer  "container_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["certificate_id"], name: "index_certificate_containers_on_certificate_id"
+    t.index ["container_id"], name: "index_certificate_containers_on_container_id"
   end
 
   create_table "certificates", force: :cascade do |t|

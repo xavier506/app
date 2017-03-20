@@ -3,7 +3,8 @@ class Certificate < ApplicationRecord
   has_one :client, :through => :order
   has_one :consignee, :through => :order
   has_one :notification, :through => :order
-  has_many :containers, :through => :order
+  has_many :certificate_containers
+  has_many :containers, :through => :certificate_containers
 
   validates :order,
     :shipper,

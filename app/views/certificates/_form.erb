@@ -70,6 +70,16 @@
       </div>
     </div>
   </div>
+  <div class="details row ">
+    <div class="large-12 columns">
+      <h4> Select Containers for this CO</h4>
+      <%= f.association :containers,
+      collection: [Container.new(id: 0, container_number: 'Select All')] +Container.where(order_id: @certificate.order_id),
+      label_method: :container_number,
+      as: :check_boxes,
+      input_html: {data: {behaviour: 'select-all'}} %>
+    </div>
+  </div>
   <div class="actions row">
     <%= f.button :submit, class: 'expanded' %>
   </div>

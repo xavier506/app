@@ -3,10 +3,9 @@ class BillOfLading < ApplicationRecord
   has_one :client, :through => :order
   has_one :consignee, :through => :order
   has_many :notifications, :through => :order
-
-  def containers(order_id)
-    Container.where(order_id: order_id)
-  end
+  has_many :bill_of_lading_containers
+  has_many :containers, :through => :bill_of_lading_containers
+  scope :containers, ->(order_id) {where order_id === container.order_id}
 
   validates :document_number,
     :exporter,
