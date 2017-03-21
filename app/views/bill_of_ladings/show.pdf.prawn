@@ -106,7 +106,7 @@ if @bill_of_lading.liner == 'EVERGREEN'
 
     #Number of Containers
     pdf.bounding_box([116, pdf.cursor - 5], :width => 400, :height => 20) do
-      pdf.text @bill_of_lading.order.total_containers(@bill_of_lading.order_id).to_words.upcase, :size => 8
+      pdf.text @bill_of_lading.containers.size.to_words.upcase, :size => 8
     end
 
     #Freight & Charges
@@ -311,7 +311,7 @@ elsif @bill_of_lading.liner == 'COSCO'
 
     #Number of Containers
     pdf.bounding_box([170, pdf.cursor - 4], :width => 350, :height => 10) do
-      pdf.text @bill_of_lading.order.total_containers(@bill_of_lading.order_id).to_words.upcase, :size => 7
+      pdf.text @bill_of_lading.containers.size.to_words.upcase, :size => 7
     end
 
     #Freight & Charges
