@@ -33,6 +33,13 @@ class BillOfLading < ApplicationRecord
     :order_id,
   presence: true
 
+  def order_bl_available_containers(bill_of_lading)
+    order_containers = BillOfLadingContainer.where(bill_of_lading_id: bill_of_lading.id )
+    available_containers = Container.where(order_id: bill_of_lading.order_id).left_outer_joins(:bill_of_lading_containers).where( bill_of_lading_containers: { id: nil } )
+    order_bl_available_containers = order_containers + available_containers
+    return order_bl_available_containers
+  end
+
   def country_name
     c = ISO3166::Country.find_country_by_alpha2(country)
     c

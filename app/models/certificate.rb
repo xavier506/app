@@ -20,6 +20,13 @@ class Certificate < ApplicationRecord
     :receiver,
   presence: true
 
+  def order_co_available_containers(co)
+    order_containers = BillOfLadingContainer.where(bill_of_lading_id: co.id )
+    available_containers = Container.where(order_id: co.order_id).left_outer_joins(:certificate_containers).where( certificate_containers: { id: nil } )
+    order_co_available_containers = order_containers + available_containers
+    return order_co_available_containers
+  end
+
   def country_name
     c = ISO3166::Country.find_country_by_alpha2(country)
     c

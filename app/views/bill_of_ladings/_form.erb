@@ -137,7 +137,10 @@
       <%= f.collection_check_boxes :container_ids,
         Container.where(order_id: @bill_of_lading.order_id),
         :id,
-        :container_number %>
+        :id %>
+
+        <%#= @bill_of_lading.order_bl_available_containers(@bill_of_lading) %>
+
     </div>
   </div>
   <div class="actions row">

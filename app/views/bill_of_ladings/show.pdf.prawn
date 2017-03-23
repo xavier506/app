@@ -1,6 +1,7 @@
 
 # EVERGREEN
 if @bill_of_lading.liner == 'EVERGREEN'
+  font "Courier"
   bg_image = "#{Rails.root}/app/assets/images/pdf/evergreen.png"
   pdf.image bg_image, :scale => 0.90
   pdf.move_up 666
