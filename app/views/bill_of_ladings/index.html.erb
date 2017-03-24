@@ -3,11 +3,11 @@
   <thead>
     <tr>
       <th>#</th>
-      <th>Exporter</th>
-      <th>Consignee</th>
-      <th>Liner</th>
-      <th>Loading Port</th>
-      <th>Discharge Port</th>
+      <th><%= sort_link(@q, :exporter) %></th>
+      <th><%= sort_link(@q, :receiver) %></th>
+      <th><%= sort_link(@q, :liner) %></th>
+      <th><%= sort_link(@q, :loading_port) %></th>
+      <th><%= sort_link(@q, :discharge_port) %></th>
       <th>Order</th>
       <th>Actions</th>
     </tr>
@@ -19,7 +19,7 @@
       <td><%= bl.exporter %></td>
       <td><%= bl.receiver %></td>
       <td><%= bl.liner %></td>
-      <td><%= bl.loading_port%></td>
+      <td><%= bl.loading_port %></td>
       <td><%= bl.discharge_port %></td>
       <td><%= link_to bl.order.id, order_path(bl.order.id) %></td>
       <td nowrap>

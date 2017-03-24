@@ -3,11 +3,11 @@
   <thead>
     <tr>
       <th>#</th>
-      <th>Shipper</th>
-      <th>Consignee</th>
-      <th>Farm</th>
-      <th>Country</th>
-      <th>Mode</th>
+      <th><%= sort_link(@q, :shipper) %></th>
+      <th><%= sort_link(@q, :receiver) %></th>
+      <th><%= sort_link(@q, :farm) %></th>
+      <th><%= sort_link(@q, :country) %></th>
+      <th><%= sort_link(@q, :mode) %></th>
       <th>Order</th>
       <th>Actions</th>
     </tr>

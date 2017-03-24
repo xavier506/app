@@ -3,9 +3,9 @@
   <thead>
     <tr>
       <th>#</th>
-      <th>Company</th>
-      <th>Contact Name</th>
-      <th>Email</th>
+      <th><%= sort_link(@q, :company) %></th>
+      <th><%= sort_link(@q, :contact_name) %></th>
+      <th><%= sort_link(@q, :email) %></th>
       <th>Telephone</th>
       <th>Actions</th>
     </tr>

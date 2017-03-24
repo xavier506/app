@@ -4,15 +4,15 @@
   <thead>
     <tr>
       <th>#</th>
-      <th>Booking</th>
-      <th>Date</th>
-      <th>Client</th>
-      <th>Consignee</th>
-      <th>Notify</th>
-      <th>Liner</th>
-      <th>Vessel</th>
-      <th>Departure</th>
-      <th>Cutoff</th>
+      <th><%= sort_link(@q, :booking_number, 'Booking') %></th>
+      <th><%= sort_link(@q, :order_date, 'Date') %></th>
+      <th><%= sort_link(@q, :client_company, 'Client') %></th>
+      <th><%= sort_link(@q, :consignee_company, 'Consignee') %></th>
+      <th><%= sort_link(@q, :notification_company, 'Notify') %></th>
+      <th><%= sort_link(@q, :liner) %></th>
+      <th><%= sort_link(@q, :vessel) %></th>
+      <th><%= sort_link(@q, :vessel_departure, 'Departure') %></th>
+      <th><%= sort_link(@q, :cutoff) %></th>
       <th>DUA</th>
       <th>FAD</th>
       <th>Invoice</th>

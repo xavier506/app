@@ -2,9 +2,9 @@
 <table class="hover">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>User Type</th>
+      <th><%= sort_link(@q, :full_name) %></th>
+      <th><%= sort_link(@q, :email) %></th>
+      <th><%= sort_link(@q, :user_type) %></th>
       <th>Sign-ins</th>
       <th>Last Sign-in</th>
       <th>Last Sign-in IP</th>
