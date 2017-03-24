@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
     per_page = params[:per_page]
 
     @q = Order.ransack q_param
+    @q.sorts = 'id desc' if @q.sorts.empty?
     @orders = @q.result.accessible_by(current_ability).page(page).per(per_page)
   end
 
