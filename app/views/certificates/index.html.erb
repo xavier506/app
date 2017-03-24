@@ -2,7 +2,7 @@
 <table class="hover">
   <thead>
     <tr>
-      <th>#</th>
+      <th><%= sort_link(@q, :id, '#') %></th>
       <th><%= sort_link(@q, :shipper) %></th>
       <th><%= sort_link(@q, :receiver) %></th>
       <th><%= sort_link(@q, :farm) %></th>

@@ -3,7 +3,7 @@
 <table class="hover">
   <thead>
     <tr>
-      <th>#</th>
+      <th><%= sort_link(@q, :id, '#') %></th>
       <th><%= sort_link(@q, :booking_number, 'Booking') %></th>
       <th><%= sort_link(@q, :order_date, 'Date') %></th>
       <th><%= sort_link(@q, :client_company, 'Client') %></th>
@@ -13,9 +13,9 @@
       <th><%= sort_link(@q, :vessel) %></th>
       <th><%= sort_link(@q, :vessel_departure, 'Departure') %></th>
       <th><%= sort_link(@q, :cutoff) %></th>
-      <th>DUA</th>
-      <th>FAD</th>
-      <th>Invoice</th>
+      <th><%= sort_link(@q, :dua, 'DUA') %></th>
+      <th><%= sort_link(@q, :fad, 'FAD') %></th>
+      <th><%= sort_link(@q, :customer_invoice, 'Invoice') %></th>
       <th>Actions</th>
     </tr>
   </thead>
