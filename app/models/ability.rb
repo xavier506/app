@@ -34,19 +34,25 @@ class Ability
     elsif user.user_type == 'Client'
         can :read, Order, client_id: user.client.id
         can :read, BillOfLading, :order => { :client_id => user.client.id }
+        can :read, BillOfLadingContainer
         can :read, Certificate, :order => { :client_id => user.client.id }
+        can :read, CertificateContainer
         can :read, Phytosanitary, :order => { :client_id => user.client.id }
         can :read, Container, :order => { :client_id => user.client.id }
     elsif user.user_type == 'Consignee'
         can :read, Order, consignee_id: user.consignee.id
         can :read, BillOfLading, :order => { :consignee_id => user.consignee.id }
+        can :read, BillOfLadingContainer
         can :read, Certificate, :order => { :consignee_id => user.consignee.id }
+        can :read, CertificateContainer
         can :read, Phytosanitary, :order => { :consignee_id => user.consignee.id }
         can :read, Container, :order => { :consignee_id => user.consignee.id }
     elsif user.user_type == 'Notify'
         can :read, Order, notification_id: user.notification.id
         can :read, BillOfLading, :order => { :notification_id => user.notification.id }
+        can :read, BillOfLadingContainer
         can :read, Certificate, :order => { :notification_id => user.notification.id }
+        can :read, CertificateContainer
         can :read, Phytosanitary, :order => { :notification_id => user.notification.id }
         can :read, Container, :order => { :notification_id => user.notification.id }
     else
