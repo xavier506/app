@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
   def show
     q_param = params[:q]
     page = params[:page]
-    per_page = params[:per_page]
+    per_page = 10
 
     @order_containers = Container.where(order_id: @order.id).ransack q_param
     @order_containers = @order_containers.result.page(page).per(per_page)
