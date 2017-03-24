@@ -76,7 +76,6 @@
       <%= check_box_tag 'Select All' %>
       <%= label_tag 'Select All' %>
       <%= f.collection_check_boxes :container_ids,
-      Container.where(order_id: @certificate.order_id)
         Container.where(order_id: @certificate.order_id),
         :id,
         :id %>
