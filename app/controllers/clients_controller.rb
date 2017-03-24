@@ -11,6 +11,12 @@ class ClientsController < ApplicationController
   end
 
   def index
+    q_param = params[:q]
+    page = params[:page]
+    per_page = params[:per_page]
+
+    @q = Client.ransack q_param
+    @clients = @q.result.page(page).per(per_page)
   end
 
   def show

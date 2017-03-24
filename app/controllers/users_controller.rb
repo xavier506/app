@@ -3,6 +3,12 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
+    q_param = params[:q]
+    page = params[:page]
+    per_page = params[:per_page]
+
+    @q = User.ransack q_param
+    @users = @q.result.page(page).per(per_page)
   end
 
   def show

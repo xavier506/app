@@ -9,6 +9,8 @@ gem 'cancancan'
 gem 'sqlite3'
 # Use ransack for search and filtering
 gem 'ransack', github: 'activerecord-hackery/ransack'
+# Use Kaminari for pagination
+gem 'kaminari'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

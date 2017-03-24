@@ -36,3 +36,4 @@
 <% if can? :create, Container %>
   <%= link_to "New Container <i class='fi-plus'></i>".html_safe, new_order_container_path, :class => "button float-right" %>
 <% end %>
+<%= paginate @containers %>

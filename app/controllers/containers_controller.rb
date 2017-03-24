@@ -7,11 +7,18 @@ class ContainersController < ApplicationController
   end
 
   def index
-    if params[:order_id]
-      @containers = @containers
-    else
-      @containers = Container.all
-    end
+    q_param = params[:q]
+    page = params[:page]
+    per_page = params[:per_page]
+
+    @q = Container.ransack q_param
+    @containers = @q.result.page(page).per(per_page)
+
+    # if params[:order_id]
+    #   @containers = @containers.page params[:page]
+    # else
+    #   @containers = Container.order(:id).page params[:page]
+    # end
   end
 
   def show

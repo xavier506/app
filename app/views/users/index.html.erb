@@ -38,3 +38,4 @@
 <% if can? :create, User %>
   <%= link_to "New User <i class='fi-plus'></i>".html_safe, new_user_path, :class => "button float-right" %>
 <% end %>
+<%= paginate @users %>

@@ -108,7 +108,7 @@
     </tr>
   </thead>
   <tbody>
-  <% @order.containers.each do |cont| %>
+  <% @order_containers.each do |cont| %>
     <tr>
       <td><%= link_to cont.id, order_container_path(cont.order.id, cont.id) %></td>
       <td><%= cont.shipper_seal %></td>
@@ -130,6 +130,7 @@
     <% end %>
     </tbody>
   </table>
+  <%= paginate @order_containers %>
   <% if can? :create, Container %>
     <%= link_to("Add Container <i class='fi-plus'></i>".html_safe, new_order_container_path(@order.id), :class => "button float-right" ) %>
   <% end %>

@@ -11,6 +11,12 @@ class ConsigneesController < ApplicationController
   end
 
   def index
+    q_param = params[:q]
+    page = params[:page]
+    per_page = params[:per_page]
+
+    @q = Consignee.ransack q_param
+    @consignees = @q.result.page(page).per(per_page)
   end
 
   def show

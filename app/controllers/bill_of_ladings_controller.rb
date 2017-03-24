@@ -8,6 +8,12 @@ class BillOfLadingsController < ApplicationController
   end
 
   def index
+    q_param = params[:q]
+    page = params[:page]
+    per_page = params[:per_page]
+
+    @q = BillOfLading.ransack q_param
+    @bill_of_ladings = @q.result.page(page).per(per_page)
   end
 
   def show

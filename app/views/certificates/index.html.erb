@@ -40,3 +40,5 @@
 <% if can? :create, Certificate %>
   <%= link_to "New Certificate of Origin <i class='fi-plus'></i>".html_safe, new_order_certificate_path, :class => "button float-right" %>
 <% end %>
+<%= paginate @certificates %>
+

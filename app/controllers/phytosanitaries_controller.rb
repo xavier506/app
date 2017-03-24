@@ -7,6 +7,12 @@ class PhytosanitariesController < ApplicationController
   end
 
   def index
+    q_param = params[:q]
+    page = params[:page]
+    per_page = params[:per_page]
+
+    @q = Phytosanitary.ransack q_param
+    @phytosanitaries = @q.result.page(page).per(per_page)
   end
 
   def show

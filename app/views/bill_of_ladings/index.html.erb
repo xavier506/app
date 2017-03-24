@@ -40,3 +40,4 @@
 <% if can? :create, BillOfLading %>
   <%= link_to "New Bill of Lading <i class='fi-plus'></i>".html_safe, new_order_bill_of_lading_path, :class => "button float-right" %>
 <% end %>
+<%= paginate @bill_of_ladings %>

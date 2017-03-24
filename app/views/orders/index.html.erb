@@ -56,4 +56,5 @@
 <% if can? :create, Order %>
   <%= link_to "New Order <i class='fi-plus'></i>".html_safe, new_order_path, :class => "button float-right" %>
 <% end %>
+<%= paginate @orders %>
 
