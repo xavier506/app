@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     per_page = params[:per_page]
 
     @q = Order.ransack q_param
-    @orders = @q.result.page(page).per(per_page)
+    @orders = @q.result.accessible_by(current_ability).page(page).per(per_page)
   end
 
   def show

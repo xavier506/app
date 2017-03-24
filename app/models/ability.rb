@@ -44,7 +44,7 @@ class Ability
         can :read, Phytosanitary, :order => { :consignee_id => user.consignee.id }
         can :read, Container, :order => { :consignee_id => user.consignee.id }
     elsif user.user_type == 'Notify'
-        can :read, Order, notification_id: user.consignee.id
+        can :read, Order, notification_id: user.notification.id
         can :read, BillOfLading, :order => { :notification_id => user.notification.id }
         can :read, Certificate, :order => { :notification_id => user.notification.id }
         can :read, Phytosanitary, :order => { :notification_id => user.notification.id }
