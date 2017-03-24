@@ -1,0 +1,29 @@
+<%= search_form_for @q do |f| %>
+  <div class="small-1 columns">
+    <%= f.label :status %>
+    <%= f.select :status_eq, Order::STATUSES %>
+  </div>
+  <div class="small-2 columns">
+    <%= f.label :liner %>
+    <%= f.select :status_eq, Order::LINERS %>
+  </div>
+  <div class="small-2 columns">
+    <%= f.label :booking_number %>
+    <%= f.search_field :booking_number %>
+  </div>
+  <div class="small-2 columns">
+    <%= f.label :client_company %>
+    <%= f.search_field :client_company_cont %>
+  </div>
+  <div class="small-2 columns">
+    <%= f.label :consignee_company %>
+    <%= f.search_field :consignee_company_cont %>
+  </div>
+  <div class="small-2 columns">
+    <%= f.label :notification_company %>
+    <%= f.search_field :notification_company_cont %>
+  </div>
+  <div class="small-1 columns" style="padding-top: 25px;">
+    <%= f.submit 'Search', :class => 'button' %>
+  </div>
+<% end %>
