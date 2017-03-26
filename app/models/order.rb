@@ -12,9 +12,9 @@ class Order < ApplicationRecord
   LINERS = ['EVERGREEN','COSCO','MSC','HAPAG-LLOYD','CMA','NYK','MOL']
   MODES = ['Ocean','Land','Air', 'Export', 'Import', 'Other']
   STATUSES = ['Open','Closed','Void']
-  UNIT_TYPES = ['Piezas / Pieces','Cajas / Boxes','Trozas / Logs','Bundles']
-  VOLUME_UNITS = ['CBM','CBFT']
-  WEIGHT_UNITS = ['KGS','TONS']
+  UNIT_TYPES = ['Pieces','Boxes','Logs','Bundles']
+  VOLUME_UNITS = ['CBM','CBFT','MTQ']
+  WEIGHT_UNITS = ['KGS','LBS']
 
   def total_containers(order_id)
     Container.where(order_id: order_id).count

@@ -82,6 +82,9 @@ class BillOfLadingsController < ApplicationController
       :notify,
       :also_notify,
       :order_id,
+      :total_weight,
+      :total_volume,
+      :total_units,
       container_ids: [],
     )
   end

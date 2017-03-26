@@ -33,9 +33,30 @@ class BillOfLading < ApplicationRecord
     :order_id,
   presence: true
 
+  validates :precarriage,
+            :place_of_reciept,
+            :ocean_vessel,
+            :place_of_delivery,
+  length: { maximum: 24 }
+
+  validates :instructions,
+  length: { maximum: 70 }
+
+  validates :exporter,
+            :notify,
+            :also_notify,
+  length: { maximum: 210 }
+
+  validates :receiver,
+            :forwarding_agent_references,
+   length: { maximum: 175 }
+
+  validates :export_references, length: { maximum: 110 }
+
   def order_bl_available_containers(bill_of_lading)
     order_containers = BillOfLadingContainer.where(bill_of_lading_id: bill_of_lading.id )
-    available_containers = Container.where(order_id: bill_of_lading.order_id).left_outer_joins(:bill_of_lading_containers).where( bill_of_lading_containers: { id: nil } )
+    available_containers = Container.where(order_id: bill_of_lading.order_id)
+      .left_outer_joins(:bill_of_lading_containers).where( bill_of_lading_containers: { id: nil } )
     order_bl_available_containers = order_containers + available_containers
     return order_bl_available_containers
   end
@@ -44,4 +65,26 @@ class BillOfLading < ApplicationRecord
     c = ISO3166::Country.find_country_by_alpha2(country)
     c
   end
+
+  def total_containers(bill_of_lading_id)
+    BillOfLadingContainer.where(bill_of_lading_id: bill_of_lading_id).count
+  end
+
+  # def total_units(bill_of_lading_id)
+  #   #Container.where(order_id: order_id).sum(:units)
+  # end
+
+  # def total_weight(bill_of_lading_id)
+  #   #Container.where(order_id: order_id).sum(:gross_weight)
+  # end
+
+  # def total_volume(bill_of_lading_id)
+  #   #Container.where(order_id: order_id).sum(:volume)
+  # end
+
+  # def unit_type(bill_of_lading_id)
+  #   if Container.where(order_id: order_id).exists?
+  #     Container.where(order_id: order_id).first.unit_type
+  #   end
+  # end
 end

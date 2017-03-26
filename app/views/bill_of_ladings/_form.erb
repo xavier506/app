@@ -74,6 +74,20 @@
       <%= f.input :description %>
     </div>
   </div>
+    <div class="row">
+    <div class="large-3 columns">
+      <%= f.input :total_units, input_html: { value: @bill_of_lading.total_units.present? ? @bill_of_lading.total_units : @order.total_units(@order.id) }  %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :unit_type , input_html: { value: @bill_of_lading.unit_type.present? ? @bill_of_lading.unit_type : @order.unit_type(@order.id) } %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :total_weight, input_html: { value: @bill_of_lading.total_weight.present? ? @bill_of_lading.total_weight : @order.total_weight(@order.id) }  %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :total_volume, input_html: { value: @bill_of_lading.total_volume.present? ? @bill_of_lading.total_volume : @order.total_volume(@order.id)} %>
+    </div>
+  </div>
   <div class="row">
     <div class="large-3 columns">
       <%= f.input :freight_charges %>
