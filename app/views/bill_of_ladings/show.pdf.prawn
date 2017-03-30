@@ -338,25 +338,37 @@ elsif @bill_of_lading.liner == 'COSCO'
       pdf.text @bill_of_lading.service_type.upcase, {size: 9}
     end
 
-    move_down 28
+    move_down 2
+    #Total Volume
+    pdf.bounding_box([445, pdf.cursor - 26], :width => 230, :height => 30) do
+      pdf.text @bill_of_lading.total_volume.to_s + " " + @bill_of_lading.order.volume_units, {size: 9}
+    end
+
+    #Total Weight
+    pdf.bounding_box([445, pdf.cursor + 20], :width => 230, :height => 30) do
+      pdf.text @bill_of_lading.total_weight.to_s + " " + @bill_of_lading.order.weight_units, {size: 9}
+    end
+
     #CONTAINERS
     table_containers = []
     @bill_of_lading.containers.each do |c|
-      container_data = [c.container_number,c.units,c.description,c.gross_weight]
-      if table_containers.size < 4  then
+      container_data = [c.container_number.upcase  + '/' + c.container_type.upcase  + '/' + c.carrier_seal.upcase  + '/', c.units.to_s.upcase + ' ' + c.unit_type.upcase, c.gross_weight.to_s.upcase  + ' ' + c.order.weight_units.upcase  + ' ' + c.volume.to_s.upcase  + ' ' + c.order.volume_units.upcase   + ' ' + c.description.upcase ]
+      if table_containers.size < 8 then
         table_containers.push(container_data)
       end
     end
 
-    pdf.bounding_box([0, pdf.cursor + 10], :width => 535, :height => 165) do
+    pdf.bounding_box([0, pdf.cursor + 20], :width => 535, :height => 135) do
+      #pdf.transparent(0.5) { pdf.stroke_bounds }
+
       if table_containers.size > 0
         table(
           table_containers,
-          :column_widths => {0 => 115, 1 => 60, 2 => 240, 3 => 110},
+          :column_widths => {0 => 180, 1 => 95, 2 => 250},
           :cell_style =>{size: 9, :border_width => 0, :padding => 1}
         )
       else
-        pdf.text "No Containers", {size: 9}
+        pdf.text "No Containers", size: 9
       end
     end
 
@@ -371,8 +383,9 @@ elsif @bill_of_lading.liner == 'COSCO'
     end
 
     #Number of Containers
+    num_containers_in_words = @bill_of_lading.containers.size.to_words.upcase + '(' + @bill_of_lading.containers.size.to_s + ') CONTAINERS ONLY'
     pdf.bounding_box([170, pdf.cursor - 4], :width => 350, :height => 10) do
-      pdf.text @bill_of_lading.containers.size.to_words.upcase, {size: 9}
+      pdf.text num_containers_in_words, {size: 9}
     end
 
     #Freight & Charges
@@ -416,6 +429,10 @@ elsif @bill_of_lading.liner == 'COSCO'
     end
     # pdf.transparent(0.5) { pdf.stroke_bounds }
   end
+elsif @bill_of_lading.liner == 'HAPAG-LLOYD'
+  bg_image = "#{Rails.root}/app/assets/images/pdf/hapag.png"
+  pdf.image bg_image, :scale => 0.54
+  pdf.move_up 666
 else
   pdf.text 'No Template Available for Selected Liner', :size => 24, :align => :center
 end

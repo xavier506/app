@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   has_many :containers, :dependent => :restrict_with_error
 
   #Options for field selection
-  LINERS = ['EVERGREEN','COSCO','MSC','HAPAG-LLOYD','CMA','NYK','MOL']
+  LINERS = ['EVERGREEN','COSCO','HAPAG-LLOYD','MSC','CMA','NYK','MOL''APL','MAERSK','SEALAND']
   MODES = ['Ocean','Land','Air', 'Export', 'Import', 'Other']
   STATUSES = ['Open','Closed','Void']
   UNIT_TYPES = ['Pieces','Boxes','Logs','Bundles']
