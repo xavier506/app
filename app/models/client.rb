@@ -12,6 +12,6 @@ class Client < ApplicationRecord
   end
 
   def shipper_string
-    "#{company} #{address} #{city} #{state} #{country} #{zip}"
+    "#{company} \n#{address} #{city} #{state} #{country} #{zip}"
   end
 end

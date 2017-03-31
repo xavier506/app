@@ -11,6 +11,6 @@ class Notification < ApplicationRecord
   end
 
   def notify_string
-    "#{company} #{address} #{city} #{state} #{country} #{zip}"
+    "#{company} \n#{address} #{city} #{state} #{country} #{zip}"
   end
 end

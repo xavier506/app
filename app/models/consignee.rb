@@ -11,6 +11,6 @@ class Consignee < ApplicationRecord
   end
 
   def consignee_string
-    "#{company} #{address} #{city} #{state} #{country} #{zip}"
+    "#{company} \n#{address} #{city} #{state} #{country} #{zip}"
   end
 end
