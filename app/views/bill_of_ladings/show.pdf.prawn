@@ -339,36 +339,45 @@ elsif @bill_of_lading.liner == 'COSCO'
     end
 
     move_down 2
-    #Total Volume
-    pdf.bounding_box([445, pdf.cursor - 26], :width => 230, :height => 30) do
-      pdf.text @bill_of_lading.total_volume.to_s + " " + @bill_of_lading.order.volume_units, {size: 9}
+
+    pdf.bounding_box([0, pdf.cursor - 15], :width => 535, :height => 18) do
+      pdf.text '"SHIPPER\'S LOAD & COUNT"', size: 8, :align => :center
+      pdf.text '"SAID TO CONTAIN"', size: 8, :align => :center
     end
 
     #Total Weight
-    pdf.bounding_box([445, pdf.cursor + 20], :width => 230, :height => 30) do
+    pdf.bounding_box([380, pdf.cursor + 0], :width => 75, :height => 10) do
       pdf.text @bill_of_lading.total_weight.to_s + " " + @bill_of_lading.order.weight_units, {size: 9}
+    end
+
+    #Total Volume
+    pdf.bounding_box([460, pdf.cursor + 10], :width => 80, :height => 10) do
+      pdf.text @bill_of_lading.total_volume.to_s + " " + @bill_of_lading.order.volume_units, {size: 9}
     end
 
     #CONTAINERS
     table_containers = []
     @bill_of_lading.containers.each do |c|
       container_data = [c.container_number.upcase  + '/' + c.container_type.upcase  + '/' + c.carrier_seal.upcase  + '/', c.units.to_s.upcase + ' ' + c.unit_type.upcase, c.gross_weight.to_s.upcase  + ' ' + c.order.weight_units.upcase  + ' ' + c.volume.to_s.upcase  + ' ' + c.order.volume_units.upcase   + ' ' + c.description.upcase ]
-      if table_containers.size < 8 then
+      if table_containers.size < 9 then
         table_containers.push(container_data)
       end
     end
 
-    pdf.bounding_box([0, pdf.cursor + 20], :width => 535, :height => 135) do
+    pdf.bounding_box([0, pdf.cursor - 4], :width => 535, :height => 135) do
       #pdf.transparent(0.5) { pdf.stroke_bounds }
-
       if table_containers.size > 0
         table(
           table_containers,
           :column_widths => {0 => 180, 1 => 95, 2 => 250},
-          :cell_style =>{size: 9, :border_width => 0, :padding => 1}
+          :cell_style =>{size: 8, :border_width => 0, :padding => 1}
         )
       else
-        pdf.text "No Containers", size: 9
+        pdf.text "No Containers", size: 8
+      end
+
+      if @bill_of_lading.containers.size > 9
+        pdf.text "**  TO BE CONTINUED ON ATTACHED LIST  **", size: 8, :align => :center
       end
     end
 
@@ -383,7 +392,7 @@ elsif @bill_of_lading.liner == 'COSCO'
     end
 
     #Number of Containers
-    num_containers_in_words = @bill_of_lading.containers.size.to_words.upcase + '(' + @bill_of_lading.containers.size.to_s + ') CONTAINERS ONLY'
+    num_containers_in_words = 'SAY ' + @bill_of_lading.containers.size.to_words.upcase + '(' + @bill_of_lading.containers.size.to_s + ') CONTAINERS TOTAL'
     pdf.bounding_box([170, pdf.cursor - 4], :width => 350, :height => 10) do
       pdf.text num_containers_in_words, {size: 9}
     end
@@ -428,6 +437,40 @@ elsif @bill_of_lading.liner == 'COSCO'
       pdf.text @bill_of_lading.collect_at.upcase, {size: 9}
     end
     # pdf.transparent(0.5) { pdf.stroke_bounds }
+    if @bill_of_lading.containers.size > 10 then
+      pdf.start_new_page
+        bg_image = "#{Rails.root}/app/assets/images/pdf/cosco-page-2.png"
+        pdf.image bg_image, :scale => 0.70
+        pdf.move_up 598
+
+          #Vessel
+          pdf.bounding_box([40, pdf.cursor - 0], :width => 100, :height => 10) do
+            pdf.text @bill_of_lading.ocean_vessel.upcase, {size: 9}
+          end
+
+          #BL Number
+          pdf.bounding_box([375, pdf.cursor + 10], :width => 100, :height => 10) do
+            pdf.text @bill_of_lading.document_number.upcase, {size: 9}
+          end
+
+          move_down 15
+
+      #CONTAINERS
+        table_containers = []
+
+        @bill_of_lading.containers[10..-1].each do |c|
+          container_data = [c.container_number.upcase  + '/' + c.container_type.upcase  + '/' + c.carrier_seal.upcase  + '/', c.units.to_s.upcase + ' ' + c.unit_type.upcase, c.gross_weight.to_s.upcase  + ' ' + c.order.weight_units.upcase  + ' ' + c.volume.to_s.upcase  + ' ' + c.order.volume_units.upcase   + ' ' + c.description.upcase ]
+            table_containers.push(container_data)
+        end
+
+      pdf.bounding_box([0, pdf.cursor + 0], :width => 525, :height => 630) do
+          table(
+            table_containers,
+            :column_widths => {0 => 180, 1 => 95, 2 => 250},
+            :cell_style =>{size: 9, :border_width => 0, :padding => 1}
+          )
+      end
+    end
   end
 elsif @bill_of_lading.liner == 'HAPAG-LLOYD'
   bg_image = "#{Rails.root}/app/assets/images/pdf/hapag.png"
