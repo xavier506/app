@@ -1,32 +1,38 @@
-<div class="details">
-<h5>Filter Orders</h5>
-<%= search_form_for @q do |f| %>
-  <div class="small-1 columns">
-    <%= f.label :status %>
-    <%= f.select :status_eq, Order::STATUSES, include_blank: true %>
-  </div>
-  <div class="small-2 columns">
-    <%= f.label :liner %>
-    <%= f.select :liner_eq, Order::LINERS, include_blank: true %>
-  </div>
-  <div class="small-2 columns">
-    <%= f.label :booking_number %>
-    <%= f.search_field :booking_number_cont %>
-  </div>
-  <div class="small-2 columns">
-    <%= f.label :client_company %>
-    <%= f.search_field :client_company_cont %>
-  </div>
-  <div class="small-2 columns">
-    <%= f.label :consignee_company %>
-    <%= f.search_field :consignee_company_cont %>
-  </div>
-  <div class="small-2 columns">
-    <%= f.label :notification_company %>
-    <%= f.search_field :notification_company_cont %>
-  </div>
-  <div class="small-1 columns" style="padding-top: 24px;">
-    <%= f.submit 'Search', :class => 'button' %>
+<% if current_user && current_user.user_type == 'Administrator' %>
+  <div class="details">
+  <h5>Filter Orders</h5>
+  <%= search_form_for @q do |f| %>
+    <div class="small-1 columns">
+      <%= f.label :status %>
+      <%= f.select :status_eq, Order::STATUSES, include_blank: true %>
+    </div>
+    <div class="small-1 columns">
+      <%= f.label :liner %>
+      <%= f.select :liner_eq, Order::LINERS, include_blank: true %>
+    </div>
+    <div class="small-2 columns">
+      <%= f.label :booking_number %>
+      <%= f.search_field :booking_number_cont %>
+    </div>
+    <div class="small-2 columns">
+      <%= f.label :place_of_delivery %>
+      <%= f.search_field :place_of_delivery_cont %>
+    </div>
+    <div class="small-2 columns">
+      <%= f.label :client_company %>
+      <%= f.search_field :client_company_cont %>
+    </div>
+    <div class="small-2 columns">
+      <%= f.label :consignee_company %>
+      <%= f.search_field :consignee_company_cont %>
+    </div>
+    <div class="small-2 columns">
+      <%= f.label :notification_company %>
+      <%= f.search_field :notification_company_cont %>
+    </div>
+    <div class="small-1 columns" style="padding-top: 24px;">
+      <%= f.submit 'Search', :class => 'button' %>
+    </div>
+  <% end %>
   </div>
 <% end %>
-</div>

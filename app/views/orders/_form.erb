@@ -99,12 +99,12 @@
     </div>
     <div class="large-3 columns">
       <%= f.input :vessel_departure do %>
-      <%= f.date_field :vessel_departure, :value => Time.now.strftime('%Y-%m-%d') %>
+      <%= f.date_field :vessel_departure, value: @order.vessel_departure.present? ? @order.vessel_departure : Time.now.strftime('%Y-%m-%d') %>
       <% end %>
     </div>
     <div class="large-3 columns">
     <%= f.input :cutoff do %>
-      <%= f.date_field :cutoff, :value => Time.now.strftime('%Y-%m-%d') %>
+      <%= f.date_field :cutoff, value: @order.cutoff.present? ? @order.cutoff : Time.now.strftime('%Y-%m-%d') %>
     <% end %>
     </div>
   </div>

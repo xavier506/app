@@ -51,7 +51,7 @@
       <td><%= order.dua %></td>
       <td><%= order.fad %></td>
       <td><%= order.customer_invoice %></td>
-      <td><%= link_to order.pca_invoice_number, order.pca_invoice_url %></td>
+      <td><%= link_to order.pca_invoice_number, order.pca_invoice_url, target: "_blank" %></td>
       <td><%= order.customer_ref %></td>
     </tr>
   <% end %>
