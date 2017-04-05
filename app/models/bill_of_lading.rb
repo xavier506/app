@@ -6,12 +6,14 @@ class BillOfLading < ApplicationRecord
   has_many :bill_of_lading_containers
   has_many :containers, :through => :bill_of_lading_containers
 
-  validates :document_number,
-    :exporter,
-    :receiver,
-    :place_of_origin,
-    :place_of_reciept,
-    # :place_of_delivery,
+  validates :order_id,
+    #:document_number,
+    #:exporter,
+    #:receiver,
+    #:place_of_origin,
+    #:place_of_reciept,
+    #:notify,
+    #:place_of_delivery,
     # :date_of_reciept,
     # :ocean_vessel,
     # :loading_port,
@@ -29,8 +31,6 @@ class BillOfLading < ApplicationRecord
     # :service_type,
     # :laden_on_board,
     # :liner,
-    :notify,
-    :order_id,
   presence: true
 
   validates :precarriage,

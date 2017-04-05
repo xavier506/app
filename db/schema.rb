@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326210148) do
+ActiveRecord::Schema.define(version: 20170404235158) do
 
   create_table "bill_of_lading_containers", force: :cascade do |t|
     t.integer  "bill_of_lading_id"
@@ -191,8 +191,12 @@ ActiveRecord::Schema.define(version: 20170326210148) do
     t.integer  "client_id"
     t.integer  "consignee_id"
     t.integer  "notification_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "customer_ref"
+    t.string   "pca_invoice_number"
+    t.string   "pca_invoice_url"
+    t.string   "place_of_delivery"
     t.index ["client_id"], name: "index_orders_on_client_id"
     t.index ["consignee_id"], name: "index_orders_on_consignee_id"
     t.index ["notification_id"], name: "index_orders_on_notification_id"

@@ -64,6 +64,10 @@ class OrdersController < ApplicationController
       :dua,
       :fad,
       :customer_invoice,
+      :customer_ref,
+      :pca_invoice_number,
+      :pca_invoice_url,
+      :place_of_delivery,
       :volume_units,
       :weight_units,
     )

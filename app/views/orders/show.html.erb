@@ -69,6 +69,18 @@
     <dt>Customer Invoice :</dt>
     <dd><%= @order.customer_invoice %></dd>
   </div>
+    <div class="large-4 columns">
+    <dt>PCA Invoice :</dt>
+    <dd><%= link_to @order.pca_invoice_number, @order.pca_invoice_url %></dd>
+  </div>
+    <div class="large-4 columns">
+    <dt>Customer REF :</dt>
+    <dd><%= @order.customer_ref %></dd>
+  </div>
+    <div class="large-4 columns">
+    <dt>POD :</dt>
+    <dd><%= @order.place_of_delivery %></dd>
+  </div>
   <div class="large-12 columns">
     <dt>Notes :</dt>
     <dd><%= @order.notes %></dd>

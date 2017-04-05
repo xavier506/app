@@ -63,17 +63,30 @@
   </div>
   <div class="row">
     <div class="large-3 columns">
+      <%= f.input :customer_ref, label: "Customer REF" %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :pca_invoice_number, label: "PCA Invoice #"  %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :pca_invoice_url, label: "PCA Invoice URL"  %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :place_of_delivery, label: "Place of Delivery" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-3 columns">
       <%= f.input :booking_number %>
     </div>
-
     <div class="large-3 columns">
       <%= f.input :customer_invoice %>
     </div>
     <div class="large-3 columns">
-      <%= f.input :dua %>
+      <%= f.input :dua, label: "DUA" %>
     </div>
     <div class="large-3 columns">
-      <%= f.input :fad %>
+      <%= f.input :fad, label: "FAD" %>
     </div>
   </div>
   <div class="row">
