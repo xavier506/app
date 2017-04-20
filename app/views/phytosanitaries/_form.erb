@@ -51,8 +51,9 @@
     </div>
     <div class="large-3 columns">
       <%= f.input :issue_date do %>
-        <%= f.date_field :issue_date, value: @phytosanitary.issue_date.present? ? @phytosanitary.issue_date : Time.now.strftime('%Y-%m-%d') %>
+        <%= f.date_field :issue_date, as: :date, value: @phytosanitary.issue_date.present? ? @phytosanitary.issue_date.try(:strftime,'%Y-%m-%d') : Time.now.strftime('%Y-%m-%d') %>
       <% end %>
+
     </div>
     <div class="large-3 columns">
       <%= f.input :responsible %>
@@ -64,7 +65,7 @@
   <div class="row">
     <div class="large-2 columns">
       <%= f.input :treatment_date do %>
-        <%= f.date_field :treatment_date, value: @phytosanitary.treatment_date.present? ? @phytosanitary.treatment_date : Time.now.strftime('%Y-%m-%d') %>
+        <%= f.date_field :treatment_date, as: :date, value: @phytosanitary.treatment_date.present? ? @phytosanitary.treatment_date.try(:strftime,'%Y-%m-%d') : Time.now.strftime('%Y-%m-%d') %>
       <% end %>
     </div>
     <div class="large-3 columns">

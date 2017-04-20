@@ -48,7 +48,7 @@
     </div>
     <div class="large-3 columns">
       <%= f.input :date_of_reciept do %>
-      <%= f.date_field :date_of_reciept,  value: @bill_of_lading.date_of_reciept.present? ? @bill_of_lading.date_of_reciept : Time.now.strftime('%Y-%m-%d') %>
+      <%= f.date_field :date_of_reciept, as: :date, value: @bill_of_lading.date_of_reciept.present? ? @bill_of_lading.date_of_reciept.try(:strftime,'%Y-%m-%d') : Time.now.strftime('%Y-%m-%d') %>
       <% end %>
     </div>
   </div>
@@ -122,7 +122,7 @@
     </div>
     <div class="large-3 columns">
       <%= f.input :issue_date do %>
-      <%= f.date_field :issue_date, value: @bill_of_lading.issue_date.present? ? @bill_of_lading.issue_date : Time.now.strftime('%Y-%m-%d')  %>
+      <%= f.date_field :issue_date, as: :date, value: @bill_of_lading.issue_date.present? ? @bill_of_lading.issue_date.try(:strftime,'%Y-%m-%d') : Time.now.strftime('%Y-%m-%d') %>
       <% end %>
     </div>
     <div class="large-3 columns">

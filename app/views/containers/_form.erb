@@ -29,12 +29,12 @@
     </div>
     <div class="large-3 columns">
     <%= f.input :gate_in do %>
-    <%= f.date_field :gate_in, value: @container.gate_in.present? ? @container.gate_in : Time.now.strftime('%Y-%m-%d') %>
+    <%= f.date_field :gate_in, as: :date, value: @container.gate_in.present? ? @container.gate_in.try(:strftime,'%Y-%m-%d') : Time.now.strftime('%Y-%m-%d') %>
     <% end %>
     </div>
     <div class="large-3 columns">
      <%= f.input :gate_out do %>
-     <%= f.date_field :gate_out, value: @container.gate_out.present? ? @container.gate_out : Time.now.strftime('%Y-%m-%d') %>
+     <%= f.date_field :gate_out, as: :date, value: @container.gate_out.present? ? @container.gate_out.try(:strftime,'%Y-%m-%d') : Time.now.strftime('%Y-%m-%d') %>
      <% end %>
     </div>
   </div>
@@ -70,7 +70,7 @@
     </div>
     <div class="large-3 columns">
       <%= f.input :treatment_date do %>
-        <%= f.date_field :treatment_date, value: @container.treatment_date.present? ? @container.treatment_date : Time.now.strftime('%Y-%m-%d') %>
+        <%= f.date_field :treatment_date, as: :date, value: @container.treatment_date.present? ? @container.treatment_date.try(:strftime,'%Y-%m-%d') : Time.now.strftime('%Y-%m-%d') %>
      <% end %>
     </div>
   </div>
