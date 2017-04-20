@@ -4,11 +4,11 @@
   <%= search_form_for @q do |f| %>
     <div class="small-1 columns">
       <%= f.label :status %>
-      <%= f.select :status_eq, Order::STATUSES, include_blank: true %>
+      <%= f.select :status_eq, Order::STATUSES, include_blank: "Any" %>
     </div>
     <div class="small-1 columns">
       <%= f.label :liner %>
-      <%= f.select :liner_eq, Order::LINERS, include_blank: true %>
+      <%= f.select :liner_eq, Order::LINERS, include_blank: "Any" %>
     </div>
     <div class="small-2 columns">
       <%= f.label :booking_number %>
