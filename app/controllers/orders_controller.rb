@@ -54,6 +54,7 @@ class OrdersController < ApplicationController
       :consignee_id,
       :notification_id,
       :status,
+      :eta_date,
       :liner,
       :mode,
       :notes,

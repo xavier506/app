@@ -43,12 +43,17 @@
     </div>
   </div>
   <div class="row">
-    <div class="large-3 columns">
+    <div class="large-2 columns">
       <%= f.input :order_date do %>
         <%= f.date_field :order_date, as: :date, :value => @order.order_date.present? ? @order.order_date.try(:strftime,'%Y-%m-%d') : Time.now.strftime('%Y-%m-%d') %>
       <% end %>
     </div>
-    <div class="large-3 columns">
+    <div class="large-2 columns">
+      <%= f.input :eta_date do %>
+        <%= f.date_field :eta_date, as: :date, :value => @order.eta_date.present? ? @order.eta_date.try(:strftime,'%Y-%m-%d') : Time.now.strftime('%Y-%m-%d') %>
+      <% end %>
+    </div>
+    <div class="large-2 columns">
       <%= f.input :status, collection: Order::STATUSES, include_blank: false  %>
     </div>
     <div class="large-2 columns">

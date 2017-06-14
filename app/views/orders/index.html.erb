@@ -8,6 +8,7 @@
       <th>Actions</th>
       <th><%= sort_link(@q, :booking_number, 'Booking') %></th>
       <th><%= sort_link(@q, :order_date, 'Date') %></th>
+      <th><%= sort_link(@q, :eta_date, 'ETA') %></th>
       <th><%= sort_link(@q, :client_company, 'Client') %></th>
       <th><%= sort_link(@q, :consignee_company, 'Consignee') %></th>
       <th><%= sort_link(@q, :notification_company, 'Notify') %></th>
@@ -40,6 +41,7 @@
       </td>
       <td><%= order.booking_number %></td>
       <td><%= order.order_date %></td>
+      <td><%= order.eta_date %></td>
       <td><%= order.client.company %></td>
       <td><%= order.consignee.company  %></td>
       <td><%= order.notification.company %></td>
