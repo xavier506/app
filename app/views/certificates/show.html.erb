@@ -1,75 +1,78 @@
-<h3>
-  <span class="float-left">
-    Certificate of Origin #<%= @certificate.id %>
-    <small>on <%= link_to("order # #{@certificate.order.id}", @certificate.order) %></small>
-  </span>
-  <span class="float-right">
-    <% if can? :read, Certificate %>
-      <%= link_to("View All COs <i class='fi-magnifying-glass'></i>".html_safe, order_certificates_path, :class => "tiny button") %>
-    <% end %>
-    <% if can? :update, @certificate %>
-      <%= link_to("Edit This CO <i class='fi-page-edit'></i>".html_safe, edit_order_certificate_path(@order, @certificate.id), :class => "tiny button") %>
-    <% end %>
-    <% if can? :read, @certificate %>
-      <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_certificate_path(@order, @certificate.id, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
-    <% end %>
-  </span>
-</h3>
-
-<div class="details row column">
-  <dl class="inline">
-    <div class="large-6 columns">
-      <dt>Shipper :</dt>
-      <dd><%= @certificate.shipper %></dd>
-    </div>
-    <div class="large-6 columns">
-     <dt>Consignee :</dt>
-     <dd><%= @certificate.receiver %></dd>
-   </div>
-   <div class="large-6 columns">
-    <dt>Farm :</dt>
-    <dd><%= @certificate.farm %></dd>
-    </div>
-    <div class="large-6 columns">
-      <dt>Country :</dt>
-      <dd><%= @certificate.country_name %></dd>
-    </div>
-    <div class="large-6 columns">
-      <dt>Departure Port :</dt>
-      <dd><%= @certificate.departure_port %></dd>
-    </div>
-    <div class="large-6 columns">
-      <dt>Discharge Port :</dt>
-      <dd><%= @certificate.discharge_port %></dd>
-    </div>
-    <div class="large-6 columns">
-      <dt>Mode :</dt>
-      <dd><%= @certificate.mode %></dd>
-    </div>
-    <div class="large-6 columns">
-      <dt>Observations :</dt>
-      <dd><%= @certificate.observations %></dd>
-    </div>
-    <hr />
-    <div class="large-12 columns">
-      <dt>Description :</dt>
-      <dd><%= @certificate.description %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Units :</dt>
-      <dd><%= @certificate.units %> <%= @certificate.unit_type %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Volume :</dt>
-      <dd><%= @certificate.volume %> <%= @certificate.order.volume_units %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Weight :</dt>
-      <dd><%= @certificate.gross_weight %> <%= @certificate.order.weight_units %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Invoices :</dt>
-      <dd><%= @certificate.invoices %></dd>
-    </div>
-  </dl>
+<div class="row column">
+  <h3>
+    <span class="float-left">
+      Certificate of Origin #<%= @certificate.id %>
+      <small>on <%= link_to("order # #{@certificate.order.id}", @certificate.order) %></small>
+    </span>
+    <span class="float-right">
+      <% if can? :read, Certificate %>
+        <%= link_to("View All COs <i class='fi-magnifying-glass'></i>".html_safe, order_certificates_path, :class => "tiny button") %>
+      <% end %>
+      <% if can? :update, @certificate %>
+        <%= link_to("Edit This CO <i class='fi-page-edit'></i>".html_safe, edit_order_certificate_path(@order, @certificate.id), :class => "tiny button") %>
+      <% end %>
+      <% if can? :read, @certificate %>
+        <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_certificate_path(@order, @certificate.id, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
+      <% end %>
+    </span>
+  </h3>
+</div>
+<div class="row column">
+  <div class="details">
+    <dl class="inline">
+      <div class="large-6 columns">
+        <dt>Shipper :</dt>
+        <dd><%= @certificate.shipper %></dd>
+      </div>
+      <div class="large-6 columns">
+       <dt>Consignee :</dt>
+       <dd><%= @certificate.receiver %></dd>
+     </div>
+     <div class="large-6 columns">
+      <dt>Farm :</dt>
+      <dd><%= @certificate.farm %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Country :</dt>
+        <dd><%= @certificate.country_name %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Departure Port :</dt>
+        <dd><%= @certificate.departure_port %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Discharge Port :</dt>
+        <dd><%= @certificate.discharge_port %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Mode :</dt>
+        <dd><%= @certificate.mode %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Observations :</dt>
+        <dd><%= @certificate.observations %></dd>
+      </div>
+      <hr />
+      <div class="large-12 columns">
+        <dt>Description :</dt>
+        <dd><%= @certificate.description %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Units :</dt>
+        <dd><%= @certificate.units %> <%= @certificate.unit_type %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Volume :</dt>
+        <dd><%= @certificate.volume %> <%= @certificate.order.volume_units %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Weight :</dt>
+        <dd><%= @certificate.gross_weight %> <%= @certificate.order.weight_units %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Invoices :</dt>
+        <dd><%= @certificate.invoices %></dd>
+      </div>
+    </dl>
+  </div>
 </div>

@@ -1,127 +1,130 @@
-<h3>
-  <span class="float-left">
-    Container #<%= @container.id %>
-    <small>on <%= link_to("order # #{@container.order.id}", @container.order) %></small>
-  </span>
-  <span class="float-right">
-    <% if can? :read, Container %>
-      <%= link_to("View All Containers <i class='fi-magnifying-glass'></i>".html_safe, @container.order, :class => "tiny button") %>
-    <% end %>
-    <% if can? :update, @container %>
-      <%= link_to("Edit This Container <i class='fi-page-edit'></i>".html_safe, edit_order_container_path(@container.order, @container.id), :class => "tiny button") %>
-    <% end %>
-  </span>
-</h3>
-
-<div class="details row column">
-  <dl class="inline">
-    <div class="large-3 columns">
-      <dt>Container Number:</dt>
-      <dd><%= @container.container_number %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Shipper Seal:</dt>
-      <dd><%= @container.shipper_seal %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Carrier Seal:</dt>
-      <dd><%= @container.carrier_seal %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Container Type:</dt>
-      <dd><%= @container.container_type %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Booking Number:</dt>
-      <dd><%= @container.booking_number %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Liner:</dt>
-      <dd><%= @container.liner %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Gate In:</dt>
-      <dd><%= @container.gate_in %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Gate Out:</dt>
-      <dd><%= @container.gate_out %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>TIR:</dt>
-      <dd><%= @container.tir %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Vessel:</dt>
-      <dd><%= @container.vessel %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Client:</dt>
-      <dd><%= @container.client %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>License Plate:</dt>
-      <dd><%= @container.license_plate %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Chasis:</dt>
-      <dd><%= @container.chasis %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Truck Tare:</dt>
-      <dd><%= @container.truck_tare %>  <%= @container.order.volume_units %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Payload:</dt>
-      <dd><%= @container.payload %>  <%= @container.order.volume_units %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Treatment Date:</dt>
-      <dd><%= @container.treatment_date %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Fumigation Doc:</dt>
-      <dd><%= @container.fumigation_doc %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Fumigation Seal:</dt>
-      <dd><%= @container.fumigation_seal %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Inspector:</dt>
-      <dd><%= @container.inspector %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Farm:</dt>
-      <dd><%= @container.farm %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Units:</dt>
-      <dd><%= @container.units %> <%= @container.unit_type %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Volume:</dt>
-      <dd><%= @container.volume %> <%= @container.order.volume_units %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Tare Weight:</dt>
-      <dd><%= @container.tare_weight %> <%= @container.order.weight_units %></dd>
-    </div>
-    <div class="large-3 columns">
-      <dt>Gross Weight:</dt>
-      <dd><%= @container.gross_weight %> <%= @container.order.weight_units %></dd>
-    </div>
-        <div class="large-4 columns">
-      <dt>Net Weight:</dt>
-      <dd><%= @container.net_weight %>  <%= @container.order.weight_units %></dd>
-    </div>
-        <div class="large-4 columns">
-      <dt>VGM:</dt>
-      <dd><%= @container.vgm %> <%= @container.order.weight_units %></dd>
-    </div>
-        <div class="large-4 columns">
-      <dt>Overpayload:</dt>
-      <dd><%= @container.overpayload %> <%= @container.order.weight_units %></dd>
-    </div>
-  </dl>
+<div class="row column">
+  <h3>
+    <span class="float-left">
+      Container #<%= @container.id %>
+      <small>on <%= link_to("order # #{@container.order.id}", @container.order) %></small>
+    </span>
+    <span class="float-right">
+      <% if can? :read, Container %>
+        <%= link_to("View All Containers <i class='fi-magnifying-glass'></i>".html_safe, @container.order, :class => "tiny button") %>
+      <% end %>
+      <% if can? :update, @container %>
+        <%= link_to("Edit This Container <i class='fi-page-edit'></i>".html_safe, edit_order_container_path(@container.order, @container.id), :class => "tiny button") %>
+      <% end %>
+    </span>
+  </h3>
+</div>
+<div class="row column">
+  <div class="details">
+    <dl class="inline">
+      <div class="large-3 columns">
+        <dt>Container Number:</dt>
+        <dd><%= @container.container_number %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Shipper Seal:</dt>
+        <dd><%= @container.shipper_seal %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Carrier Seal:</dt>
+        <dd><%= @container.carrier_seal %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Container Type:</dt>
+        <dd><%= @container.container_type %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Booking Number:</dt>
+        <dd><%= @container.booking_number %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Liner:</dt>
+        <dd><%= @container.liner %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Gate In:</dt>
+        <dd><%= @container.gate_in %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Gate Out:</dt>
+        <dd><%= @container.gate_out %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>TIR:</dt>
+        <dd><%= @container.tir %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Vessel:</dt>
+        <dd><%= @container.vessel %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Client:</dt>
+        <dd><%= @container.client %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>License Plate:</dt>
+        <dd><%= @container.license_plate %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Chasis:</dt>
+        <dd><%= @container.chasis %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Truck Tare:</dt>
+        <dd><%= @container.truck_tare %>  <%= @container.order.volume_units %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Payload:</dt>
+        <dd><%= @container.payload %>  <%= @container.order.volume_units %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Treatment Date:</dt>
+        <dd><%= @container.treatment_date %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Fumigation Doc:</dt>
+        <dd><%= @container.fumigation_doc %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Fumigation Seal:</dt>
+        <dd><%= @container.fumigation_seal %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Inspector:</dt>
+        <dd><%= @container.inspector %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Farm:</dt>
+        <dd><%= @container.farm %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Units:</dt>
+        <dd><%= @container.units %> <%= @container.unit_type %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Volume:</dt>
+        <dd><%= @container.volume %> <%= @container.order.volume_units %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Tare Weight:</dt>
+        <dd><%= @container.tare_weight %> <%= @container.order.weight_units %></dd>
+      </div>
+      <div class="large-3 columns">
+        <dt>Gross Weight:</dt>
+        <dd><%= @container.gross_weight %> <%= @container.order.weight_units %></dd>
+      </div>
+          <div class="large-4 columns">
+        <dt>Net Weight:</dt>
+        <dd><%= @container.net_weight %>  <%= @container.order.weight_units %></dd>
+      </div>
+          <div class="large-4 columns">
+        <dt>VGM:</dt>
+        <dd><%= @container.vgm %> <%= @container.order.weight_units %></dd>
+      </div>
+          <div class="large-4 columns">
+        <dt>Overpayload:</dt>
+        <dd><%= @container.overpayload %> <%= @container.order.weight_units %></dd>
+      </div>
+    </dl>
+  </div>
 </div>

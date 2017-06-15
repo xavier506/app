@@ -1,4 +1,6 @@
-<h3>Add Container <small>on <%= link_to("order # #{@container.order.id}", @container.order) %></h3>
-<div class="form-container">
-  <%= render 'form' %>
+<div class="row column">
+  <h3>Add Container <small>on <%= link_to("order # #{@container.order.id}", @container.order) %></small></h3>
+  <div class="form-container">
+    <%= render 'form' %>
+  </div>
 </div>

@@ -1,99 +1,102 @@
-<h3>
-  <span class="float-left">
-    Phytosanitary Certificate #<%= @phytosanitary.id %> <small>on <%= link_to("order # #{@phytosanitary.order.id}", @phytosanitary.order) %></small>
+<div class="row column">
+  <h3>
+    <span class="float-left">
+      Phytosanitary Certificate #<%= @phytosanitary.id %> <small>on <%= link_to("order # #{@phytosanitary.order.id}", @phytosanitary.order) %></small>
+      </span>
+    <span class="float-right">
+      <% if can? :read, Phytosanitary %>
+      <%= link_to("View All Phytos <i class='fi-magnifying-glass'></i>".html_safe, order_phytosanitaries_path, :class => "tiny button") %>
+      <% end %>
+      <% if can? :update, @phytosanitary %>
+      <%= link_to("Edit This Phyto <i class='fi-page-edit'></i>".html_safe, edit_order_phytosanitary_path(@order, @phytosanitary.id), :class => "tiny button") %>
+      <% end %>
+      <% if can? :read, @phytosanitary %>
+      <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_phytosanitary_path(@order, @phytosanitary.id, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
+      <% end %>
     </span>
-  <span class="float-right">
-    <% if can? :read, Phytosanitary %>
-    <%= link_to("View All Phytos <i class='fi-magnifying-glass'></i>".html_safe, order_phytosanitaries_path, :class => "tiny button") %>
-    <% end %>
-    <% if can? :update, @phytosanitary %>
-    <%= link_to("Edit This Phyto <i class='fi-page-edit'></i>".html_safe, edit_order_phytosanitary_path(@order, @phytosanitary.id), :class => "tiny button") %>
-    <% end %>
-    <% if can? :read, @phytosanitary %>
-    <%= link_to("View PDF <i class='alert fi-page-export-pdf'></i>".html_safe, order_phytosanitary_path(@order, @phytosanitary.id, :format => 'pdf'), :target => "_blank", :class => "tiny alert button") %>
-    <% end %>
-  </span>
-</h3>
-
-<div class="details row column">
-  <dl class="inline">
-    <div class="large-12 columns">
-      <dt>Number :</dt>
-      <dd><%= @phytosanitary.number %></dd>
-    </div>
-    <div class="large-6 columns">
-      <dt>Exporter :</dt>
-      <dd><%= @phytosanitary.exporter %></dd>
-    </div>
-    <div class="large-6 columns">
-      <dt>Consignee :</dt>
-      <dd><%= @phytosanitary.receiver %></dd>
-    </div>
-    <div class="large-6 columns">
-      <dt>Place of Origin :</dt>
-      <dd><%= @phytosanitary.place_of_origin %></dd>
-    </div>
-    <div class="large-6 columns">
-      <dt>Point of Entry :</dt>
-      <dd><%= @phytosanitary.point_of_entry %></dd>
-    </div>
-    <div class="large-6 columns">
-      <dt>Mode :</dt>
-      <dd><%= @phytosanitary.mode %></dd>
-    </div>
-    <div class="large-6 columns">
-      <dt>Point of Exit :</dt>
-      <dd><%= @phytosanitary.point_of_exit %></dd>
-    </div>
-    <div class="large-12 columns">
-      <dt>Organization :</dt>
-      <dd><%= @phytosanitary.organization %></dd>
-    </div>
-    <hr />
-    <div class="large-6 columns">
-      <dt>Description :</dt>
-      <dd><%= @phytosanitary.description %></dd>
-    </div>
-    <div class="large-6 columns">
-      <dt>Additional Declaration :</dt>
-      <dd><%= @phytosanitary.additional_declaration %></dd>
-    </div>
-    <hr />
-    <div class="large-4 columns">
-      <dt>Place of Issue :</dt>
-      <dd><%= @phytosanitary.place_of_issue %></dd>
-    </div>
-    <div class="large-4 columns">
-      <dt>Issue Date :</dt>
-      <dd><%= @phytosanitary.issue_date %></dd>
-    </div>
-    <div class="large-4 columns">
-      <dt>Treatment Date :</dt>
-      <dd><%= @phytosanitary.treatment_date %></dd>
-    </div>
-    <div class="large-4 columns">
-      <dt>Treatment :</dt>
-      <dd><%= @phytosanitary.treatment %></dd>
-    </div>
-    <div class="large-4 columns">
-      <dt>Active Ingredient :</dt>
-      <dd><%= @phytosanitary.active_ingredient %></dd>
-    </div>
-    <div class="large-4 columns">
-      <dt>Concentration :</dt>
-      <dd><%= @phytosanitary.concentration %></dd>
-    </div>
-    <div class="large-4 columns">
-      <dt>Duration / Temperature :</dt>
-      <dd><%= @phytosanitary.duration_temperature %></dd>
-    </div>
-    <div class="large-4 columns">
-      <dt>Name of Person Responsible :</dt>
-      <dd><%= @phytosanitary.responsible %></dd>
-    </div>
-    <div class="large-4 columns">
-      <dt>Inspector :</dt>
-      <dd><%= @phytosanitary.inspector %></dd>
-    </div>
-  </dl>
+  </h3>
+</div>
+<div class="row column">
+  <div class="details">
+    <dl class="inline">
+      <div class="large-12 columns">
+        <dt>Number :</dt>
+        <dd><%= @phytosanitary.number %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Exporter :</dt>
+        <dd><%= @phytosanitary.exporter %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Consignee :</dt>
+        <dd><%= @phytosanitary.receiver %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Place of Origin :</dt>
+        <dd><%= @phytosanitary.place_of_origin %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Point of Entry :</dt>
+        <dd><%= @phytosanitary.point_of_entry %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Mode :</dt>
+        <dd><%= @phytosanitary.mode %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Point of Exit :</dt>
+        <dd><%= @phytosanitary.point_of_exit %></dd>
+      </div>
+      <div class="large-12 columns">
+        <dt>Organization :</dt>
+        <dd><%= @phytosanitary.organization %></dd>
+      </div>
+      <hr />
+      <div class="large-6 columns">
+        <dt>Description :</dt>
+        <dd><%= @phytosanitary.description %></dd>
+      </div>
+      <div class="large-6 columns">
+        <dt>Additional Declaration :</dt>
+        <dd><%= @phytosanitary.additional_declaration %></dd>
+      </div>
+      <hr />
+      <div class="large-4 columns">
+        <dt>Place of Issue :</dt>
+        <dd><%= @phytosanitary.place_of_issue %></dd>
+      </div>
+      <div class="large-4 columns">
+        <dt>Issue Date :</dt>
+        <dd><%= @phytosanitary.issue_date %></dd>
+      </div>
+      <div class="large-4 columns">
+        <dt>Treatment Date :</dt>
+        <dd><%= @phytosanitary.treatment_date %></dd>
+      </div>
+      <div class="large-4 columns">
+        <dt>Treatment :</dt>
+        <dd><%= @phytosanitary.treatment %></dd>
+      </div>
+      <div class="large-4 columns">
+        <dt>Active Ingredient :</dt>
+        <dd><%= @phytosanitary.active_ingredient %></dd>
+      </div>
+      <div class="large-4 columns">
+        <dt>Concentration :</dt>
+        <dd><%= @phytosanitary.concentration %></dd>
+      </div>
+      <div class="large-4 columns">
+        <dt>Duration / Temperature :</dt>
+        <dd><%= @phytosanitary.duration_temperature %></dd>
+      </div>
+      <div class="large-4 columns">
+        <dt>Name of Person Responsible :</dt>
+        <dd><%= @phytosanitary.responsible %></dd>
+      </div>
+      <div class="large-4 columns">
+        <dt>Inspector :</dt>
+        <dd><%= @phytosanitary.inspector %></dd>
+      </div>
+    </dl>
+  </div>
 </div>

@@ -1,4 +1,6 @@
-<h3>Add New Bill of Lading <small>on <%= link_to("order # #{@bill_of_lading.order.id}", @bill_of_lading.order) %></h3>
+<div class="row column">
+<h3>Add New Bill of Lading <small>on <%= link_to("order # #{@bill_of_lading.order.id}", @bill_of_lading.order) %></small></h3>
+</div>
 <div class="form-container">
   <%= render 'form' %>
 </div>

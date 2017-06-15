@@ -143,18 +143,20 @@
       <%= f.input :laden_on_board %>
     </div>
   </div>
-  <div class="details row ">
-    <div class="large-6 columns">
-      <h4> Select Containers for this BL</h4>
-      <%= check_box_tag 'Select All' %>
-      <%= label_tag 'Select All' %>
-      <%= f.collection_check_boxes :container_ids,
-        Container.where(order_id: @bill_of_lading.order_id),
-        :id,
-        :id %>
+  <div class="row column">
+    <div class="details">
+      <div class="large-6 columns">
+        <h4> Select Containers for this BL</h4>
+        <%= check_box_tag 'Select All' %>
+        <%= label_tag 'Select All' %>
+        <%= f.collection_check_boxes :container_ids,
+          Container.where(order_id: @bill_of_lading.order_id),
+          :id,
+          :id %>
 
-        <%#= @bill_of_lading.order_bl_available_containers(@bill_of_lading) %>
+          <%#= @bill_of_lading.order_bl_available_containers(@bill_of_lading) %>
 
+      </div>
     </div>
   </div>
   <div class="actions row">

@@ -1,51 +1,55 @@
-<h3>
-  <span class="float-left">
-    Viewing <%= @user.user_type %> User <small>#<%= @user.id %></small>
-    <% if @user.client_id %>
-      <small>Assigned to Client <%= @user.client.company %></small>
+<div class="row column">
+  <h3>
+    <span class="float-left">
+      Viewing <%= @user.user_type %> User <small>#<%= @user.id %></small>
+      <% if @user.client_id %>
+        <small>Assigned to Client <%= @user.client.company %></small>
+      <% end %>
+      <% if @user.consignee_id %>
+        <small>Assigned to Consignee <%= @user.consignee.company %></small>
+      <% end %>
+      <% if @user.notification_id %>
+        <small>Assigned to Notify <%= @user.notification.company %></small>
+      <% end %>
+    </span>
+    <span class="float-right">
+    <% if can? :update, @user %>
+      <%= link_to("Edit User <i class='fi-page-edit'></i>".html_safe, edit_user_path(@user.id), :class => 'tiny button') %>
     <% end %>
-    <% if @user.consignee_id %>
-      <small>Assigned to Consignee <%= @user.consignee.company %></small>
-    <% end %>
-    <% if @user.notification_id %>
-      <small>Assigned to Notify <%= @user.notification.company %></small>
-    <% end %>
-  </span>
-  <span class="float-right">
-  <% if can? :update, @user %>
-    <%= link_to("Edit User <i class='fi-page-edit'></i>".html_safe, edit_user_path(@user.id), :class => 'tiny button') %>
-  <% end %>
-  </span>
-</h3>
-<div class="details row column">
-  <dl class="inline">
-  <div class="large-6 columns">
-    <dt>Email :</dt>
-    <dd><%= @user.email %></dd>
+    </span>
+  </h3>
+</div>
+<div class="row column">
+  <div class="details">
+    <dl class="inline">
+    <div class="large-6 columns">
+      <dt>Email :</dt>
+      <dd><%= @user.email %></dd>
+    </div>
+    <div class="large-6 columns">
+      <dt>Name :</dt>
+      <dd><%= @user.full_name %></dd>
+    </div>
+    <div class="large-6 columns">
+     <dt>User Type :</dt>
+     <dd><%= @user.user_type %></dd>
+    </div>
+    <div class="large-6 columns">
+      <dt>Sign-in Count :</dt>
+      <dd><%= @user.sign_in_count %></dd>
+    </div>
+    <div class="large-6 columns">
+      <dt>Last Sign-in :</dt>
+      <dd><%= @user.last_sign_in_at %></dd>
+    </div>
+    <div class="large-6 columns">
+      <dt>Last Sign-in IP :</dt>
+      <dd><%= @user.last_sign_in_ip %></dd>
+    </div>
+    <div class="large-12 columns">
+      <dt>Date Registered :</dt>
+      <dd><%= @user.created_at %></dd>
+    </div>
+    </dl>
   </div>
-  <div class="large-6 columns">
-    <dt>Name :</dt>
-    <dd><%= @user.full_name %></dd>
-  </div>
-  <div class="large-6 columns">
-   <dt>User Type :</dt>
-   <dd><%= @user.user_type %></dd>
-  </div>
-  <div class="large-6 columns">
-    <dt>Sign-in Count :</dt>
-    <dd><%= @user.sign_in_count %></dd>
-  </div>
-  <div class="large-6 columns">
-    <dt>Last Sign-in :</dt>
-    <dd><%= @user.last_sign_in_at %></dd>
-  </div>
-  <div class="large-6 columns">
-    <dt>Last Sign-in IP :</dt>
-    <dd><%= @user.last_sign_in_ip %></dd>
-  </div>
-  <div class="large-12 columns">
-    <dt>Date Registered :</dt>
-    <dd><%= @user.created_at %></dd>
-  </div>
-  </dl>
 </div>

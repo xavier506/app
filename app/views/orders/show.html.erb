@@ -1,123 +1,123 @@
 <div class="row column">
-<h3>
-  <span class="float-left">
-    Viewing Order <small>#<%= @order.id %></small>
-  </span>
-  <span class="float-right">
-    <% if can? :read, @order %>
-      <%= link_to("View All Orders <i class='fi-magnifying-glass'></i>".html_safe, orders_path, :class => 'tiny button') %>
-    <% end %>
-    <% if can? :update, @order %>
-      <%= link_to("Edit This Order <i class='fi-page-edit tiny'></i>".html_safe, edit_order_path(@order.id), :class => 'tiny button') %>
-    <% end %>
-  </span>
-</h3>
+  <h3>
+    <span class="float-left">
+      Viewing Order <small>#<%= @order.id %></small>
+    </span>
+    <span class="float-right">
+      <% if can? :read, @order %>
+        <%= link_to("View All Orders <i class='fi-magnifying-glass'></i>".html_safe, orders_path, :class => 'tiny button') %>
+      <% end %>
+      <% if can? :update, @order %>
+        <%= link_to("Edit This Order <i class='fi-page-edit tiny'></i>".html_safe, edit_order_path(@order.id), :class => 'tiny button') %>
+      <% end %>
+    </span>
+  </h3>
 </div>
 <div class="row column">
   <div class="details">
-  <dl class="inline">
-  <div class="large-4 columns">
-    <dt>Client :</dt>
-    <dd><%= link_to @order.client.company, @order.client %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Consignee :</dt>
-    <dd><%= link_to @order.consignee.company, @order.consignee %></dd>
-  </div>
+    <dl class="inline">
     <div class="large-4 columns">
-    <dt>Notify :</dt>
-    <dd><%= link_to @order.notification.company, @order.notification %></dd>
-  </div>
-  <% unless current_user.user_type == 'Notify' || current_user.user_type == 'Consignee' %>
-    <div class="large-4 columns">
-      <dt>PCA Invoice :</dt>
-      <dd><%= link_to @order.pca_invoice_number, @order.pca_invoice_url, target: "_blank" %></dd>
+      <dt>Client :</dt>
+      <dd><%= link_to @order.client.company, @order.client %></dd>
     </div>
-  <% end %>
-  <div class="large-4 columns">
-    <dt>Customer REF :</dt>
-    <dd><%= @order.customer_ref %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>POD :</dt>
-    <dd><%= @order.place_of_delivery %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Liner :</dt>
-    <dd><%= @order.liner %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Vessel :</dt>
-    <dd><%= @order.vessel %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Vessel Departure :</dt>
-    <dd><%= @order.vessel_departure %></dd>
-  </div>
-  <div class="large-4 columns">
-   <dt>Order Date :</dt>
-   <dd><%= @order.order_date %></dd>
-  </div>
-  <div class="large-4 columns">
-   <dt>ETA :</dt>
-   <dd><%= @order.eta_date %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Cutoff :</dt>
-    <dd><%= @order.cutoff %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Mode :</dt>
-    <dd><%= @order.mode %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Status :</dt>
-    <dd><%= @order.status %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Booking Number :</dt>
-    <dd><%= @order.booking_number %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>DUA :</dt>
-    <dd><%= @order.dua %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>FAD :</dt>
-    <dd><%= @order.fad %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Customer Invoice :</dt>
-    <dd><%= @order.customer_invoice %></dd>
-  </div>
-  <div class="large-12 columns">
-    <dt>Notes :</dt>
-    <dd><%= @order.notes %></dd>
-  </div>
-  </dl>
+    <div class="large-4 columns">
+      <dt>Consignee :</dt>
+      <dd><%= link_to @order.consignee.company, @order.consignee %></dd>
+    </div>
+      <div class="large-4 columns">
+      <dt>Notify :</dt>
+      <dd><%= link_to @order.notification.company, @order.notification %></dd>
+    </div>
+    <% unless current_user.user_type == 'Notify' || current_user.user_type == 'Consignee' %>
+      <div class="large-4 columns">
+        <dt>PCA Invoice :</dt>
+        <dd><%= link_to @order.pca_invoice_number, @order.pca_invoice_url, target: "_blank" %></dd>
+      </div>
+    <% end %>
+    <div class="large-4 columns">
+      <dt>Customer REF :</dt>
+      <dd><%= @order.customer_ref %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>POD :</dt>
+      <dd><%= @order.place_of_delivery %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Liner :</dt>
+      <dd><%= @order.liner %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Vessel :</dt>
+      <dd><%= @order.vessel %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Vessel Departure :</dt>
+      <dd><%= @order.vessel_departure %></dd>
+    </div>
+    <div class="large-4 columns">
+     <dt>Order Date :</dt>
+     <dd><%= @order.order_date %></dd>
+    </div>
+    <div class="large-4 columns">
+     <dt>ETA :</dt>
+     <dd><%= @order.eta_date %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Cutoff :</dt>
+      <dd><%= @order.cutoff %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Mode :</dt>
+      <dd><%= @order.mode %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Status :</dt>
+      <dd><%= @order.status %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Booking Number :</dt>
+      <dd><%= @order.booking_number %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>DUA :</dt>
+      <dd><%= @order.dua %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>FAD :</dt>
+      <dd><%= @order.fad %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Customer Invoice :</dt>
+      <dd><%= @order.customer_invoice %></dd>
+    </div>
+    <div class="large-12 columns">
+      <dt>Notes :</dt>
+      <dd><%= @order.notes %></dd>
+    </div>
+    </dl>
   </div>
 </div>
 <% unless current_user.user_type == 'Notify' || current_user.user_type == 'Consignee' %>
-<div class="row column">
-  <table>
-    <thead>
-    </thead>
-      <th>Delivered to Port</th>
-      <th>BL Print</th>
-      <th>Phyto Print</th>
-      <th>CO Print</th>
-      <th>Invoice Paid</th>
-    <tbody>
-      <tr class="center-icon">
-        <td><img src="<%= @order.delivered_to_port? ? "/true.png" : "/false.png" %>"></img></td>
-        <td><img src="<%= @order.bl_print? ? "/true.png" : "/false.png" %>"></img></td>
-        <td><img src="<%= @order.phyto_print? ? "/true.png" : "/false.png" %>"></img></td>
-        <td><img src="<%= @order.co_print? ? "/true.png" : "/false.png" %>"></img></td>
-        <td><img src="<%= @order.invoice_paid? ? "/true.png" : "/false.png" %>"></img></td>
-      </tr>
-    </tbody>
-  <table>
-</div>
+  <div class="row column">
+    <table>
+      <thead>
+      </thead>
+        <th>Delivered to Port</th>
+        <th>BL Print</th>
+        <th>Phyto Print</th>
+        <th>CO Print</th>
+        <th>Invoice Paid</th>
+      <tbody>
+        <tr class="center-icon">
+          <td><img src="<%= @order.delivered_to_port? ? "/true.png" : "/false.png" %>"></img></td>
+          <td><img src="<%= @order.bl_print? ? "/true.png" : "/false.png" %>"></img></td>
+          <td><img src="<%= @order.phyto_print? ? "/true.png" : "/false.png" %>"></img></td>
+          <td><img src="<%= @order.co_print? ? "/true.png" : "/false.png" %>"></img></td>
+          <td><img src="<%= @order.invoice_paid? ? "/true.png" : "/false.png" %>"></img></td>
+        </tr>
+      </tbody>
+    <table>
+  </div>
 <% end %>
 <br/>
 <div class="row column">

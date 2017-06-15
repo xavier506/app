@@ -1,72 +1,78 @@
-<h3>
-  <span class="float-left">
-    Notification <small>#<%= @notification.id %></small>
-  </span>
-  <span class="float-right">
-  <% if can? :read, Notification %>
-    <%= link_to("View All Notifications <i class='fi-magnifying-glass'></i>".html_safe, notifications_path, :class => 'tiny button') %>
-  <% end %>
-  <% if can? :update, @notification %>
-    <%= link_to("Edit Notification <i class='fi-page-edit'></i>".html_safe, edit_notification_path(@notification.id), :class => 'tiny button') %>
-   <% end %>
-  </span>
-</h3>
-<div class="details row column">
-  <dl class="inline">
-  <div class="large-4 columns">
-    <dt>Company :</dt>
-    <dd><%= @notification.company %></dd>
-  </div>
-  <div class="large-4 columns">
-   <dt>Contact Name :</dt>
-   <dd><%= @notification.contact_name %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Email :</dt>
-    <dd><%= @notification.email %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Telephone :</dt>
-    <dd><%= @notification.telephone %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Address :</dt>
-    <dd><%= @notification.address %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>City :</dt>
-    <dd><%= @notification.city %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>State / Province :</dt>
-    <dd><%= @notification.state %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Country :</dt>
-    <dd><%= @notification.country %></dd>
-  </div>
-  <div class="large-4 columns">
-    <dt>Postal Code :</dt>
-    <dd><%= @notification.zip %></dd>
-  </div>
-  </dl>
+<div class="row column">
+  <h3>
+    <span class="float-left">
+      Notification <small>#<%= @notification.id %></small>
+    </span>
+    <span class="float-right">
+    <% if can? :read, Notification %>
+      <%= link_to("View All Notifications <i class='fi-magnifying-glass'></i>".html_safe, notifications_path, :class => 'tiny button') %>
+    <% end %>
+    <% if can? :update, @notification %>
+      <%= link_to("Edit Notification <i class='fi-page-edit'></i>".html_safe, edit_notification_path(@notification.id), :class => 'tiny button') %>
+     <% end %>
+    </span>
+  </h3>
 </div>
-<h4>Associated Users</h4>
-<table class="hover">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @notification.users.each do |user| %>
-    <tr>
-      <td><%= link_to user.id, user_path(user.id) %></td>
-      <td><%= link_to user.full_name, user_path(user.id) %></td>
-      <td><%= user.email %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<div class="row column">
+  <div class="details">
+    <dl class="inline">
+    <div class="large-4 columns">
+      <dt>Company :</dt>
+      <dd><%= @notification.company %></dd>
+    </div>
+    <div class="large-4 columns">
+     <dt>Contact Name :</dt>
+     <dd><%= @notification.contact_name %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Email :</dt>
+      <dd><%= @notification.email %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Telephone :</dt>
+      <dd><%= @notification.telephone %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Address :</dt>
+      <dd><%= @notification.address %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>City :</dt>
+      <dd><%= @notification.city %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>State / Province :</dt>
+      <dd><%= @notification.state %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Country :</dt>
+      <dd><%= @notification.country %></dd>
+    </div>
+    <div class="large-4 columns">
+      <dt>Postal Code :</dt>
+      <dd><%= @notification.zip %></dd>
+    </div>
+    </dl>
+  </div>
+</div>
+<div class="row column">
+  <h4>Associated Users</h4>
+  <table class="hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @notification.users.each do |user| %>
+      <tr>
+        <td><%= link_to user.id, user_path(user.id) %></td>
+        <td><%= link_to user.full_name, user_path(user.id) %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
