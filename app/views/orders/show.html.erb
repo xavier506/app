@@ -91,6 +91,26 @@
   </div>
   </dl>
 </div>
+<div class="row column">
+<table>
+  <thead>
+  </thead>
+    <th>Delivered to Port</th>
+    <th>BL Print</th>
+    <th>Phyto Print</th>
+    <th>CO Print</th>
+    <th>Invoice Paid</th>
+  <tbody>
+    <tr>
+      <td><img src="<%= @order.delivered_to_port? ? "/icons/true.png" : "/icons/false.png" %>"></img></td>
+      <td><img src="<%= @order.bl_print? ? "/icons/true.png" : "/icons/false.png" %>"></img></td>
+      <td><img src="<%= @order.phyto_print? ? "/icons/true.png" : "/icons/false.png" %>"></img></td>
+      <td><img src="<%= @order.co_print? ? "/icons/true.png" : "/icons/false.png" %>"></img></td>
+      <td><img src="<%= @order.invoice_paid? ? "/icons/true.png" : "/icons/false.png" %>"></img></td>
+    </tr>
+  </tbody>
+<table>
+</div>
 <br/>
 <div class="row column">
   <h4>Containers</h4>

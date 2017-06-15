@@ -114,6 +114,23 @@
     </div>
   </div>
   <div class="row">
+    <div class="large-3 columns">
+      <%= f.input :delivered_to_port %>
+    </div>
+    <div class="large-2 columns">
+      <%= f.input :bl_print, label: "BL Print" %>
+    </div>
+    <div class="large-2 columns">
+      <%= f.input :phyto_print, label: "Phyto Print" %>
+    </div>
+    <div class="large-2 columns">
+      <%= f.input :co_print, label: "CO Print" %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.input :invoice_paid, label: "Invoice Paid" %>
+    </div>
+  </div>
+  <div class="row">
     <div class="large-12 columns">
       <%= f.input :notes %>
     </div>

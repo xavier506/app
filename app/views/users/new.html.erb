@@ -5,9 +5,10 @@
     <%= f.input :full_name, label: 'Full name' %>
     <%= f.input :email, label: 'Email', error: 'Username is mandatory, please specify one' , placeholder: 'user@domain.com' %>
     <%= f.input :password %>
-        <% if current_user.user_type = 'Administrator' %>
+
+    <% if current_user.user_type = 'Administrator' %>
       <%= f.input :user_type do %>
-        <%= f.collection_select(:user_type, User::USER_TYPES,:to_s,:to_s , {include_blank: 'Select a User Type'}) %>
+        <%= f.collection_select(:user_type, User::USER_TYPES, :to_s, :to_s, {include_blank: 'Select a User Type'}) %>
       <% end %>
 
       <%= f.input :client_id do %>
@@ -20,6 +21,7 @@
         <%= f.collection_select(:notification_id, Notification.all, :id, :company, {include_blank: 'Assign a Notify Party'}) %>
       <% end %>
     <% end %>
+
     <%= f.button :submit, class: 'expanded' %>
   </div>
 <% end %>

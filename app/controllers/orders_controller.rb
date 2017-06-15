@@ -71,6 +71,11 @@ class OrdersController < ApplicationController
       :place_of_delivery,
       :volume_units,
       :weight_units,
+      :delivered_to_port,
+      :bl_print,
+      :phyto_print,
+      :co_print,
+      :invoice_paid,
     )
   end
 end

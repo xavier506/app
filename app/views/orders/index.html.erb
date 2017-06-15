@@ -22,6 +22,12 @@
       <th><%= sort_link(@q, :customer_invoice, 'Invoice') %></th>
       <th><%= sort_link(@q, :pca_invoice_number, 'PCA Invoice') %></th>
       <th><%= sort_link(@q, :customer_ref, 'Customer Ref') %></th>
+      <th><%= sort_link(@q, :delivered_to_port, 'Delivered to Port') %></th>
+      <th><%= sort_link(@q, :bl_print, 'BL Print') %></th>
+      <th><%= sort_link(@q, :phyto_print, 'Phyto Print') %></th>
+      <th><%= sort_link(@q, :co_print, 'CO Print') %></th>
+      <th><%= sort_link(@q, :invoice_paid, 'Invoice Paid') %></th>
+
     </tr>
   </thead>
   <tbody>
@@ -55,6 +61,11 @@
       <td><%= order.customer_invoice %></td>
       <td><%= link_to order.pca_invoice_number, order.pca_invoice_url, target: "_blank" %></td>
       <td><%= order.customer_ref %></td>
+      <td><img src="<%= order.delivered_to_port? ? "/icons/true.png" : "/icons/false.png" %>"></img></td>
+      <td><img src="<%= order.bl_print? ? "/icons/true.png" : "/icons/false.png" %>"></img></td>
+      <td><img src="<%= order.phyto_print? ? "/icons/true.png" : "/icons/false.png" %>"></img></td>
+      <td><img src="<%= order.co_print? ? "/icons/true.png" : "/icons/false.png" %>"></img></td>
+      <td><img src="<%= order.invoice_paid? ? "/icons/true.png" : "/icons/false.png" %>"></img></td>
     </tr>
   <% end %>
   </tbody>
