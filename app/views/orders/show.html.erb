@@ -1,3 +1,4 @@
+<div class="row column">
 <h3>
   <span class="float-left">
     Viewing Order <small>#<%= @order.id %></small>
@@ -11,7 +12,9 @@
     <% end %>
   </span>
 </h3>
-<div class="details row column">
+</div>
+<div class="row column">
+  <div class="details">
   <dl class="inline">
   <div class="large-4 columns">
     <dt>Client :</dt>
@@ -90,6 +93,7 @@
     <dd><%= @order.notes %></dd>
   </div>
   </dl>
+  </div>
 </div>
 <div class="row column">
 <table>
