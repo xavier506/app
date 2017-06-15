@@ -28,10 +28,12 @@
     <dt>Notify :</dt>
     <dd><%= link_to @order.notification.company, @order.notification %></dd>
   </div>
-  <div class="large-4 columns">
-    <dt>PCA Invoice :</dt>
-    <dd><%= link_to @order.pca_invoice_number, @order.pca_invoice_url, target: "_blank" %></dd>
-  </div>
+  <% unless current_user.user_type == 'Notify' || current_user.user_type == 'Consignee' %>
+    <div class="large-4 columns">
+      <dt>PCA Invoice :</dt>
+      <dd><%= link_to @order.pca_invoice_number, @order.pca_invoice_url, target: "_blank" %></dd>
+    </div>
+  <% end %>
   <div class="large-4 columns">
     <dt>Customer REF :</dt>
     <dd><%= @order.customer_ref %></dd>
@@ -95,26 +97,28 @@
   </dl>
   </div>
 </div>
+<% unless current_user.user_type == 'Notify' || current_user.user_type == 'Consignee' %>
 <div class="row column">
-<table>
-  <thead>
-  </thead>
-    <th>Delivered to Port</th>
-    <th>BL Print</th>
-    <th>Phyto Print</th>
-    <th>CO Print</th>
-    <th>Invoice Paid</th>
-  <tbody>
-    <tr class="center-icon">
-      <td><img src="<%= @order.delivered_to_port? ? "/true.png" : "/false.png" %>"></img></td>
-      <td><img src="<%= @order.bl_print? ? "/true.png" : "/false.png" %>"></img></td>
-      <td><img src="<%= @order.phyto_print? ? "/true.png" : "/false.png" %>"></img></td>
-      <td><img src="<%= @order.co_print? ? "/true.png" : "/false.png" %>"></img></td>
-      <td><img src="<%= @order.invoice_paid? ? "/true.png" : "/false.png" %>"></img></td>
-    </tr>
-  </tbody>
-<table>
+  <table>
+    <thead>
+    </thead>
+      <th>Delivered to Port</th>
+      <th>BL Print</th>
+      <th>Phyto Print</th>
+      <th>CO Print</th>
+      <th>Invoice Paid</th>
+    <tbody>
+      <tr class="center-icon">
+        <td><img src="<%= @order.delivered_to_port? ? "/true.png" : "/false.png" %>"></img></td>
+        <td><img src="<%= @order.bl_print? ? "/true.png" : "/false.png" %>"></img></td>
+        <td><img src="<%= @order.phyto_print? ? "/true.png" : "/false.png" %>"></img></td>
+        <td><img src="<%= @order.co_print? ? "/true.png" : "/false.png" %>"></img></td>
+        <td><img src="<%= @order.invoice_paid? ? "/true.png" : "/false.png" %>"></img></td>
+      </tr>
+    </tbody>
+  <table>
 </div>
+<% end %>
 <br/>
 <div class="row column">
   <h4>Containers</h4>
