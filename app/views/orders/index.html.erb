@@ -20,7 +20,9 @@
       <th><%= sort_link(@q, :dua, 'DUA') %></th>
       <th><%= sort_link(@q, :fad, 'FAD') %></th>
       <th><%= sort_link(@q, :customer_invoice, 'Invoice') %></th>
-      <th><%= sort_link(@q, :pca_invoice_number, 'PCA Invoice') %></th>
+      <% unless current_user.user_type == 'Notify' || current_user.user_type == 'Consignee' %>
+        <th><%= sort_link(@q, :pca_invoice_number, 'PCA Invoice') %></th>
+      <% end %>
       <th><%= sort_link(@q, :customer_ref, 'Customer Ref') %></th>
       <th><%= sort_link(@q, :delivered_to_port, 'Delivered to Port') %></th>
       <th><%= sort_link(@q, :bl_print, 'BL Print') %></th>
@@ -59,7 +61,9 @@
       <td><%= order.dua %></td>
       <td><%= order.fad %></td>
       <td><%= order.customer_invoice %></td>
-      <td><%= link_to order.pca_invoice_number, order.pca_invoice_url, target: "_blank" %></td>
+      <% unless current_user.user_type == 'Notify' || current_user.user_type == 'Consignee' %>
+        <td><%= link_to order.pca_invoice_number, order.pca_invoice_url, target: "_blank" %></td>
+      <% end %>
       <td><%= order.customer_ref %></td>
       <td><img src="<%= order.delivered_to_port? ? "/true.png" : "/false.png" %>"></img></td>
       <td><img src="<%= order.bl_print? ? "/true.png" : "/false.png" %>"></img></td>
