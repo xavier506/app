@@ -1,4 +1,9 @@
-<h3>Orders</h3>
+<% order_status_filter = "Open"
+    if params[:q]
+      order_status_filter = params[:q][:status_eq]
+    end
+%>
+<h3><%= order_status_filter %> Orders</h3>
 <% if @orders %>
   <%= render 'search' %>
 <table class="hover">
