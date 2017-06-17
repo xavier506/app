@@ -9,8 +9,6 @@
             order_status_filter = params[:q][:status_eq]
           end
       %>
-
-
       <%= f.select :status_eq, Order::STATUSES, :selected => order_status_filter, include_blank: "Any" %>
     </div>
     <div class="small-1 columns">
