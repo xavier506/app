@@ -13,62 +13,60 @@
 
 <body>
   <div class="top-bar" id="main-menu">
-    <div class="row">
-      <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text">PCA Logística</li>
-          <% if current_user && current_user.user_type == 'Administrator' %>
-          <li class="has-submenu">
-            <%= link_to "Orders", orders_path  %>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><%= link_to "New Order", new_order_path %></li>
-              <li><%#= link_to "Certificates of Origin", order_certificates_path %></li>
-              <li><%#= link_to "Phytosanitary", phytosanitaries_path %></li>
-            </ul>
-          </li>
-          <li class="has-submenu">
-            <%= link_to "Clients / Shippers", clients_path %>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><%= link_to "Register Shipper", new_client_path %></li>
-            </ul>
-          </li>
-          <li class="has-submenu">
-            <%= link_to "Consignees", consignees_path %>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><%= link_to "Register Consignee", new_consignee_path %></li>
-            </ul>
-          </li>
-          <li class="has-submenu">
-            <%= link_to "Notify", notifications_path %>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><%= link_to "Register Notify", new_notification_path %></li>
-            </ul>
-          </li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="top-bar-right">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <% if current_user && current_user.user_type == 'Administrator' %>
-          <li class="has-submenu">
-            <%= link_to "Users", users_path  %>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><%= link_to "New User", new_user_path %></li>
-            </ul>
-          </li>
-          <% end %>
-          <%- if current_user %>
-          <li class="has-submenu">
-            <%= link_to('My account', edit_user_registration_path) %>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-            </ul>
-          </li>
-          <%- else %>
-          <li><%= link_to "Login", new_user_session_path %></li>
-          <%- end %>
-        </ul>
-      </div>
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text">PCA Logística</li>
+        <% if current_user && current_user.user_type == 'Administrator' %>
+        <li class="has-submenu">
+          <%= link_to "Orders", orders_path  %>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><%= link_to "New Order", new_order_path %></li>
+            <li><%#= link_to "Certificates of Origin", order_certificates_path %></li>
+            <li><%#= link_to "Phytosanitary", phytosanitaries_path %></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <%= link_to "Clients / Shippers", clients_path %>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><%= link_to "Register Shipper", new_client_path %></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <%= link_to "Consignees", consignees_path %>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><%= link_to "Register Consignee", new_consignee_path %></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <%= link_to "Notify", notifications_path %>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><%= link_to "Register Notify", new_notification_path %></li>
+          </ul>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <% if current_user && current_user.user_type == 'Administrator' %>
+        <li class="has-submenu">
+          <%= link_to "Users", users_path  %>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><%= link_to "New User", new_user_path %></li>
+          </ul>
+        </li>
+        <% end %>
+        <%- if current_user %>
+        <li class="has-submenu">
+          <%= link_to('My account', edit_user_registration_path) %>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+          </ul>
+        </li>
+        <%- else %>
+        <li><%= link_to "Login", new_user_session_path %></li>
+        <%- end %>
+      </ul>
     </div>
   </div>
 
