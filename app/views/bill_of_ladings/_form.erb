@@ -105,7 +105,7 @@
   <div class="row">
     <% @terms = BillOfLading::TERMS %>
     <div class="large-3 columns">
-      <%= f.input :payment_terms, collection: @terms, include_blank: false %>
+      <%= f.input :payment_terms, collection: @terms, include_blank: true %>
     </div>
     <div class="large-3 columns">
       <%= f.input :collect %>
