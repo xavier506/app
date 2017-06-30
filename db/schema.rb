@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614202821) do
+ActiveRecord::Schema.define(version: 20170628220403) do
 
   create_table "bill_of_lading_containers", force: :cascade do |t|
     t.integer  "bill_of_lading_id"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20170614202821) do
     t.decimal  "total_units"
     t.decimal  "total_weight"
     t.decimal  "total_volume"
+    t.string   "payment_terms"
     t.index ["order_id"], name: "index_bill_of_ladings_on_order_id"
   end
 

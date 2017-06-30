@@ -6,6 +6,10 @@ class BillOfLading < ApplicationRecord
   has_many :bill_of_lading_containers
   has_many :containers, :through => :bill_of_lading_containers
 
+
+  #Options for field selection
+  TERMS = ['PREPAID', 'COLLECT', 'ELSEWHERE']
+
   validates :order_id,
     #:document_number,
     #:exporter,
@@ -82,7 +86,7 @@ class BillOfLading < ApplicationRecord
   #   #Container.where(order_id: order_id).sum(:volume)
   # end
 
-  # def unit_type(bill_of_lading_id)
+  #def unit_type(bill_of_lading_id)
   #   if Container.where(order_id: order_id).exists?
   #     Container.where(order_id: order_id).first.unit_type
   #   end

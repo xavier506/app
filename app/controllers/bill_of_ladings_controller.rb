@@ -85,6 +85,7 @@ class BillOfLadingsController < ApplicationController
       :total_weight,
       :total_volume,
       :total_units,
+      :payment_terms,
       container_ids: [],
     )
   end

@@ -345,14 +345,41 @@ elsif @bill_of_lading.liner == 'COSCO'
       pdf.text '"SAID TO CONTAIN"', size: 8, :align => :center
     end
 
+    pdf.bounding_box([0, pdf.cursor + 0], :width => 110, :height => 10) do
+      pdf.text 'N/M', size: 8
+    end
+
+    pdf.bounding_box([110, pdf.cursor + 10], :width => 60, :height => 20) do
+      pdf.text @bill_of_lading.total_units.to_s, {size: 8, :align => :right}
+      pdf.text @bill_of_lading.unit_type.upcase, {size: 8, :align => :right}
+    end
+
+    pdf.bounding_box([174, pdf.cursor + 20], :width => 205, :height => 20) do
+      pdf.text @bill_of_lading.description.upcase, {size: 8, :align => :center}
+    end
+
     #Total Weight
-    pdf.bounding_box([380, pdf.cursor + 0], :width => 75, :height => 10) do
+    pdf.bounding_box([380, pdf.cursor + 20], :width => 75, :height => 10) do
       pdf.text @bill_of_lading.total_weight.to_s + " " + @bill_of_lading.order.weight_units, {size: 9}
     end
 
     #Total Volume
     pdf.bounding_box([460, pdf.cursor + 10], :width => 80, :height => 10) do
       pdf.text @bill_of_lading.total_volume.to_s + " " + @bill_of_lading.order.volume_units, {size: 9}
+    end
+
+    #Payment Terms
+    @terms_string = @bill_of_lading.order.mode.upcase + ' FREIGHT ' + @bill_of_lading.payment_terms.upcase
+    pdf.bounding_box([0, pdf.cursor - 20], :width => 170, :height => 10) do
+      pdf.text @terms_string , {size: 8}
+    end
+
+    pdf.bounding_box([0, pdf.cursor + 0], :width => 170, :height => 10) do
+      pdf.text 'ON CY-CY TERM', size: 8, :align => :left
+    end
+
+    pdf.bounding_box([0, pdf.cursor + 0], :width => 170, :height => 10) do
+      pdf.text 'SHIPPER\'S LOAD,COUNT AND SEAL', size: 8, :align => :left
     end
 
     #CONTAINERS
@@ -364,7 +391,7 @@ elsif @bill_of_lading.liner == 'COSCO'
       end
     end
 
-    pdf.bounding_box([0, pdf.cursor - 4], :width => 535, :height => 135) do
+    pdf.bounding_box([0, pdf.cursor - 0], :width => 535, :height => 90) do
       #pdf.transparent(0.5) { pdf.stroke_bounds }
       if table_containers.size > 0
         table(
@@ -373,7 +400,7 @@ elsif @bill_of_lading.liner == 'COSCO'
           :cell_style =>{size: 8, :border_width => 0, :padding => 1}
         )
       else
-        pdf.text "No Containers", size: 8
+        pdf.text "NO CONTAINERS", size: 8
       end
 
       if @bill_of_lading.containers.size > 9
@@ -393,7 +420,7 @@ elsif @bill_of_lading.liner == 'COSCO'
 
     #Number of Containers
     num_containers_in_words = 'SAY ' + @bill_of_lading.containers.size.to_words.upcase + '(' + @bill_of_lading.containers.size.to_s + ') CONTAINERS TOTAL'
-    pdf.bounding_box([170, pdf.cursor - 4], :width => 350, :height => 10) do
+    pdf.bounding_box([170, pdf.cursor - 5], :width => 350, :height => 10) do
       pdf.text num_containers_in_words, {size: 9}
     end
 
@@ -436,6 +463,12 @@ elsif @bill_of_lading.liner == 'COSCO'
     pdf.bounding_box([402, pdf.cursor + 112], :width => 130, :height => 112) do
       pdf.text @bill_of_lading.collect_at.upcase, {size: 9}
     end
+
+    #Date Laden on Board
+    pdf.bounding_box([422, pdf.cursor + 0], :width => 113, :height => 10) do
+      pdf.text @bill_of_lading.laden_on_board.upcase, {size: 9}
+    end
+
     # pdf.transparent(0.5) { pdf.stroke_bounds }
     if @bill_of_lading.containers.size > 10 then
       pdf.start_new_page
