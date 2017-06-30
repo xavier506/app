@@ -369,9 +369,11 @@ elsif @bill_of_lading.liner == 'COSCO'
     end
 
     #Payment Terms
-    @terms_string = @bill_of_lading.order.mode.upcase + ' FREIGHT ' + @bill_of_lading.payment_terms.upcase
     pdf.bounding_box([0, pdf.cursor - 20], :width => 170, :height => 10) do
-      pdf.text @terms_string , {size: 8}
+      if @bill_of_lading.payment_terms
+        @terms_string = @bill_of_lading.order.mode.upcase + ' FREIGHT ' + @bill_of_lading.payment_terms.upcase
+        pdf.text @terms_string , {size: 8}
+      end
     end
 
     pdf.bounding_box([0, pdf.cursor + 0], :width => 170, :height => 10) do
