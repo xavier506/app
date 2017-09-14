@@ -77,6 +77,8 @@ class OrdersController < ApplicationController
       :phyto_print,
       :co_print,
       :invoice_paid,
+      :fumigation_url,
+      :fumigation_date
     )
   end
 end
