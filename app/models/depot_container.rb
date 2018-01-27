@@ -1,0 +1,2 @@
+class DepotContainer < ApplicationRecord
+end

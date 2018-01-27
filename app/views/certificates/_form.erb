@@ -22,7 +22,7 @@
       <% end %>
     </div>
     <div class="large-4 columns">
-      <%= f.input :mode, collection: Order::MODES, include_blank: false %>
+      <%= f.input :mode %>
     </div>
     <div class="large-4 columns">
       <%= f.input :notify, input_html: {value: @certificate.notify.present? ? @certificate.notify : @order.notification.notify_string } %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170820183200) do
+ActiveRecord::Schema.define(version: 20171021204235) do
 
   create_table "bill_of_lading_containers", force: :cascade do |t|
     t.integer  "bill_of_lading_id"
@@ -158,6 +158,30 @@ ActiveRecord::Schema.define(version: 20170820183200) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["order_id"], name: "index_containers_on_order_id"
+  end
+
+  create_table "depot_containers", force: :cascade do |t|
+    t.string   "status"
+    t.string   "container_type"
+    t.string   "booking_number"
+    t.string   "liner"
+    t.string   "container_number"
+    t.date     "gate_in"
+    t.date     "gate_out"
+    t.string   "vessel"
+    t.string   "tir"
+    t.string   "client"
+    t.string   "shipper"
+    t.string   "consignee"
+    t.string   "license_plate"
+    t.decimal  "tare_weight"
+    t.decimal  "gross_weight"
+    t.decimal  "net_weight"
+    t.decimal  "vgm_weight"
+    t.decimal  "payload"
+    t.text     "notes"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "notifications", force: :cascade do |t|

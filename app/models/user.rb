@@ -3,7 +3,7 @@ class User < ApplicationRecord
   belongs_to :consignee
   belongs_to :notification
 
-  USER_TYPES = ['Client','Consignee','Notify','Administrator']
+  USER_TYPES = ['Client','Consignee','Notify','Administrator','Depot Staff']
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
