@@ -15,9 +15,7 @@ indent 30 do
 
   #Mode
   pdf.bounding_box([0, pdf.cursor - 17], :width => 250, :height => 10) do
-    unless @certificate.mode == "0"
-      pdf.text @certificate.mode.upcase, :size => 7
-    end
+    pdf.text @certificate.mode.upcase, :size => 7
   end
 
   #Departure Port
@@ -63,7 +61,9 @@ indent 30 do
   #Volume
   volume_text = @certificate.volume.to_s.upcase + " " + @certificate.order.volume_units.to_s.upcase
   pdf.bounding_box([292, pdf.cursor + 140], :width => 65, :height => 140) do
-    pdf.text volume_text, :size => 7, :align => :center
+    unless @certificate.volume == 0
+      pdf.text volume_text, :size => 7, :align => :center
+    end
     pdf.text '*********', :size => 7, :align => :center
   end
 
