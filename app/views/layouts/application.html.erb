@@ -15,11 +15,11 @@
   <div class="top-bar" id="main-menu">
     <div class="top-bar-left">
       <ul class="dropdown menu" data-dropdown-menu>
-        <li class="menu-text">PCA Logística</li>
+        <li class="menu-text"><%= image_tag "pca-logo.png" %></li>
         <% if current_user && current_user.user_type == 'Administrator' %>
         <li class="has-submenu">
           <%= link_to "Orders", orders_path  %>
-          <ul class="submenu menu vertical" data-submenu>
+          <ul class="submenu menu vertical is-dropdown-submenu first-sub" data-submenu>
             <li><%= link_to "New Order", new_order_path %></li>
             <li><%#= link_to "Certificates of Origin", order_certificates_path %></li>
             <li><%#= link_to "Phytosanitary", phytosanitaries_path %></li>
@@ -27,19 +27,19 @@
         </li>
         <li class="has-submenu">
           <%= link_to "Clients / Shippers", clients_path %>
-          <ul class="submenu menu vertical" data-submenu>
+          <ul class="submenu menu vertical is-dropdown-submenu first-sub" data-submenu>
             <li><%= link_to "Register Shipper", new_client_path %></li>
           </ul>
         </li>
         <li class="has-submenu">
           <%= link_to "Consignees", consignees_path %>
-          <ul class="submenu menu vertical" data-submenu>
+          <ul class="submenu menu vertical is-dropdown-submenu first-sub" data-submenu>
             <li><%= link_to "Register Consignee", new_consignee_path %></li>
           </ul>
         </li>
         <li class="has-submenu">
           <%= link_to "Notify", notifications_path %>
-          <ul class="submenu menu vertical" data-submenu>
+          <ul class="submenu menu vertical is-dropdown-submenu first-sub" data-submenu>
             <li><%= link_to "Register Notify", new_notification_path %></li>
           </ul>
         </li>
